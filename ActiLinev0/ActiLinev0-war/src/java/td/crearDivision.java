@@ -62,17 +62,98 @@ public class crearDivision extends HttpServlet {
             throws ServletException, IOException {
                 try {
             // Handle a new guest (if any):
-            String dividendo = request.getParameter("dividendo");
-            String divisor = request.getParameter("divisor");
+            String divd = request.getParameter("dividendo");
+            String divs = request.getParameter("divisor");
+            boolean valido = true;
+            int dividendoInt=0;
+            int divisorInt=0;
             
-            List<String> resultado = new ArrayList<String>();
+            try{
+                dividendoInt = Integer.parseInt(divd);
+                divisorInt = Integer.parseInt(divs);
+            }
+            catch(Exception ex)
+            {
+                valido = false;
+            }
+            if(valido){
+                List<String> resultado = new ArrayList<String>();
             
-            request.setAttribute("dividendo", dividendo);
-            request.setAttribute("divisor", divisor);
+
             
-            request.setAttribute("resultado", resultado);
-            request.getRequestDispatcher("CrearEjercicio/resolverDivision.jsp")
-                .forward(request, response);
+            
+            //Zona de cálculo de pasos
+
+            		//Division
+		List<Integer> cocientes = new ArrayList<Integer>();
+		List<Integer> numeros = new ArrayList<Integer>();
+                List<Integer> pasos = new ArrayList<Integer>();
+		
+		int dividendo = dividendoInt;
+		int divisor = divisorInt;
+		
+		int c = dividendo / divisor;
+		
+		while(c > 9){
+			cocientes.add(c%10);
+			c = c / 10;
+			
+		}
+		
+		cocientes.add(c);
+
+		while(dividendo > 9){
+			numeros.add(dividendo%10);
+			dividendo = dividendo / 10;
+		}
+
+		numeros.add(dividendo%10);
+		
+		
+		int numeroDividir = 0;
+		
+		while(cocientes.size()>0){			
+			
+			//cojo el primer divisor y me lo cargo
+			int cociente = cocientes.get(cocientes.size()-1);
+			cocientes.remove(cocientes.size()-1);
+			
+			
+
+			while(numeros.size() > 0 && numeroDividir < divisor){
+				//cojo otro numero y me lo cargo
+				int numeroAnadir = numeros.get(numeros.size()-1);
+				numeros.remove(numeros.size()-1);
+				
+				numeroDividir = (numeroDividir*10) + numeroAnadir;
+			}
+			
+			int pasoDivision = 0;
+			
+			if(cociente!=0){
+				System.out.println("Paso dividir " + numeroDividir);		
+				pasoDivision = numeroDividir % divisor;
+			}
+
+                        pasos.add(numeroDividir);
+			numeroDividir = pasoDivision;
+			
+		}
+                //if((dividendoInt%divisorInt)==0)
+                pasos.add(dividendoInt%divisorInt);
+                pasos.remove(0);
+            //Fin zona de cálculo de pasos
+            
+            
+                request.setAttribute("dividendo", divd);
+                request.setAttribute("divisor", divs);
+                request.setAttribute("solucion", pasos);
+            
+            
+                request.setAttribute("resultado", resultado);
+                request.getRequestDispatcher("CrearEjercicio/resolverDivision.jsp")
+                    .forward(request, response);
+            }
  
         } finally {
             // Close the database connection:

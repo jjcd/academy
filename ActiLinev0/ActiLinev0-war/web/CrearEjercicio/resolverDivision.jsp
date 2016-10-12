@@ -4,14 +4,31 @@
     Author     : JUAN JOSE
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
       <%
-            @SuppressWarnings("unchecked") 
-            String dividendo = request.getAttribute("dividendo").toString();
-            String divisor = request.getAttribute("divisor").toString();
+            //@SuppressWarnings("unchecked")
+            String dividendo = "";
+            String divisor = "";
+            String strSol = "";
+            String strSolucionComas="";
+            
+            if((request.getParameter("dividendo")!=null)&&(request.getParameter("divisor")!=null)){        
+                dividendo = request.getParameter("dividendo").toString();
+                divisor = request.getParameter("divisor").toString();
+                List<Integer> sol = (ArrayList<Integer>) request.getAttribute("solucion");
+                int numSol = sol.size();
+                strSol = numSol + "";
+                strSolucionComas="";
+                
+                for(Integer in : sol) {
+                        strSolucionComas = strSolucionComas + in + ";";
+                }
+            }
              %>
                 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -33,15 +50,78 @@
   <div id="includedContent"></div>
  
     <!-- Librería jQuery requerida por los plugins de JavaScript -->
-    <script src="http://code.jquery.com/jquery.js">
+    <script src="http://code.jquery.com/jquery.js"></script>
 	
-	</script>
-	
-	<script> 
-    $(function(){
-      $("#includedContent").load("menu.html"); 
+    <script> 
+        //var contadorPasos = 0;
+        $(function(){
+            $("#includedContent").load("menu.html"); 
+      
+            /*var myEl = document.getElementById('addpaso');
+
+            myEl.addEventListener('click', function() {
+                alert(contadorPasos);
+            }, false);
+            
+            contadorPasos++;*/
+        var j = <%=strSol%>;
+       
+        for(var i=0;i<j;i++){
+            //str+="&nbsp;";
+            strPrimero = "";
+            if(i===0){
+                strPrimero = "<input type='text' class='form-control' id='cociente' name='cociente'>";
+            }
+            $( "#cuerpoDivision" ).append("<tr><td class='warning' id='comprobacion"+i+"' name='comprobacion"+i+"'><div><input type='text' class='form-control' id='paso"+i+"' name='paso"+i+"'></div></td><td>"+strPrimero+"</td></tr>");
+            strPrimero = "";
+        }
     });
     </script> 
+    
+    <script type="text/javascript">
+    //var clicks = 0;
+    function onClick() {
+        //clicks += 1;
+        //alert(clicks);
+        //str = "";
+        
+        //for(var i=0;i<clicks;i++){str+="&nbsp;"}
+        //alert(str + " " + clicks);
+        //if(clicks == 1){
+            
+        //}
+        //}
+        
+        //$( "#cuerpoDivision" ).append("<tr><td class='warning'><div>"+str+"</div></td><td></td></tr>");
+        //alert('hola');
+        var strsolucion = "";
+        var strsolucion = "<%=strSolucionComas%>";
+        var res = strsolucion.split(";");
+        //alert(strsolucion);
+        for(h=0;h<res.length;h++){
+            if(res[h]!==null&&res[h]!=="")
+            {
+               //alert(res[h]); 
+               
+               var pasoInput = "#paso" + h;
+               var comprobaciontd = "#comprobacion" + h;
+               
+               
+               if($(pasoInput).val()===res[h]){
+                   //alert($(pasoInput).val() + " " + res[h]);
+                   $(comprobaciontd).removeClass();
+                   $(comprobaciontd).addClass("success");
+               }
+               else
+               {
+                   //alert($(pasoInput).val() + " " + res[h]);
+                   $(comprobaciontd).removeClass();
+                   $(comprobaciontd).addClass("danger");
+               }
+            }
+        }
+    }
+    </script>
 	
 
 <div class="container">
@@ -50,9 +130,47 @@
     <h3 class="panel-title"><center>Procede a resolver la división:</center></h3>
   </div>
   <div class="panel-body">
+          <div class="row">
+             <div class="col-md-12">
+                  
+                    <table class="table">
+                   
+                     <!-- Aplicadas en las filas -->
+                   <thead>
+                     <tr>
+                         <td><div class="dividendo"><b><%=dividendo%> </b></div></td>
+                         <td><div class="divisor" style="border-left-color: #337ab7; border-left-style: solid; border-left-width: 2px;border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: 2px;"><b>&nbsp;<%=divisor%></b></div></td>
+                     </tr>
+                   </thead>
+                   <tbody id="cuerpoDivision">
+                     <!-- Aplicadas en las celdas (<td> o <th>) 
+                     <tr>
+                       <td class="warning">...</td>
+                       <td class="warning">...</td>
+                     </tr>
+                     -->
+                     <!-- Zona para resultados -->
+                   </tbody>
+                   </table>                 
 
+
+
+
+              </div>
+	</div>
   </div>
 </div>
+    
+<div class="panel panel-primary" style="background-color:#337ab7;">
+  <div class="panel-body">
+    <div class="row">
+		<div class="col-md-12">
+                    <center><a href="#" id="addpaso" onclick="onClick()" style="color:white;font-style: italic;"><b>Click para corregir</b></a></center>
+			</div>
+	</div>
+  </div>
+</div>    
+    
 <div class="panel panel-primary">
   <div class="panel-body">
     <div class="row">
@@ -75,5 +193,9 @@
          incluir archivos JavaScript individuales de los únicos
          plugins que utilices) -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
+    
+
+
+
   </body>
 </html>
