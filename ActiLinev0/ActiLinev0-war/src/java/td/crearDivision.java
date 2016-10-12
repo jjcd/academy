@@ -7,27 +7,21 @@ package td;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
-import javax.ejb.EJB;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import td.User;
-import tdbeans.UserFacade;
-import tdbeans.UserFacadeLocal;
+
 /**
  *
  * @author JUAN JOSE
  */
+@WebServlet(name = "crearDivision", urlPatterns = {"/crearDivision"})
+public class crearDivision extends HttpServlet {
 
-@WebServlet(name = "gestuser", urlPatterns = {"/gestuser"})
-public class gestuser extends HttpServlet {
-    @EJB 
-    private UserFacade ufl;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,31 +31,18 @@ public class gestuser extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-
-
-    
-   
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        
-
-        
-        //List<User> us = ufl.findAll();
-        
-        
-        
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet gestuser</title>");            
+            out.println("<title>Servlet crearDivision</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet gestuser at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet crearDivision at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -79,7 +60,24 @@ public class gestuser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+                try {
+            // Handle a new guest (if any):
+            String dividendo = request.getParameter("dividendo");
+            String divisor = request.getParameter("divisor");
+            
+            List<String> resultado = new ArrayList<String>();
+            
+            request.setAttribute("dividendo", dividendo);
+            request.setAttribute("divisor", divisor);
+            
+            request.setAttribute("resultado", resultado);
+            request.getRequestDispatcher("CrearEjercicio/resolverDivision.jsp")
+                .forward(request, response);
+ 
+        } finally {
+            // Close the database connection:
+
+        }
     }
 
     /**
@@ -93,7 +91,7 @@ public class gestuser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        doGet(request, response);
     }
 
     /**
