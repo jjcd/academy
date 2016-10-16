@@ -76,12 +76,7 @@ public class crearDivision extends HttpServlet {
             {
                 valido = false;
             }
-            if(valido){
-                List<String> resultado = new ArrayList<String>();
-            
-
-            
-            
+            if(valido){           
             //Zona de cálculo de pasos
 
             		//Division
@@ -93,7 +88,7 @@ public class crearDivision extends HttpServlet {
 		int divisor = divisorInt;
 		
 		int c = dividendo / divisor;
-		
+                
 		while(c > 9){
 			cocientes.add(c%10);
 			c = c / 10;
@@ -139,7 +134,6 @@ public class crearDivision extends HttpServlet {
 			numeroDividir = pasoDivision;
 			
 		}
-                //if((dividendoInt%divisorInt)==0)
                 pasos.add(dividendoInt%divisorInt);
                 pasos.remove(0);
             //Fin zona de cálculo de pasos
@@ -148,9 +142,9 @@ public class crearDivision extends HttpServlet {
                 request.setAttribute("dividendo", divd);
                 request.setAttribute("divisor", divs);
                 request.setAttribute("solucion", pasos);
+                
             
-            
-                request.setAttribute("resultado", resultado);
+                //request.setAttribute("resultado", resultado);
                 request.getRequestDispatcher("CrearEjercicio/resolverDivision.jsp")
                     .forward(request, response);
             }

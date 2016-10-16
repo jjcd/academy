@@ -14,12 +14,19 @@
             //@SuppressWarnings("unchecked")
             String dividendo = "";
             String divisor = "";
+            String cocienteString = "";
+            
             String strSol = "";
             String strSolucionComas="";
             
             if((request.getParameter("dividendo")!=null)&&(request.getParameter("divisor")!=null)){        
                 dividendo = request.getParameter("dividendo").toString();
                 divisor = request.getParameter("divisor").toString();
+                
+                int cociInt = Integer.parseInt(dividendo) / Integer.parseInt(divisor);
+                
+                cocienteString = cociInt + "";
+                
                 List<Integer> sol = (ArrayList<Integer>) request.getAttribute("solucion");
                 int numSol = sol.size();
                 strSol = numSol + "";
@@ -70,56 +77,55 @@
             //str+="&nbsp;";
             strPrimero = "";
             if(i===0){
-                strPrimero = "<input type='text' class='form-control' id='cociente' name='cociente'>";
+                strPrimero = "<input type='text' class='form-control' id='cocienteInput' name='cocienteInput'>";
             }
-            $( "#cuerpoDivision" ).append("<tr><td class='warning' id='comprobacion"+i+"' name='comprobacion"+i+"'><div><input type='text' class='form-control' id='paso"+i+"' name='paso"+i+"'></div></td><td>"+strPrimero+"</td></tr>");
+            $( "#cuerpoDivision" ).append("<tr><td class='warning' id='comprobacion"+i+"' name='comprobacion"+i+"'><div><input type='text' class='form-control' id='paso"+i+"' name='paso"+i+"'></div></td><td id='cociente"+i+"' name='cociente"+i+"'>"+strPrimero+"</td></tr>");
             strPrimero = "";
         }
     });
     </script> 
     
     <script type="text/javascript">
-    //var clicks = 0;
     function onClick() {
-        //clicks += 1;
-        //alert(clicks);
-        //str = "";
-        
-        //for(var i=0;i<clicks;i++){str+="&nbsp;"}
-        //alert(str + " " + clicks);
-        //if(clicks == 1){
-            
-        //}
-        //}
-        
-        //$( "#cuerpoDivision" ).append("<tr><td class='warning'><div>"+str+"</div></td><td></td></tr>");
-        //alert('hola');
+
         var strsolucion = "";
         var strsolucion = "<%=strSolucionComas%>";
         var res = strsolucion.split(";");
-        //alert(strsolucion);
+        
+        var cociInput = "#cociente0";
+        var cociValor = "#cocienteInput";
+        var cociString = "<%=cocienteString%>";
+        
         for(h=0;h<res.length;h++){
             if(res[h]!==null&&res[h]!=="")
-            {
-               //alert(res[h]); 
-               
+            {               
                var pasoInput = "#paso" + h;
                var comprobaciontd = "#comprobacion" + h;
                
                
                if($(pasoInput).val()===res[h]){
-                   //alert($(pasoInput).val() + " " + res[h]);
                    $(comprobaciontd).removeClass();
                    $(comprobaciontd).addClass("success");
                }
                else
                {
-                   //alert($(pasoInput).val() + " " + res[h]);
                    $(comprobaciontd).removeClass();
                    $(comprobaciontd).addClass("danger");
                }
             }
         }
+        
+        //alert(cociString + " " + $(cociValor).val());
+        
+        if($(cociValor).val()===cociString){
+           $(cociInput).removeClass();
+           $(cociInput).addClass("success");
+       }
+       else
+       {
+           $(cociInput).removeClass();
+           $(cociInput).addClass("danger");
+       }
     }
     </script>
 	
