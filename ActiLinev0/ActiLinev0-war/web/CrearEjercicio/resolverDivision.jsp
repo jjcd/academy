@@ -112,10 +112,13 @@
             $( "#cuerpoDivision" ).append("<tr><td class='warning' id='comprobacion"+i+"' name='comprobacion"+i+"'>"+
                                                 //"<div><input type='text' class='form-control' id='paso"+i+"' name='paso"+i+"'></div>"+
                                                 //Cuerpo de la división donde tabular
+                                                //Calcular donde poner los números y desactivar restantes
+                                                //con el length de la solucion podemos saberlo, además de con el divisor (si divisor es menor o igual que el paso una tabulación menos)
+                                                //si el divisor es mayor que el paso, una más.(puede tomarse en cuenta el 0 izquierda)
                                                 
                                                 "<table class='table' id='tabladividendo'>"+
                                                     "<tr>"+
-                                                       "<td id='columnadividendo0'><div><input type='text' class='form-control' id='paso"+i+"' name='paso"+i+"' disabled='true'></div></td>"+
+                                                       "<td id='columnadividendo0'><div><input type='text' class='form-control' id='paso"+i+"' name='paso"+i+"' disabled=''></div></td>"+
                                                        "<td id='columnadividendo1'><div><input type='text' class='form-control' id='paso"+i+"' name='paso"+i+"'></div></td>"+
                                                        "<td id='columnadividendo2'><div><input type='text' class='form-control' id='paso"+i+"' name='paso"+i+"'></div></td>"+
                                                        "<td id='columnadividendo3'><div><input type='text' class='form-control' id='paso"+i+"' name='paso"+i+"'></div></td>"+
