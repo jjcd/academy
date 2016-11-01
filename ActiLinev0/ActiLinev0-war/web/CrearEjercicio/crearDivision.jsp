@@ -40,11 +40,11 @@
 <form  method="GET" action="../crearDivision">
   <div class="form-group">
     <label for="number">Dividendo:</label>
-    <input type="text" class="form-control" id="dividendo" name="dividendo">
+    <input type="text" class="form-control" id="dividendo" name="dividendo" maxlength="7">
   </div>
   <div class="form-group">
     <label for="number">Divisor</label>
-    <input type="text" class="form-control" id="divisor" name="divisor">
+    <input type="text" class="form-control" id="divisor" name="divisor" maxlength="4">
   </div>
 
     <button type="submit" class="btn btn-default"><center>Calcular</center></button>
