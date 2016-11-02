@@ -16,9 +16,6 @@
             String divisor = "";
             String cocienteString = "";
             
-            String[] dividendoMax = {"","","","","","",""};
-            String[] dividendoChars;
-            
             String strSol = "";
             String strSolucionComas="";
             
@@ -26,14 +23,9 @@
                 dividendo = request.getParameter("dividendo").toString();
                 
                 /*Partir el dividendo en diferentes caracteres*/
-                dividendoChars = dividendo.split("(?!^)");
+                String[] dividendoChars = dividendo.split("(?!^)");
                 
-                //Asignar a las columnas del dividendo los valores
-                for(int cont=0;cont<dividendoChars.length;cont++){
-                    dividendoMax[cont] = dividendoChars[cont];
-                }
-                
-                /*Fin partir dividendo en distintos caracteres*/
+                /*Fin partir dividendo en distintos*/
                 divisor = request.getParameter("divisor").toString();
                 
                 int cociInt = Integer.parseInt(dividendo) / Integer.parseInt(divisor);
@@ -92,44 +84,7 @@
             if(i===0){
                 strPrimero = "<input type='text' class='form-control' id='cocienteInput' name='cocienteInput'>";
             }
-            
-            <%--
-                              <table class="table" id="tabladividendo">
-                                 <tr>
-                                    <td id="columnadividendo0"><%=dividendoMax[0]%></td>
-                                    <td id="columnadividendo1"><%=dividendoMax[1]%></td>
-                                    <td id="columnadividendo2"><%=dividendoMax[2]%></td>
-                                    <td id="columnadividendo3"><%=dividendoMax[3]%></td>
-                                    <td id="columnadividendo4"><%=dividendoMax[4]%></td>
-                                    <td id="columnadividendo5"><%=dividendoMax[5]%></td>
-                                    <td id="columnadividendo6"><%=dividendoMax[6]%></td>
-                                 </tr>
-                             </table>
-             * 
-             --%>
-            
-            
-            $( "#cuerpoDivision" ).append("<tr><td class='warning' id='comprobacion"+i+"' name='comprobacion"+i+"'>"+
-                                                //"<div><input type='text' class='form-control' id='paso"+i+"' name='paso"+i+"'></div>"+
-                                                //Cuerpo de la división donde tabular
-                                                //Calcular donde poner los números y desactivar restantes
-                                                //con el length de la solucion podemos saberlo, además de con el divisor (si divisor es menor o igual que el paso una tabulación menos)
-                                                //si el divisor es mayor que el paso, una más.(puede tomarse en cuenta el 0 izquierda)
-                                                
-                                                "<table class='table' id='tabladividendo'>"+
-                                                    "<tr>"+
-                                                       "<td id='columnadividendo0'><div><input type='text' class='form-control' id='paso"+i+"' name='paso"+i+"' disabled=''></div></td>"+
-                                                       "<td id='columnadividendo1'><div><input type='text' class='form-control' id='paso"+i+"' name='paso"+i+"'></div></td>"+
-                                                       "<td id='columnadividendo2'><div><input type='text' class='form-control' id='paso"+i+"' name='paso"+i+"'></div></td>"+
-                                                       "<td id='columnadividendo3'><div><input type='text' class='form-control' id='paso"+i+"' name='paso"+i+"'></div></td>"+
-                                                       "<td id='columnadividendo4'><div><input type='text' class='form-control' id='paso"+i+"' name='paso"+i+"'></div></td>"+
-                                                       "<td id='columnadividendo5'><div><input type='text' class='form-control' id='paso"+i+"' name='paso"+i+"'></div></td>"+
-                                                       "<td id='columnadividendo6'><div><input type='text' class='form-control' id='paso"+i+"' name='paso"+i+"'></div></td>"+
-                                                    "</tr>"+
-                                                "</table>"+
-                                                
-                                                //Fin cuerpo de la división donde tabular
-                                                "</td><td id='cociente"+i+"' name='cociente"+i+"'>"+strPrimero+"</td></tr>");
+            $( "#cuerpoDivision" ).append("<tr><td class='warning' id='comprobacion"+i+"' name='comprobacion"+i+"'><div><input size='3' type='text' class='form-control' id='paso"+i+"' name='paso"+i+"'></div></td><td id='cociente"+i+"' name='cociente"+i+"'>"+strPrimero+"</td></tr>");
             strPrimero = "";
         }
     });
@@ -194,23 +149,7 @@
                      <!-- Aplicadas en las filas -->
                    <thead>
                      <tr>
-                         <td>
-                             <%--<div class="dividendo">--%>
-                             <table class="table" id="tabladividendo">
-                                 <tr>
-                                    <td id="columnadividendo0"><%=dividendoMax[0]%></td>
-                                    <td id="columnadividendo1"><%=dividendoMax[1]%></td>
-                                    <td id="columnadividendo2"><%=dividendoMax[2]%></td>
-                                    <td id="columnadividendo3"><%=dividendoMax[3]%></td>
-                                    <td id="columnadividendo4"><%=dividendoMax[4]%></td>
-                                    <td id="columnadividendo5"><%=dividendoMax[5]%></td>
-                                    <td id="columnadividendo6"><%=dividendoMax[6]%></td>
-                                 </tr>
-                             </table>
-                                 <%--<b><%=dividendo%> </b>--%>
-                         </td>    
-                             <%--</div>--%>
-                         
+                         <td><div class="dividendo">&nbsp;&nbsp;<b><%=dividendo%> </b></div></td>
                          <td><div class="divisor" style="border-left-color: #337ab7; border-left-style: solid; border-left-width: 2px;border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: 2px;"><b>&nbsp;<%=divisor%></b></div></td>
                      </tr>
                    </thead>
