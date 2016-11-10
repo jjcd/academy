@@ -10,6 +10,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+      <style>
+        input[type="text"]
+        {
+            font-size:14px;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-weight: 700;
+        }
+      </style>
+      
+      
       <%
             //@SuppressWarnings("unchecked")
             String dividendo = "";
@@ -18,12 +28,14 @@
             
             String strSol = "";
             String strSolucionComas="";
+            String[] dividendoChars = {};
+            String cuerpoPasosDivision = "";
             
             if((request.getParameter("dividendo")!=null)&&(request.getParameter("divisor")!=null)){        
                 dividendo = request.getParameter("dividendo").toString();
                 
                 /*Partir el dividendo en diferentes caracteres*/
-                String[] dividendoChars = dividendo.split("(?!^)");
+                dividendoChars = dividendo.split("(?!^)");
                 
                 /*Fin partir dividendo en distintos*/
                 divisor = request.getParameter("divisor").toString();
@@ -40,6 +52,18 @@
                 for(Integer in : sol) {
                         strSolucionComas = strSolucionComas + in + ";";
                 }
+                
+                //Inicio cuerpo division
+                //hay que tomar en cuenta las tabulaciones a partir de
+                //la segunda fila de pasos (modificar para generar todo el cuerpo de los pasos de division)
+                for(int i=0;i<dividendoChars.length;i++){                                                                                   
+                    cuerpoPasosDivision += "<input type='text' required class='form-control' size='1'>";
+                       if(i<dividendoChars.length-1){
+                           cuerpoPasosDivision += "<span class='input-group-addon'></span>";
+                       }                                 
+                }
+                                 
+                //Fin cuerpo division
             }
              %>
                 
@@ -68,14 +92,7 @@
         //var contadorPasos = 0;
         $(function(){
             $("#includedContent").load("menu.html"); 
-      
-            /*var myEl = document.getElementById('addpaso');
 
-            myEl.addEventListener('click', function() {
-                alert(contadorPasos);
-            }, false);
-            
-            contadorPasos++;*/
         var j = <%=strSol%>;
        
         for(var i=0;i<j;i++){
@@ -84,7 +101,25 @@
             if(i===0){
                 strPrimero = "<input type='text' class='form-control' id='cocienteInput' name='cocienteInput'>";
             }
-            $( "#cuerpoDivision" ).append("<tr><td class='warning' id='comprobacion"+i+"' name='comprobacion"+i+"'><div><input size='3' type='text' class='form-control' id='paso"+i+"' name='paso"+i+"'></div></td><td id='cociente"+i+"' name='cociente"+i+"'>"+strPrimero+"</td></tr>");
+            
+            //Anterior para pintar los input en el cociente
+            /*$( "#cuerpoDivision" ).append("<tr><td class='warning' id='comprobacion"+i+
+                    "' name='comprobacion"+i+"'><div><input size='1' type='text' class='form-control' id='paso"+i+
+                    "' name='paso"+i+"'></div></td><td id='cociente"+i+"' name='cociente"+i+"'>"
+                    +strPrimero+"</td></tr>");*/
+        
+            //Actual para pintar los inputs
+            $( "#cuerpoDivision" ).append("<tr>"+
+                        "<td class='warning' id='comprobacion"+i+"' name='comprobacion"+i+"'><div class='input-group'><%=cuerpoPasosDivision%></div>"+
+                                
+                            
+                                <%--<%=cuerpoPasosDivision%>--%>
+                            //"</div>"
+                        "</td>"+
+                        "<td id='cociente"+i+"' name='cociente"+i+"'>"
+                        +strPrimero+"</td>"+
+                        "</tr>");
+            
             strPrimero = "";
         }
     });
@@ -149,7 +184,25 @@
                      <!-- Aplicadas en las filas -->
                    <thead>
                      <tr>
-                         <td><div class="dividendo">&nbsp;&nbsp;<b><%=dividendo%> </b></div></td>
+                         <td><div class="dividendo">
+                                 
+                                 <%--=dividendo--%>
+                             <div class="input-group">
+                                 <% for(int i=0;i<dividendoChars.length;i++){
+                                     %>
+                                                
+                                     <input type="text" required class="form-control" size="1" value="<%=dividendoChars[i]%>" disabled="true">
+                                        <%if(i<dividendoChars.length-1){%>
+                                        <span class="input-group-addon"></span>
+                                        <%}%>    
+        
+                                     <%
+                                 }
+                                 %>
+                                 
+                                 </div>
+                                 
+                             </div></td>
                          <td><div class="divisor" style="border-left-color: #337ab7; border-left-style: solid; border-left-width: 2px;border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: 2px;"><b>&nbsp;<%=divisor%></b></div></td>
                      </tr>
                    </thead>

@@ -83,6 +83,9 @@ public class crearDivision extends HttpServlet {
 		List<Integer> cocientes = new ArrayList<Integer>();
 		List<Integer> numeros = new ArrayList<Integer>();
                 List<Integer> pasos = new ArrayList<Integer>();
+                			
+                //inicializar flag para saber si dejó un cero a la izquierda
+                List<Integer> pasosCeroIzq = new ArrayList<Integer>();
 		
 		int dividendo = dividendoInt;
 		int divisor = divisorInt;
@@ -112,8 +115,7 @@ public class crearDivision extends HttpServlet {
 			//cojo el primer divisor y me lo cargo
 			int cociente = cocientes.get(cocientes.size()-1);
 			cocientes.remove(cocientes.size()-1);
-			
-			
+
 
 			while(numeros.size() > 0 && numeroDividir < divisor){
 				//cojo otro numero y me lo cargo
@@ -131,10 +133,26 @@ public class crearDivision extends HttpServlet {
 			}
 
                         pasos.add(numeroDividir);
+                        
+                        //Para añadir a si tiene ceros a la izquierda y cuantos
+                        this.AnadirCerosPasos(pasosCeroIzq, numeroDividir, pasoDivision);
+                        
+                        //Fin para añadir a si tiene ceros a la izquierda y cuantos
+                        
 			numeroDividir = pasoDivision;
 			
 		}
-                pasos.add(dividendoInt%divisorInt);
+                
+                //En numeroDividir tendremos el paso anterior al resto
+                //Comparamos también para saber si el resto tendrá 0 a la izq
+                int resto = dividendoInt%divisorInt;
+                
+                //this.AnadirCerosPasos(pasosCeroIzq, numeroDividir, resto);
+                
+                //Fin comparamos tambien para saber si el resto tendrá 0 a la izq
+                
+                pasos.add(resto);
+                pasosCeroIzq.remove(0);
                 pasos.remove(0);
             //Fin zona de cálculo de pasos
             
@@ -142,6 +160,7 @@ public class crearDivision extends HttpServlet {
                 request.setAttribute("dividendo", divd);
                 request.setAttribute("divisor", divs);
                 request.setAttribute("solucion", pasos);
+                request.setAttribute("ceros", pasosCeroIzq);
                 
             
                 //request.setAttribute("resultado", resultado);
@@ -153,6 +172,29 @@ public class crearDivision extends HttpServlet {
             // Close the database connection:
 
         }
+    }
+    
+    private void AnadirCerosPasos(List<Integer> ceros, Integer pasoOld, Integer pasoNew){
+        //Para añadir a si tiene ceros a la izquierda y cuantos
+        String numeroOld = pasoOld + "";
+        String numeroNew = pasoNew + "";
+
+        //Si sólo es un numero el paso quiere decir
+        //que sólo hemos bajado la cifra siguiente
+        //por lo que habrá tantos 0 como cifras
+        //tenga el numero anterior
+        if(pasoNew == 0){
+            ceros.add(numeroOld.length());
+        }
+        else if(numeroOld.length() > numeroNew.length()){
+            ceros.add(numeroOld.length()-numeroNew.length());
+        }
+        else
+        {
+            ceros.add(0);
+        }
+                        
+        //Fin para añadir a si tiene ceros a la izquierda y cuantos
     }
 
     /**
