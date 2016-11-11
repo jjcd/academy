@@ -29,9 +29,11 @@
             String strSol = "";
             String strSolucionComas="";
             String[] dividendoChars = {};
-            String cuerpoPasosDivision = "";
+            String solucionConCeros="";
             
-            if((request.getParameter("dividendo")!=null)&&(request.getParameter("divisor")!=null)){        
+            //List<Integer> ceros = (ArrayList<Integer>) request.getAttribute("ceros");
+            
+            if((request.getParameter("dividendo")!=null)&&(request.getParameter("divisor")!=null)&&(request.getAttribute("ceros")!=null)){        
                 dividendo = request.getParameter("dividendo").toString();
                 
                 /*Partir el dividendo en diferentes caracteres*/
@@ -43,8 +45,30 @@
                 int cociInt = Integer.parseInt(dividendo) / Integer.parseInt(divisor);
                 
                 cocienteString = cociInt + "";
-                
+               
+                List<Integer> ceros = (ArrayList<Integer>) request.getAttribute("ceros");
                 List<Integer> sol = (ArrayList<Integer>) request.getAttribute("solucion");
+                
+                
+                //Construir solución con ceros
+                solucionConCeros = "";
+                
+                for(int g=0;g<sol.size();g++){
+                    String cerosString = "";
+                    if(ceros.size()>g){
+                        //generar tantos ceros como vengan del array
+                        for(int contceros=0;contceros<ceros.get(g);contceros++){
+                            cerosString += "0";
+                        }
+                    }
+                    
+                    cerosString += sol.get(g);
+                    
+                    solucionConCeros += cerosString + "-";
+                }
+                
+                //Fin construir solución con ceros
+                
                 int numSol = sol.size();
                 strSol = numSol + "";
                 strSolucionComas="";
@@ -53,15 +77,6 @@
                         strSolucionComas = strSolucionComas + in + ";";
                 }
                 
-                //Inicio cuerpo division
-                //hay que tomar en cuenta las tabulaciones a partir de
-                //la segunda fila de pasos (modificar para generar todo el cuerpo de los pasos de division)
-                for(int i=0;i<dividendoChars.length;i++){                                                                                   
-                    cuerpoPasosDivision += "<input type='text' required class='form-control' size='1'>";
-                       if(i<dividendoChars.length-1){
-                           cuerpoPasosDivision += "<span class='input-group-addon'></span>";
-                       }                                 
-                }
                                  
                 //Fin cuerpo division
             }
@@ -95,8 +110,16 @@
 
         var j = <%=strSol%>;
        
+        //solucionConCeros partido con ;
+        var solCerosSplit = "<%=solucionConCeros%>";
+        var listaSoluciones = solCerosSplit.split("-");
+
+        //alert(listaSoluciones[0] + listaSoluciones[1] + listaSoluciones[2]);
+        var contadorTabulado = 0;
+        
         for(var i=0;i<j;i++){
-            //str+="&nbsp;";
+            var solucionActual = listaSoluciones[i];
+                    
             strPrimero = "";
             if(i===0){
                 strPrimero = "<input type='text' class='form-control' id='cocienteInput' name='cocienteInput'>";
@@ -108,13 +131,49 @@
                     "' name='paso"+i+"'></div></td><td id='cociente"+i+"' name='cociente"+i+"'>"
                     +strPrimero+"</td></tr>");*/
         
+            var inputs = "";
+            
+            var nInputs = <%=dividendoChars.length%>;
+            
+            alert(solucionActual.length + " " + solucionActual.charAt(0) + " " + solucionActual + " " + contadorTabulado);
+            
+            var contAuxPintar = 0;
+            var contAuxTab = 0;
+            
+
+            
+            for(var x=0;x<nInputs;x++){
+                //ver hasta cuantos imput hay que poner
+                    if((contAuxTab<contadorTabulado)||(contAuxPintar>=solucionActual.length))
+                    {
+                        inputs += "<input type='text' required class='form-control' size='1' style='visibility:hidden;'>";
+                        if(x<nInputs-1){
+                           inputs += "<span class='input-group-addon' style='visibility:hidden;'></span>";
+                        }
+                        
+                        contAuxTab++;
+                    }
+                    else
+                    {
+                        inputs += "<input type='text' required class='form-control' size='1'>";
+                        if(x<nInputs-1)
+                        {
+                           inputs += "<span class='input-group-addon'></span>";
+                        }
+                        
+                        contAuxPintar++;
+                   }
+                   
+                   
+                }
+                
+            if(solucionActual.charAt(0)==='0'){
+                contadorTabulado++;
+            }
+        
             //Actual para pintar los inputs
             $( "#cuerpoDivision" ).append("<tr>"+
-                        "<td class='warning' id='comprobacion"+i+"' name='comprobacion"+i+"'><div class='input-group'><%=cuerpoPasosDivision%></div>"+
-                                
-                            
-                                <%--<%=cuerpoPasosDivision%>--%>
-                            //"</div>"
+                        "<td class='warning' id='comprobacion"+i+"' name='comprobacion"+i+"'><div class='input-group'>"+ inputs +"</div>"+
                         "</td>"+
                         "<td id='cociente"+i+"' name='cociente"+i+"'>"
                         +strPrimero+"</td>"+

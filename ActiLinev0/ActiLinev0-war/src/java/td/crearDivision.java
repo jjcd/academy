@@ -152,7 +152,7 @@ public class crearDivision extends HttpServlet {
                 //Fin comparamos tambien para saber si el resto tendrá 0 a la izq
                 
                 pasos.add(resto);
-                pasosCeroIzq.remove(0);
+                //pasosCeroIzq.remove(0);
                 pasos.remove(0);
             //Fin zona de cálculo de pasos
             
