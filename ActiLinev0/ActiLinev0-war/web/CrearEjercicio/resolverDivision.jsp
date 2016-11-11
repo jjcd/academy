@@ -160,7 +160,7 @@
             
             var nInputs = <%=dividendoChars.length%>;
             
-            alert(solucionActual.length + " " + solucionActual.charAt(0) + " " + solucionActual + " " + contadorTabulado);
+            //alert(solucionActual.length + " " + solucionActual.charAt(0) + " " + solucionActual + " " + contadorTabulado);
             
             var contAuxPintar = 0;
             var contAuxTab = 0;
@@ -226,8 +226,36 @@
                var pasoInput = "#paso" + h;
                var comprobaciontd = "#comprobacion" + h;
                
+               //Recuperar y concatenar todos los inputs
                
-               if($(pasoInput).val()===res[h]){
+               //Recuperar y concatenar todos los inputs
+               var result = '';
+               
+               $('#comprobacion'+h+' :input').each(function() {
+                    result += $(this).val();
+               });
+               
+               //alert(result);
+               //Eliminamos ceros (da igual donde estén la sustitución en ambos
+               //resultados debe ser igual
+               
+               var solucionUsuario = 0;
+               var solucionBien = 1;
+               
+               try
+               {
+                    solucionUsuario = parseInt(result);
+                    solucionBien = parseInt(res[h]);
+               }
+               catch(err)
+               {
+                    solucionUsuario = 1;
+                    solucionBien = 2;
+               }
+                
+               alert(solucionUsuario+"<->"+solucionBien);
+               
+               if(solucionUsuario===solucionBien){
                    $(comprobaciontd).removeClass();
                    $(comprobaciontd).addClass("success");
                }
