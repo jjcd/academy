@@ -53,14 +53,39 @@
                 //Construir solución con ceros
                 solucionConCeros = "";
                 
-                for(int g=0;g<sol.size();g++){
-                    String cerosString = "";
-                    if(ceros.size()>g){
+                String AnteriorSolucionConCeros = "";
+                
+                for(int g=0;g<sol.size();g++)
+                    {
+                        String cerosString = "";
+                        if(ceros.size()>g){
                         //generar tantos ceros como vengan del array
-                        for(int contceros=0;contceros<ceros.get(g);contceros++){
-                            cerosString += "0";
+                            for(int contceros=0;contceros<ceros.get(g);contceros++){
+                                cerosString += "0";
+                            }
+                        }
+                    
+                    //Arreglo para el resto    
+                    //Si el anterior al resto tiene más de un 0 y el resto tiene
+                    //una cifra hay que añadirle un 0 a la izquierda
+                    
+                    if((sol.size()>2))
+                    {
+                        //Entramos en el resto en este caso
+                        if(AnteriorSolucionConCeros.length()>1){
+                            String anadirceros = "";
+                            
+                            for(int cer=0;cer<AnteriorSolucionConCeros.length();cer++){
+                                anadirceros+="0";
+                            }
+
+                            cerosString+=anadirceros;
                         }
                     }
+                    
+                    
+                    AnteriorSolucionConCeros = cerosString;
+                    //Fin arreglo para el resto
                     
                     cerosString += sol.get(g);
                     

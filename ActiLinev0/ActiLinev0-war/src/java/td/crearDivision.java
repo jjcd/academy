@@ -191,7 +191,7 @@ public class crearDivision extends HttpServlet {
             ceros.add(numeroOld.length()-numeroNew.length());
         }
         else
-        {
+        {   
             ceros.add(0);
         }
                         
