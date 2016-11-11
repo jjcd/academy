@@ -116,7 +116,7 @@ public class crearDivision extends HttpServlet {
 			int cociente = cocientes.get(cocientes.size()-1);
 			cocientes.remove(cocientes.size()-1);
 
-
+                                
 			while(numeros.size() > 0 && numeroDividir < divisor){
 				//cojo otro numero y me lo cargo
 				int numeroAnadir = numeros.get(numeros.size()-1);
@@ -130,16 +130,17 @@ public class crearDivision extends HttpServlet {
 			if(cociente!=0){
 				System.out.println("Paso dividir " + numeroDividir);		
 				pasoDivision = numeroDividir % divisor;
+                                
+                                pasos.add(numeroDividir);
+                        
+                                //Para añadir a si tiene ceros a la izquierda y cuantos
+                                this.AnadirCerosPasos(pasosCeroIzq, numeroDividir, pasoDivision);
+                        
+                                //Fin para añadir a si tiene ceros a la izquierda y cuantos
+                                numeroDividir = pasoDivision;
 			}
 
-                        pasos.add(numeroDividir);
-                        
-                        //Para añadir a si tiene ceros a la izquierda y cuantos
-                        this.AnadirCerosPasos(pasosCeroIzq, numeroDividir, pasoDivision);
-                        
-                        //Fin para añadir a si tiene ceros a la izquierda y cuantos
-                        
-			numeroDividir = pasoDivision;
+
 			
 		}
                 
