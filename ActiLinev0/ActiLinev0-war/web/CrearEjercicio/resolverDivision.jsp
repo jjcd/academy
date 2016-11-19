@@ -253,7 +253,7 @@
                     solucionBien = 2;
                }
                 
-               alert(solucionUsuario+"<->"+solucionBien);
+               //alert(solucionUsuario+"<->"+solucionBien);
                
                if(solucionUsuario===solucionBien){
                    $(comprobaciontd).removeClass();
