@@ -1,0 +1,12 @@
+.central{
+	width:1024px;
+	height:696px;
+        margin-top:100px;
+        margin-left:430px;
+	background-image:url('http://localhost:8080/ActiLinev0-war/images/peques1024.jpg');
+}
+
+.login > img{
+	width:200px;
+	height:200px;
+}
