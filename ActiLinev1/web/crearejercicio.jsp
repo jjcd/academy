@@ -37,7 +37,7 @@
   </div>
   <div class="panel-body">
     <div class="row">
-		<div class="col-md-6"><a href="#"><center><img src="images/001_small.jpg" height="200" alt="Ejercicio de matemáticas" class="img-thumbnail"><br/>Matemáticas</center></a></div>
+		<div class="col-md-6"><a href="/ActiLinev1/CrearEjercicio/crearDivision.jsp"><center><img src="images/001_small.jpg" height="200" alt="Ejercicio de matemáticas" class="img-thumbnail"><br/>Matemáticas</center></a></div>
 		<div class="col-md-6"><a href="#"><center><img src="images/grama.jpg" height="200" alt="Ejercicio de gramatica" class="img-thumbnail"><br/>Gramática</center></a></div>
 	</div>
 	<div class="row">

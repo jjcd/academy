@@ -219,6 +219,7 @@
         var cociInput = "#cociente0";
         var cociValor = "#cocienteInput";
         var cociString = "<%=cocienteString%>";
+        var solucionesUsuario = "";
         
         for(h=0;h<res.length;h++){
             if(res[h]!==null&&res[h]!=="")
@@ -235,7 +236,9 @@
                     result += $(this).val();
                });
                
-               //alert(result);
+               //guardamos la solucion del usuario separando con ;
+               solucionesUsuario = solucionesUsuario + result + ";";
+               
                //Eliminamos ceros (da igual donde estén la sustitución en ambos
                //resultados debe ser igual
                
@@ -252,8 +255,6 @@
                     solucionUsuario = 1;
                     solucionBien = 2;
                }
-                
-               //alert(solucionUsuario+"<->"+solucionBien);
                
                if(solucionUsuario===solucionBien){
                    $(comprobaciontd).removeClass();
@@ -267,8 +268,7 @@
             }
         }
         
-        //alert(cociString + " " + $(cociValor).val());
-        
+        //Asignamos clase si el cociente es correcto o incorrecto
         if($(cociValor).val()===cociString){
            $(cociInput).removeClass();
            $(cociInput).addClass("success");
@@ -278,6 +278,17 @@
            $(cociInput).removeClass();
            $(cociInput).addClass("danger");
        }
+       
+       //alert(solucionesUsuario);
+       //Campos para luego ser guardados en la base de datos
+       $('#restosAlum').val(solucionesUsuario);
+       
+       
+       var valorCociente = $(cociValor).val();
+       $('#cocienteAlum').val(valorCociente);
+       
+       alert($('#cocienteAlum').val());
+       
     }
     </script>
 	
@@ -346,7 +357,22 @@
 	</div>
   </div>
 </div>    
+
+ <div class="panel panel-primary" style="background-color:#337ab7;">
+    <form  method="GET" action="/ActiLinev1/guardarDivision">
+
+    <input type="hidden" class="form-control" id="dividendoAlum" name="dividendoAlum" value="<%=dividendo%>">
+    <input type="hidden" class="form-control" id="divisorAlum" name="divisorAlum" value="<%=divisor%>">
+    <input type="hidden" class="form-control" id="cocienteAlum" name="cocienteAlum">
+    <input type="hidden" class="form-control" id="restosAlum" name="restosAlum">
     
+    <input type="hidden" class="form-control" id="cocienteAlumBien" name="cocienteAlumBien" value="<%=cocienteString%>">
+    <input type="hidden" class="form-control" id="restosAlumBien" name="restosAlumBien" value="<%=strSolucionComas%>">
+
+    <button type="submit" class="btn btn-default">Enviar resultado</button>
+    </form>
+</div>                   
+                     
 <div class="panel panel-primary">
   <div class="panel-body">
     <div class="row">
