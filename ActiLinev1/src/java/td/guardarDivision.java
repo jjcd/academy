@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import classes.DivisionClass;
 
 /**
  *
@@ -31,19 +32,8 @@ public class guardarDivision extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet guardarDivision</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet guardarDivision at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -58,7 +48,30 @@ public class guardarDivision extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        
+            String dividendo = request.getParameter("dividendoAlum");
+            String divisor = request.getParameter("divisorAlum");
+            
+            String cocienteBien = request.getParameter("cocienteAlumBien");
+            String restosBien = request.getParameter("restosAlumBien");
+            
+            String cocienteAlum = request.getParameter("cocienteAlum");
+            String restosAlum = request.getParameter("restosAlum");
+            
+            if((!dividendo.equals(""))&&(!divisor.equals(""))&&(!cocienteBien.equals(""))&&(!restosBien.equals(""))&&(!cocienteAlum.equals(""))&&(!restosAlum.equals(""))){
+                String valor = dividendo + "-" + divisor;
+                String solucion = cocienteBien + "-" + restosBien;
+                String solucionUsuario = cocienteAlum + "-" + restosAlum;
+                String usuario = "userExample";
+                
+                DivisionClass divisionObject = new DivisionClass(valor, solucion, solucionUsuario, usuario);
+                
+                request.setAttribute("divisionObject", divisionObject);
+                
+                request.getRequestDispatcher("CrearEjercicio/InsertDivisionSQL.jsp").forward(request, response);
+            }
+            
     }
 
     /**

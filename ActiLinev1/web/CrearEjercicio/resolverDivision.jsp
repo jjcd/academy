@@ -287,7 +287,7 @@
        var valorCociente = $(cociValor).val();
        $('#cocienteAlum').val(valorCociente);
        
-       alert($('#cocienteAlum').val());
+       //alert($('#cocienteAlum').val());
        
     }
     </script>
