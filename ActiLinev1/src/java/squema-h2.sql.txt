@@ -10,8 +10,8 @@ CREATE TABLE USUARIO(
 );
 
 -- Esto es un comentario
-// Esto tambiï¿½n
-# Y esto tambiï¿½n lo es
+// Esto también
+# Y esto también lo es
 
 insert into usuario values (null, 'avilches','secreta','Alberto Vilches',
     'email@sitio.com','http://albertovilches.com');

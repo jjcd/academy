@@ -13,6 +13,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import classes.DivisionClass;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -59,7 +65,7 @@ public class guardarDivision extends HttpServlet {
             String cocienteAlum = request.getParameter("cocienteAlum");
             String restosAlum = request.getParameter("restosAlum");
             
-            if((!dividendo.equals(""))&&(!divisor.equals(""))&&(!cocienteBien.equals(""))&&(!restosBien.equals(""))&&(!cocienteAlum.equals(""))&&(!restosAlum.equals(""))){
+            if((dividendo!=null)&&(divisor!=null)&&(cocienteBien!=null)&&(restosBien!=null)&&(cocienteAlum!=null)&&(restosAlum!=null)&&(!dividendo.equals(""))&&(!divisor.equals(""))&&(!cocienteBien.equals(""))&&(!restosBien.equals(""))&&(!cocienteAlum.equals(""))&&(!restosAlum.equals(""))){
                 String valor = dividendo + "-" + divisor;
                 String solucion = cocienteBien + "-" + restosBien;
                 String solucionUsuario = cocienteAlum + "-" + restosAlum;
@@ -67,10 +73,32 @@ public class guardarDivision extends HttpServlet {
                 
                 DivisionClass divisionObject = new DivisionClass(valor, solucion, solucionUsuario, usuario);
                 
-                request.setAttribute("divisionObject", divisionObject);
+                //request.setAttribute("divisionObject", divisionObject);            
+                //request.getRequestDispatcher("CrearEjercicio/InsertDivisionSQL.jsp").forward(request, response);
                 
-                request.getRequestDispatcher("CrearEjercicio/InsertDivisionSQL.jsp").forward(request, response);
-            }
+                        try {
+            
+            
+            Class.forName("org.h2.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
+            // add application code here
+            Statement stmt = conn.createStatement();
+            
+            String sql = "insert into EJERCICIORESUELTO values (null, '"+divisionObject.getValor()+"','"+divisionObject.getSolucion()+"','"+divisionObject.getSolucionUsuario()+"','"+divisionObject.getUsuario()+"')";
+            
+            stmt.executeUpdate(sql);
+            
+            conn.close();
+            
+        }   
+        catch (ClassNotFoundException ex) {
+            Logger.getLogger(guardarDivision.class.getName()).log(Level.SEVERE, null, ex);
+        }       
+        catch (SQLException ex) {
+            Logger.getLogger(guardarDivision.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        }
             
     }
 
