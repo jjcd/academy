@@ -76,27 +76,26 @@ public class guardarDivision extends HttpServlet {
                 //request.setAttribute("divisionObject", divisionObject);            
                 //request.getRequestDispatcher("CrearEjercicio/InsertDivisionSQL.jsp").forward(request, response);
                 
-                        try {
+            try {
             
+                Class.forName("org.h2.Driver");
+                Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
             
-            Class.forName("org.h2.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
-            // add application code here
-            Statement stmt = conn.createStatement();
+                Statement stmt = conn.createStatement();
             
-            String sql = "insert into EJERCICIORESUELTO values (null, '"+divisionObject.getValor()+"','"+divisionObject.getSolucion()+"','"+divisionObject.getSolucionUsuario()+"','"+divisionObject.getUsuario()+"')";
+                String sql = "insert into EJERCICIORESUELTO values (null, '"+divisionObject.getValor()+"','"+divisionObject.getSolucion()+"','"+divisionObject.getSolucionUsuario()+"','"+divisionObject.getUsuario()+"')";
             
-            stmt.executeUpdate(sql);
+                stmt.executeUpdate(sql);
             
-            conn.close();
+                conn.close();
             
-        }   
-        catch (ClassNotFoundException ex) {
-            Logger.getLogger(guardarDivision.class.getName()).log(Level.SEVERE, null, ex);
-        }       
-        catch (SQLException ex) {
-            Logger.getLogger(guardarDivision.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            }   
+            catch (ClassNotFoundException ex) {
+                Logger.getLogger(guardarDivision.class.getName()).log(Level.SEVERE, null, ex);
+            }       
+            catch (SQLException ex) {
+                Logger.getLogger(guardarDivision.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
         }
             
