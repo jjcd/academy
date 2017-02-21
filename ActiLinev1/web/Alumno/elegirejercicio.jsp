@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ActiLine</title>
+    <title>ActiWeb - portal de ejercicios</title>
  
     <!-- CSS de Bootstrap -->
     <link href="<%=constantesClass.urlRaiz%>bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -24,19 +24,27 @@
 	
 	</script>
 	
-
+	<script> 
+    $(function(){
+      $("#includedContent").load("<%=constantesClass.urlRaiz%>menualumno.jsp"); 
+    });
+    </script> 
 	
+
 <div class="container">
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title"><center>Seleccione el modo de acceso.</center></h3>
+    <h3 class="panel-title"><center>Seleccione el tipo de ejercicio deseado.</center></h3>
   </div>
   <div class="panel-body">
     <div class="row">
-		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>Alumno/indexalumno.jsp"><center><img src="images/alumnoimage.png" height="200" alt="Modo alumno" class="img-thumbnail"><br/>Modo Alumno</center></a></div>
-		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>/Profesor/indexprofesor.jsp"><center><img src="images/profeimage.png" height="200" alt="Modo profesor" class="img-thumbnail"><br/>Modo Profesor</center></a></div>
+		<div class="col-md-6"><a href="/ActiLinev1/consultaEjMates"><center><img src="<%=constantesClass.urlRaiz%>images/001_small.jpg" height="200" alt="Ejercicio de matemáticas" class="img-thumbnail"><br/>Matemáticas</center></a></div>
+		<div class="col-md-6"><a href="#"><center><img src="<%=constantesClass.urlRaiz%>images/grama.jpg" height="200" alt="Ejercicio de gramatica" class="img-thumbnail"><br/>Gramática</center></a></div>
 	</div>
-
+	<div class="row">
+		<div class="col-md-6"><a href="#"><center><img src="<%=constantesClass.urlRaiz%>images/logi.jpg" height="200" alt="Ejercicio de logica" class="img-thumbnail"><br/>Lógica</center></a></div>
+		<div class="col-md-6"><a href="#"><center><img src="<%=constantesClass.urlRaiz%>images/figu.jpg" height="200" alt="Ejercicio de figuras" class="img-thumbnail"><br/>Figuras</center></a></div>
+	</div>
   </div>
 </div>
 <div class="panel panel-primary">
@@ -45,12 +53,14 @@
 		<div class="col-md-12">
 			<center><a href="#">Acerca de</a></center>
 			<center><a href="https://twitter.com/ActiWeb" class="twitter-follow-button" data-show-count="false">Follow @ActiWeb</a></center>
-                        <center><div class="fb-follow" data-href="https://www.facebook.com/zuck" data-layout="button" data-show-faces="false"></div></center>
+			<div class="fb-follow" data-href="https://www.facebook.com/zuck" data-layout="button" data-show-faces="false"></div>
 			</div>
 	</div>
   </div>
 </div>
 </div>
+
+
 	
 
 	
@@ -60,16 +70,4 @@
          plugins que utilices) -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
   </body>
-  
-   <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.6&appId=729544183797639";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-
 </html>

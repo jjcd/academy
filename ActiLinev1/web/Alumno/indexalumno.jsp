@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <%@ page import="constantes.constantesClass" %>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ActiWeb - Portal de ejercicios</title>
  
     <!-- CSS de Bootstrap -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="<%=constantesClass.urlRaiz%>bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
  
     <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
     <!--[if lt IE 9]>
@@ -25,7 +26,7 @@
 	
 	<script> 
     $(function(){
-      $("#includedContent").load("menu.html"); 
+      $("#includedContent").load("<%=constantesClass.urlRaiz%>menualumno.jsp"); 
     });
     </script> 
 	
@@ -58,6 +59,6 @@
     <!-- Todos los plugins JavaScript de Bootstrap (también puedes
          incluir archivos JavaScript individuales de los únicos
          plugins que utilices) -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="<%=constantesClass.urlRaiz%>bootstrap/js/bootstrap.min.js"></script>
   </body>
 </html>

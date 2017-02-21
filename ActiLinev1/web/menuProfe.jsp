@@ -1,4 +1,4 @@
-<%@ page import="constantes.constantesClass" %>
+<%@ page import="constantes.constantesClass" %> 
 
  <style>
 .navbar-default .navbar-nav>.active>a:after,
@@ -41,7 +41,7 @@ nav.navbar {
  </style>
  
 
-
+ 
  
  <nav class="navbar navbar-default" role="navigation">
   <!-- El logotipo y el icono que despliega el menú se agrupan
@@ -62,15 +62,18 @@ nav.navbar {
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav">
       <!--class="active"-->
-      <li><a href="<%=constantesClass.urlRaiz%>Alumno/indexalumno.jsp" id="opcion1" class="opcionHome">Inicio</a></li>
-      <li><a href="<%=constantesClass.urlRaiz%>Alumno/elegirejercicio.jsp" id="opcion2" class="opcionInsert">Realizar ejercicio</a></li>
+	  <li><a href="<%=constantesClass.urlRaiz%>Profesor/indexprofesor.jsp" id="opcion1" class="opcionHome">Inicio</a></li>
+          <li><a href="<%=constantesClass.urlRaiz%>Profesor/" id="opcion2" class="opcionInsert">Insertar ejercicio</a></li>
+	  <li><a href="<%=constantesClass.urlRaiz%>Profesor/" id="opcion3" class="opcionEdit">Editar Ejercicio</a></li>
+	  <li><a href="<%=constantesClass.urlRaiz%>Profesor/" id="opcion4" class="opcionRemove">Eliminar Ejercicio</a></li>
 
     </ul>
 
 
   </div>
-  
-  <div id="fb-root"></div>
+</nav>
+
+	<div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
@@ -80,5 +83,5 @@ nav.navbar {
 }(document, 'script', 'facebook-jssdk'));</script>
 
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-
-</nav>
+		
+	

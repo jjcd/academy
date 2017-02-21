@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    
+    <%@ page import="constantes.constantesClass" %>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%@ page import="constantes.constantesClass" %>
-    <title>ActiWeb - portal de ejercicios</title>
+    <title>ActiWeb - Portal de ejercicios</title>
  
     <!-- CSS de Bootstrap -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="<%=constantesClass.urlRaiz%>bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
  
     <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
     <!--[if lt IE 9]>
@@ -27,31 +26,20 @@
 	
 	<script> 
     $(function(){
-      $("#includedContent").load("<%=constantesClass.urlRaiz%>menu.html"); 
+      $("#includedContent").load("<%=constantesClass.urlRaiz%>menuProfe.jsp"); 
     });
     </script> 
 	
-
-<div class="container">
-<div class="panel panel-primary">
+	<div class="container">
+	<div class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title"><center>Introduzca divisor y dividendo.</center></h3>
+    <h3 class="panel-title"><center>ActiWeb</center></h3>
   </div>
   <div class="panel-body">
-<form  method="GET" action="../crearDivision">
-  <div class="form-group">
-    <label for="number">Dividendo:</label>
-    <input type="text" class="form-control" id="dividendo" name="dividendo" maxlength="7">
-  </div>
-  <div class="form-group">
-    <label for="number">Divisor</label>
-    <input type="text" class="form-control" id="divisor" name="divisor" maxlength="4">
-  </div>
-
-    <button type="submit" class="btn btn-default"><center>Calcular</center></button>
-</form>
+    <center>Bienvenido a ActiWeb, en modo profesor, esta sección le permitirá crear ejercicios, así como editar sus componentes y ver los resultados del alumno, para realizar cualquier actividad pulse en el menú.</center>
   </div>
 </div>
+
 <div class="panel panel-primary">
   <div class="panel-body">
     <div class="row">
@@ -64,8 +52,6 @@
   </div>
 </div>
 </div>
-
-
 	
 
 	
@@ -73,6 +59,6 @@
     <!-- Todos los plugins JavaScript de Bootstrap (también puedes
          incluir archivos JavaScript individuales de los únicos
          plugins que utilices) -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="<%=constantesClass.urlRaiz%>bootstrap/js/bootstrap.min.js"></script>
   </body>
 </html>

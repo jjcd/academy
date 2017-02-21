@@ -3,6 +3,7 @@
 <html lang="en">
 <%@ page import="java.util.List" %>
 <%@ page import="classes.EjercicioClass" %>
+<%@ page import="constantes.constantesClass" %>
   <head>
      <%-- Recogida de los ejercicios --%>
 
@@ -23,7 +24,7 @@
     <title>ActiWeb - portal de ejercicios</title>
  
     <!-- CSS de Bootstrap -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="<%=constantesClass.urlRaiz%>bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
  
     <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
     <!--[if lt IE 9]>

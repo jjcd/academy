@@ -63,7 +63,7 @@ public class consultaEjMates extends HttpServlet {
                     conn.close();
             
                     request.setAttribute("listaEjercicios", listaEjercicios);            
-                    request.getRequestDispatcher("CrearEjercicio/EjerciciosMates.jsp").forward(request, response);
+                    request.getRequestDispatcher("Alumno/Matematicas/EjerciciosMates.jsp").forward(request, response);
                     
                 }   
                 catch (ClassNotFoundException ex) {

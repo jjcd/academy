@@ -1,15 +1,31 @@
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="en">
+<%@ page import="java.util.List" %>
+<%@ page import="classes.EjercicioClass" %>
+<%@ page import="constantes.constantesClass" %>
   <head>
-    
+     <%@ page import="constantes.constantesClass" %>
+     <%-- Recogida de los ejercicios --%>
+
+     <%
+         List<EjercicioClass> listaEjs = new ArrayList<EjercicioClass>();
+         
+         if(request.getAttribute("listaEjercicios")!=null){
+             listaEjs = (List<EjercicioClass>)request.getAttribute("listaEjercicios");
+             
+         }
+     
+     %>
+      
+      
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%@ page import="constantes.constantesClass" %>
     <title>ActiWeb - portal de ejercicios</title>
  
     <!-- CSS de Bootstrap -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="<%=constantesClass.urlRaiz%>bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
  
     <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
     <!--[if lt IE 9]>
@@ -27,7 +43,7 @@
 	
 	<script> 
     $(function(){
-      $("#includedContent").load("<%=constantesClass.urlRaiz%>menu.html"); 
+      $("#includedContent").load("<%=constantesClass.urlRaiz%>menualumno.jsp"); 
     });
     </script> 
 	
@@ -35,21 +51,19 @@
 <div class="container">
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title"><center>Introduzca divisor y dividendo.</center></h3>
+    <h3 class="panel-title"><center>Seleccione el ejercicio de matemáticas deseado.</center></h3>
   </div>
   <div class="panel-body">
-<form  method="GET" action="../crearDivision">
-  <div class="form-group">
-    <label for="number">Dividendo:</label>
-    <input type="text" class="form-control" id="dividendo" name="dividendo" maxlength="7">
-  </div>
-  <div class="form-group">
-    <label for="number">Divisor</label>
-    <input type="text" class="form-control" id="divisor" name="divisor" maxlength="4">
-  </div>
+    <div class="list-group">
+        
+        <%-- Aqui la enumeracion recogida de bd --%>
+       <%for(EjercicioClass ec : listaEjs){%>
+       <a href="<%=ec.getWeb()%>"><button type="button" class="list-group-item list-group-item-action"><%=ec.getValor()%></button></a>
+        <%}%>
+        
+      
 
-    <button type="submit" class="btn btn-default"><center>Calcular</center></button>
-</form>
+    </div>
   </div>
 </div>
 <div class="panel panel-primary">
@@ -73,6 +87,6 @@
     <!-- Todos los plugins JavaScript de Bootstrap (también puedes
          incluir archivos JavaScript individuales de los únicos
          plugins que utilices) -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="<%=constantesClass.urlRaiz%>bootstrap/js/bootstrap.min.js"></script>
   </body>
 </html>

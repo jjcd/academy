@@ -165,7 +165,7 @@ public class crearDivision extends HttpServlet {
                 
             
                 //request.setAttribute("resultado", resultado);
-                request.getRequestDispatcher("CrearEjercicio/resolverDivision.jsp")
+                request.getRequestDispatcher("Alumno/Matematicas/DivisionSinSigno/resolverDivision.jsp")
                     .forward(request, response);
             }
  
