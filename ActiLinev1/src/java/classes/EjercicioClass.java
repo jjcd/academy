@@ -13,10 +13,17 @@ public class EjercicioClass {
 
     private String valor;
     private String web;
+    private String tipoEjercicio;
 
     public EjercicioClass(String valor, String web) {
         this.valor = valor;
         this.web = web;
+    }
+    
+    public EjercicioClass(String valor, String web, String tipoEjercicio) {
+        this.valor = valor;
+        this.web = web;
+        this.tipoEjercicio = tipoEjercicio;
     }
 
     public String getValor() {
@@ -25,6 +32,10 @@ public class EjercicioClass {
 
     public String getWeb() {
         return web;
+    }
+    
+    public String getTipoEjercicio(){
+        return tipoEjercicio;
     }
     
     public EjercicioClass() {

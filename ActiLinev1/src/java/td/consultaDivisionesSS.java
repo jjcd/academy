@@ -5,6 +5,7 @@
  */
 package td;
 
+import classes.EjercicioClass;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -12,6 +13,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -19,16 +22,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import classes.EjercicioClass;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author JUAN JOSE
  */
-@WebServlet(name = "consultaEjMates", urlPatterns = {"/consultaEjMates"})
-public class consultaEjMates extends HttpServlet {
+@WebServlet(name = "consultaDivisionesSS", urlPatterns = {"/consultaDivisionesSS"})
+public class consultaDivisionesSS extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -51,7 +51,7 @@ public class consultaEjMates extends HttpServlet {
 
                     Statement stmt = conn.createStatement();
 
-                    String sql = "SELECT * FROM EJERCICIO";
+                    String sql = "SELECT * FROM EJERCICIO WHERE TIPOEJERCICIO='DIVSS'";
 
                     ResultSet rst = stmt.executeQuery(sql);
                     
@@ -63,7 +63,7 @@ public class consultaEjMates extends HttpServlet {
                     conn.close();
             
                     request.setAttribute("listaEjercicios", listaEjercicios);            
-                    request.getRequestDispatcher("Alumno/Matematicas/EjerciciosMates.jsp").forward(request, response);
+                    request.getRequestDispatcher("Alumno/Matematicas/DivisionSinSigno/listadoDivisionesSS.jsp").forward(request, response);
                     
                 }   
                 catch (ClassNotFoundException ex) {
