@@ -88,6 +88,8 @@ public class guardarDivision extends HttpServlet {
                 stmt.executeUpdate(sql);
             
                 conn.close();
+                
+                request.getRequestDispatcher("Alumno/confirmacionEjercicioEnviado.jsp").forward(request, response);
             
             }   
             catch (ClassNotFoundException ex) {

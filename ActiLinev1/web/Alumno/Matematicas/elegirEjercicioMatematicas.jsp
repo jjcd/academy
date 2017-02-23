@@ -38,13 +38,9 @@
   </div>
   <div class="panel-body">
     <div class="row">
-		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>Alumno/Matematicas/elegirEjercicioMatematicas.jsp"><center><img src="<%=constantesClass.urlRaiz%>images/001_small.jpg" height="200" alt="Ejercicio de matemáticas" class="img-thumbnail"><br/>Matemáticas</center></a></div>
-		<div class="col-md-6"><a href="#"><center><img src="<%=constantesClass.urlRaiz%>images/grama.jpg" height="200" alt="Ejercicio de gramatica" class="img-thumbnail"><br/>Gramática</center></a></div>
-	</div>
-	<div class="row">
-		<div class="col-md-6"><a href="#"><center><img src="<%=constantesClass.urlRaiz%>images/logi.jpg" height="200" alt="Ejercicio de logica" class="img-thumbnail"><br/>Lógica</center></a></div>
-		<div class="col-md-6"><a href="#"><center><img src="<%=constantesClass.urlRaiz%>images/figu.jpg" height="200" alt="Ejercicio de figuras" class="img-thumbnail"><br/>Figuras</center></a></div>
-	</div>
+        <div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>consultaDivisionesSS"><center><img src="<%=constantesClass.urlRaiz%>images/division.png" height="200" alt="División" class="img-thumbnail"><br/>División</center></a></div>
+        <div class="col-md-6"><a href="#"><center><img src="<%=constantesClass.urlRaiz%>images/grama.jpg" height="200" alt="Suma" class="img-thumbnail"><br/>Suma</center></a></div>
+    </div>
   </div>
 </div>
 <div class="panel panel-primary">
@@ -60,6 +56,11 @@
 </div>
 </div>
 
+
+	
+
+	
+	
     <!-- Todos los plugins JavaScript de Bootstrap (también puedes
          incluir archivos JavaScript individuales de los únicos
          plugins que utilices) -->
