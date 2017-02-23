@@ -33,6 +33,9 @@
             String[] dividendoChars = {};
             String solucionConCeros="";
             
+            //Para guardar los ceros en formato cadena
+            String cerosEnDivision="";
+            
             //List<Integer> ceros = (ArrayList<Integer>) request.getAttribute("ceros");
             
             if((request.getParameter("dividendo")!=null)&&(request.getParameter("divisor")!=null)&&(request.getAttribute("ceros")!=null)){        
@@ -49,6 +52,12 @@
                 cocienteString = cociInt + "";
                
                 List<Integer> ceros = (ArrayList<Integer>) request.getAttribute("ceros");
+                
+                /*Guardar los ceros en string*/
+                for(int cer : ceros){
+                    cerosEnDivision += cer + ";";
+                }
+                
                 List<Integer> sol = (ArrayList<Integer>) request.getAttribute("solucion");
                 
                 
@@ -373,7 +382,8 @@
     
     <input type="hidden" class="form-control" id="cocienteAlumBien" name="cocienteAlumBien" value="<%=cocienteString%>">
     <input type="hidden" class="form-control" id="restosAlumBien" name="restosAlumBien" value="<%=strSolucionComas%>">
-
+    <input type="hidden" class="form-control" id="cerosAlumBien" name="cerosAlumBien" value="<%=cerosEnDivision%>">
+    
     <center><button type="submit" class="btn btn-default" id="enviarresultado">Enviar resultado</button></center>
     </form>
 </div>                   

@@ -61,14 +61,15 @@ public class guardarDivision extends HttpServlet {
             
             String cocienteBien = request.getParameter("cocienteAlumBien");
             String restosBien = request.getParameter("restosAlumBien");
+            String cerosBien = request.getParameter("cerosAlumBien");
             
             String cocienteAlum = request.getParameter("cocienteAlum");
             String restosAlum = request.getParameter("restosAlum");
             
-            if((dividendo!=null)&&(divisor!=null)&&(cocienteBien!=null)&&(restosBien!=null)&&(cocienteAlum!=null)&&(restosAlum!=null)&&(!dividendo.equals(""))&&(!divisor.equals(""))&&(!cocienteBien.equals(""))&&(!restosBien.equals(""))&&(!cocienteAlum.equals(""))&&(!restosAlum.equals(""))){
-                String valor = dividendo + "-" + divisor;
-                String solucion = cocienteBien + "-" + restosBien;
-                String solucionUsuario = cocienteAlum + "-" + restosAlum;
+            if((cerosBien!=null)&&(dividendo!=null)&&(divisor!=null)&&(cocienteBien!=null)&&(restosBien!=null)&&(cocienteAlum!=null)&&(restosAlum!=null)&&(!cerosBien.equals(""))&&(!dividendo.equals(""))&&(!divisor.equals(""))&&(!cocienteBien.equals(""))&&(!restosBien.equals(""))&&(!cocienteAlum.equals(""))&&(!restosAlum.equals(""))){
+                String valor = dividendo + "#" + divisor;
+                String solucion = cocienteBien + "#" + restosBien + "#" + cerosBien;
+                String solucionUsuario = cocienteAlum + "#" + restosAlum;
                 String usuario = "userExample";
                 
                 DivisionClass divisionObject = new DivisionClass(valor, solucion, solucionUsuario, usuario);
@@ -83,7 +84,7 @@ public class guardarDivision extends HttpServlet {
             
                 Statement stmt = conn.createStatement();
             
-                String sql = "insert into EJERCICIORESUELTO values (null, '"+divisionObject.getValor()+"','"+divisionObject.getSolucion()+"','"+divisionObject.getSolucionUsuario()+"','"+divisionObject.getUsuario()+"')";
+                String sql = "insert into EJERCICIORESUELTO values (null, '"+divisionObject.getValor()+"','"+divisionObject.getSolucion()+"','"+divisionObject.getSolucionUsuario()+"','"+divisionObject.getUsuario()+"','DIVSS')";
             
                 stmt.executeUpdate(sql);
             
