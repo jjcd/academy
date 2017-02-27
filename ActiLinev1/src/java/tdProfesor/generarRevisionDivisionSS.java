@@ -7,6 +7,10 @@ package tdProfesor;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,13 +39,62 @@ public class generarRevisionDivisionSS extends HttpServlet {
         //Coger de parametros dividendo, divisor, resultado del alumno y resultado correcto
         //en variables y listas guardamos y luego pintamos.
 
-        if((request.getParameter("valor")!=null)&&(request.getParameter("solucion")!=null)&&(request.getParameter("solucionusuario")!=null)){
-            String valor = request.getParameter("valor");
-            String solucion = request.getParameter("solucion");
-            String solucionusuario = request.getParameter("solucionusuario");
+        if((request.getParameter("valor")!=null)&&(request.getParameter("solucion")!=null)&&(request.getParameter("solucionusuario")!=null))
+        {
             
-            String dividendo = valor.split("-")[0];
-            String divisor = valor.split("-")[1];
+            //http://localhost:8080/ActiLinev1/generarRevisionDivisionSS?
+            //valor=1987#3&solucion=662#18;7;1;#1;2;0;&solucionusuario=662#018;007;04;
+            
+            String valor = request.getParameter("valor");
+            String dividendo = valor.split(":")[0];
+            String divisor = valor.split(":")[1];
+            
+            String solucionString = request.getParameter("solucion").split(":")[1];
+            
+            String[] solucion = solucionString.split(";");
+            List<Integer> solucionInts = new ArrayList<Integer>();
+            
+            for(int i=0;i<solucion.length;i++){
+                solucionInts.add(Integer.parseInt(solucion[i]));
+            }
+            
+            String cerosString = request.getParameter("solucion").split(":")[2];
+
+            String[] ceros = cerosString.split(";");
+            List<Integer> cerosInts = new ArrayList<Integer>();
+            
+            for(int i=0;i<ceros.length;i++){
+                cerosInts.add(Integer.parseInt(ceros[i]));
+            }  
+            
+            String cocienteSolucionUsuarioString = request.getParameter("solucionusuario").split(":")[0];
+            
+            String solucionusuarioString = request.getParameter("solucionusuario").split(":")[1];
+
+            //String[] solucionusuario = solucionusuarioString.split(";");
+            
+            //List<String> solucionusuarioStrings = new ArrayList<String>();
+            
+            //for(int i=0;i<solucionusuario.length;i++){
+                //solucionusuarioStrings.add(solucionusuario[i]);
+            //}
+            
+            
+            
+            //setear las soluciones
+            request.setAttribute("dividendo", dividendo);
+            request.setAttribute("divisor", divisor);
+            
+            //Convertir ceros y solucion a lista de enteros
+            
+            request.setAttribute("ceros", cerosInts);
+            request.setAttribute("solucion", solucionInts);
+            request.setAttribute("solucionusuario", solucionusuarioString);
+            
+            request.setAttribute("cocienteSolUsuario", cocienteSolucionUsuarioString);
+            
+            request.getRequestDispatcher("Profesor/Matematicas/DivisionSinSigno/visualizarCorreccionDivisionSS.jsp").forward(request, response);
+            
             
             
         }

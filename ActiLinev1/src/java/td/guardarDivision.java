@@ -60,11 +60,19 @@ public class guardarDivision extends HttpServlet {
             String divisor = request.getParameter("divisorAlum");
             
             String cocienteBien = request.getParameter("cocienteAlumBien");
+            
             String restosBien = request.getParameter("restosAlumBien");
+            //Le quitamos el ultimo ";"    
+            restosBien = restosBien.substring(0,restosBien.length() - 1);
+            
             String cerosBien = request.getParameter("cerosAlumBien");
+            //Le quitamos el ultimo ";"
+            cerosBien = cerosBien.substring(0, cerosBien.length()-1);
             
             String cocienteAlum = request.getParameter("cocienteAlum");
+            
             String restosAlum = request.getParameter("restosAlum");
+            restosAlum = restosAlum.substring(0,restosAlum.length()-1);
             
             if((cerosBien!=null)&&(dividendo!=null)&&(divisor!=null)&&(cocienteBien!=null)&&(restosBien!=null)&&(cocienteAlum!=null)&&(restosAlum!=null)&&(!cerosBien.equals(""))&&(!dividendo.equals(""))&&(!divisor.equals(""))&&(!cocienteBien.equals(""))&&(!restosBien.equals(""))&&(!cocienteAlum.equals(""))&&(!restosAlum.equals(""))){
                 String valor = dividendo + "#" + divisor;
