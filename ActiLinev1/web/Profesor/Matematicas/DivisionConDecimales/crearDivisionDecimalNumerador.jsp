@@ -25,30 +25,48 @@
 	
 	</script>
 	
-	<script> 
-    $(function(){
-      $("#includedContent").load("<%=constantesClass.urlRaiz%>menuProfe.jsp"); 
-    });
+    <script> 
+        $(function(){
+            $("#includedContent").load("<%=constantesClass.urlRaiz%>menuProfe.jsp"); 
+        });
+        
+        function calcularDecimales() {
+            var dividendoString = $("#dividendo").val();
+            var dividendoArray = dividendoString.split(',');
+            
+            if(dividendoArray.length === 2){
+                $("#decimales").val(dividendoArray[1].length);
+            }
+            else
+            {
+                alert('Por favor, introduzca un número válido con decimales (Ejemplo 23,241).');
+                
+                return false;
+            }
+        }
     </script> 
 	
 
 <div class="container">
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title"><center>Introduzca dividendo y divisor.</center></h3>
+    <h3 class="panel-title"><center>Introduzca divisor y dividendo (dividendo con decimales, usar la coma "," ).</center></h3>
   </div>
   <div class="panel-body">
-<form  method="GET" action="<%=constantesClass.urlRaiz%>guardarEjercicioDivisionSSProfesor">
+<form  method="GET" action="<%=constantesClass.urlRaiz%>guardarEjercicioDivisionDNProfesor">
   <div class="form-group">
     <label for="number">Dividendo:</label>
-    <input type="text" class="form-control" id="dividendo" name="dividendo" maxlength="7">
+    <input type="text" class="form-control" id="dividendo" name="dividendo" maxlength="9">
   </div>
+  
   <div class="form-group">
     <label for="number">Divisor</label>
     <input type="text" class="form-control" id="divisor" name="divisor" maxlength="4">
   </div>
 
-    <button type="submit" class="btn btn-default"><center>Calcular</center></button>
+  <input type="hidden" class="form-control" id="decimales" name="decimales">
+  
+  <center><button type="submit" class="btn btn-default" onclick="calcularDecimales()">Calcular</button></center>
 </form>
   </div>
 </div>
