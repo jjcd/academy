@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%@ page import="constantes.constantesClass"%>
+    <%@ page import="constantes.constantesClass" %>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ActiWeb - portal de ejercicios</title>
+    <title>ActiWeb - Portal de ejercicios</title>
  
     <!-- CSS de Bootstrap -->
     <link href="<%=constantesClass.urlRaiz%>bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -24,29 +24,17 @@
 	
 	</script>
 	
-	<script> 
-    $(function(){
-      $("#includedContent").load("<%=constantesClass.urlRaiz%>menuProfe.jsp"); 
-    });
-    </script> 
 	
-
-<div class="container">
-<div class="panel panel-primary">
+	<div class="container">
+	<div class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title"><center>Seleccione el tipo de ejercicio deseado.</center></h3>
+    <h3 class="panel-title"><center>ActiWeb</center></h3>
   </div>
   <div class="panel-body">
-    <div class="row">
-		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>Profesor/Matematicas/crearEjercicioMates.jsp"><center><img src="<%=constantesClass.urlRaiz%>images/001_small.jpg" height="200" alt="Ejercicio de matemáticas" class="img-thumbnail"><br/>Matemáticas</center></a></div>
-		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>NoEncontrado.jsp"><center><img src="<%=constantesClass.urlRaiz%>images/grama.jpg" height="200" alt="Ejercicio de gramatica" class="img-thumbnail"><br/>Gramática</center></a></div>
-	</div>
-	<div class="row">
-		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>NoEncontrado.jsp"><center><img src="<%=constantesClass.urlRaiz%>images/logi.jpg" height="200" alt="Ejercicio de logica" class="img-thumbnail"><br/>Lógica</center></a></div>
-		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>NoEncontrado.jsp"><center><img src="<%=constantesClass.urlRaiz%>images/figu.jpg" height="200" alt="Ejercicio de figuras" class="img-thumbnail"><br/>Figuras</center></a></div>
-	</div>
+      <center>Sección no disponible en estos momentos, haga click en el siguiente enlace para volver al menú principal: <a href="<%=constantesClass.urlRaiz%>index.jsp"></br></br>Click aquí</a></center>
   </div>
 </div>
+
 <div class="panel panel-primary">
   <div class="panel-body">
     <div class="row">
@@ -59,8 +47,6 @@
   </div>
 </div>
 </div>
-
-
 	
 
 	
@@ -68,6 +54,6 @@
     <!-- Todos los plugins JavaScript de Bootstrap (también puedes
          incluir archivos JavaScript individuales de los únicos
          plugins que utilices) -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="<%=constantesClass.urlRaiz%>bootstrap/js/bootstrap.min.js"></script>
   </body>
 </html>

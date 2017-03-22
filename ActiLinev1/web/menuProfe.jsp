@@ -63,9 +63,9 @@ nav.navbar {
     <ul class="nav navbar-nav">
       <!--class="active"-->
 	  <li><a href="<%=constantesClass.urlRaiz%>Profesor/indexprofesor.jsp" id="opcion1" class="opcionHome">Inicio</a></li>
-          <li><a href="<%=constantesClass.urlRaiz%>Profesor/" id="opcion2" class="opcionInsert">Insertar ejercicio</a></li>
-	  <li><a href="<%=constantesClass.urlRaiz%>Profesor/" id="opcion3" class="opcionEdit">Editar Ejercicio</a></li>
-	  <li><a href="<%=constantesClass.urlRaiz%>Profesor/" id="opcion4" class="opcionRemove">Eliminar Ejercicio</a></li>
+          <li><a href="<%=constantesClass.urlRaiz%>Profesor/crearejercicio.jsp" id="opcion2" class="opcionInsert">Insertar ejercicio</a></li>
+	  <li><a href="<%=constantesClass.urlRaiz%>Profesor/Matematicas/visualizarCorreccionesGeneral.jsp" id="opcion3" class="opcionEdit">Visualizar Soluciones Ejercicios</a></li>
+	  <li><a href="<%=constantesClass.urlRaiz%>NoEncontrado.jsp" id="opcion4" class="opcionRemove">Eliminar Ejercicio</a></li>
 
     </ul>
 

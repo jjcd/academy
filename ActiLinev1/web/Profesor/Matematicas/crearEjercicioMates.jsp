@@ -38,12 +38,12 @@
   </div>
   <div class="panel-body">
     <div class="row">
-		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>Profesor/Matematicas/crearEjercicioMates.jsp"><center><img src="<%=constantesClass.urlRaiz%>images/001_small.jpg" height="200" alt="Ejercicio de matemáticas" class="img-thumbnail"><br/>Matemáticas</center></a></div>
-		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>NoEncontrado.jsp"><center><img src="<%=constantesClass.urlRaiz%>images/grama.jpg" height="200" alt="Ejercicio de gramatica" class="img-thumbnail"><br/>Gramática</center></a></div>
+		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>Profesor/Matematicas/DivisionSinSigno/crearDivisionSinSigno.jsp"><center><img src="<%=constantesClass.urlRaiz%>images/001_small.jpg" height="200" alt="División Naturales" class="img-thumbnail"><br/>División Naturales</center></a></div>
+		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>Profesor/Matematicas/DivisionConDecimales/crearDivisionDecimalNumerador.jsp"><center><img src="<%=constantesClass.urlRaiz%>images/001_small.jpg" height="200" alt="División con decimales en dividendo" class="img-thumbnail"><br/>División con decimales en dividendo</center></a></div>
 	</div>
 	<div class="row">
-		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>NoEncontrado.jsp"><center><img src="<%=constantesClass.urlRaiz%>images/logi.jpg" height="200" alt="Ejercicio de logica" class="img-thumbnail"><br/>Lógica</center></a></div>
-		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>NoEncontrado.jsp"><center><img src="<%=constantesClass.urlRaiz%>images/figu.jpg" height="200" alt="Ejercicio de figuras" class="img-thumbnail"><br/>Figuras</center></a></div>
+		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>NoEncontrado.jsp"><center><img src="<%=constantesClass.urlRaiz%>images/001_small.jpg" height="200" alt="División con decimales en dividendo" class="img-thumbnail"><br/>División con decimales en dividendo</center></a></div>
+		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>NoEncontrado.jsp"><center><img src="<%=constantesClass.urlRaiz%>images/001_small.jpg" height="200" alt="División con decimales en dividendo y divisor" class="img-thumbnail"><br/>División con decimales en dividendo y divisor</center></a></div>
 	</div>
   </div>
 </div>
