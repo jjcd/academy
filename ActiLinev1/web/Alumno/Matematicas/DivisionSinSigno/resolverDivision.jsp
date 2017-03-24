@@ -86,7 +86,7 @@
                         if(AnteriorSolucionConCeros.length()>1){
                             String anadirceros = "";
                             
-                            for(int cer=0;cer<AnteriorSolucionConCeros.length();cer++){
+                            for(int cer=0;cer<AnteriorSolucionConCeros.length()-1;cer++){
                                 anadirceros+="0";
                             }
 
