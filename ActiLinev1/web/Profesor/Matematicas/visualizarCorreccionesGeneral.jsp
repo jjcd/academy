@@ -39,7 +39,7 @@
   <div class="panel-body">
     <div class="row">
 		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>consultaRevisionesDivisionesSS"><center><img src="<%=constantesClass.urlRaiz%>images/001_small.jpg" height="200" alt="División Naturales" class="img-thumbnail"><br/>Visualizar División Naturales</center></a></div>
-		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>Profesor/Matematicas/DivisionConDecimales/crearDivisionDecimalNumerador.jsp"><center><img src="<%=constantesClass.urlRaiz%>images/001_small.jpg" height="200" alt="División con decimales en dividendo" class="img-thumbnail"><br/>Visualizar División con decimales en dividendo</center></a></div>
+		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>consultaRevisionesDivisionesDN"><center><img src="<%=constantesClass.urlRaiz%>images/001_small.jpg" height="200" alt="División con decimales en dividendo" class="img-thumbnail"><br/>Visualizar División con decimales en dividendo</center></a></div>
 	</div>
 	<div class="row">
 		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>NoEncontrado.jsp"><center><img src="<%=constantesClass.urlRaiz%>images/001_small.jpg" height="200" alt="División con decimales en dividendo" class="img-thumbnail"><br/>Visualizar División con decimales en dividendo</center></a></div>

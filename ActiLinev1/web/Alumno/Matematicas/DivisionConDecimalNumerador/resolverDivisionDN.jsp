@@ -390,7 +390,7 @@
 </div>    
 
  <div class="panel panel-primary" style="background-color:#337ab7;">
-    <form  method="GET" action="/ActiLinev1/guardarDivision">
+    <form  method="GET" action="/ActiLinev1/guardarDivisionDN">
 
     <input type="hidden" class="form-control" id="dividendoAlum" name="dividendoAlum" value="<%=dividendo%>">
     <input type="hidden" class="form-control" id="divisorAlum" name="divisorAlum" value="<%=divisor%>">
