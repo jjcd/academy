@@ -44,6 +44,10 @@
                 dividendo = request.getAttribute("dividendo").toString();
                 decimales = request.getAttribute("decimales").toString();          
                 
+                //guardar en los atributos nuevamente los decimales, para luego poder ser
+                //guardados
+                //request.setAttribute("decimales", decimales);
+                
                 /*Partir el dividendo en diferentes caracteres*/
                 dividendoChars = dividendo.split("(?!^)");
                 
@@ -243,6 +247,8 @@
                 $("[id*='pasoDividendo"+ (dividendoLength - (i+1)) +"']").css("visibility","hidden");
                 $("[id*='paso"+ (dividendoLength - (i+1)) +"']").css("visibility","hidden");
             }
+            
+            $('#myModal').modal('show');
     });
     </script> 
     
@@ -369,9 +375,16 @@
             
             $("[id*='pasoDividendo"+ (dividendoLength - (totalDivisor - comaPos)) +"']").css("visibility","inherit");
             $("[id*='paso"+ (dividendoLength - (totalDivisor - comaPos)) +"']").css("visibility","inherit");
-        }
-        else{
-            //poner aqui el onclick de testear resultado o deshabilitar
+            
+            //deshabilitarse asi mismo
+            $("#moverDecimal").attr("onclick","return false");
+            $("#moverDecimal").attr("style","color:grey;font-style: italic;");            
+            
+            //poner aqui el onclick de testear resultado o deshabilitar.
+            $("#addpaso").attr("onclick","onClick()");
+            $("#addpaso").attr("style","color:white;font-style: italic;");
+            
+            
         }
     }
     </script>
@@ -446,14 +459,14 @@
   <div class="panel-body">
     <div class="row">
 		<div class="col-md-12">
-                    <center><a href="#" id="addpaso" onclick="onClick()" style="color:white;font-style: italic;"><b>Click para corregir</b></a></center>
+                    <center><a href="#" id="addpaso" onclick="return false" style="color:grey;font-style: italic;"><b>Click para corregir</b></a></center>
 			</div>
 	</div>
   </div>
 </div>    
 
  <div class="panel panel-primary" style="background-color:#337ab7;">
-    <form  method="GET" action="/ActiLinev1/guardarDivision">
+    <form  method="GET" action="/ActiLinev1/guardarDivisionDD">
 
     <input type="hidden" class="form-control" id="dividendoAlum" name="dividendoAlum" value="<%=dividendo%>">
     <input type="hidden" class="form-control" id="divisorAlum" name="divisorAlum" value="<%=divisor%>">
@@ -463,6 +476,7 @@
     <input type="hidden" class="form-control" id="cocienteAlumBien" name="cocienteAlumBien" value="<%=cocienteString%>">
     <input type="hidden" class="form-control" id="restosAlumBien" name="restosAlumBien" value="<%=strSolucionComas%>">
     <input type="hidden" class="form-control" id="cerosAlumBien" name="cerosAlumBien" value="<%=cerosEnDivision%>">
+    <input type="hidden" class="form-control" id="decimalesAlumBien" name="decimalesAlumBien" value="<%=decimales%>">
     
     <center><button type="submit" class="btn btn-default" id="enviarresultado">Enviar resultado</button></center>
     </form>
@@ -490,9 +504,26 @@
          incluir archivos JavaScript individuales de los únicos
          plugins que utilices) -->
     <script src="<%=constantesClass.urlRaiz%>bootstrap/js/bootstrap.min.js"></script>
+
+    <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" id="modal-title">División con decimales en divisor.</h4>
+      </div>
+      <div class="modal-body" id="modal-body">
+          <p>Recuerda que para proceder a la división antes debes hacer el arreglo añadiendo tantos ceros al dividendo como decimales tenga el divisor. </br></br>*Presionar una vez a "Mover decimal a la derecha" hará que se añada un cero.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
     
-
-
-
   </body>
 </html>

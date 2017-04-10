@@ -145,9 +145,6 @@ public class crearDivisionDecDen extends HttpServlet {
                 request.setAttribute("ceros", pasosCeroIzq);
                 request.setAttribute("decimales", decimales);
                 
-                
-            
-                //request.setAttribute("resultado", resultado);
                 request.getRequestDispatcher("Alumno/Matematicas/DivisionConDecimalDenominador/resolverDivisionDD.jsp")
                     .forward(request, response);
             }

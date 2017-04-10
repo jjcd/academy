@@ -56,11 +56,14 @@ public class guardarDivisionDD extends HttpServlet {
             String cocienteAlum = request.getParameter("cocienteAlum");
             
             String restosAlum = request.getParameter("restosAlum");
+            
+            String decimalesCociente = request.getParameter("decimalesAlumBien");
+            
             restosAlum = restosAlum.substring(0,restosAlum.length()-1);
             
-            if((cerosBien!=null)&&(dividendo!=null)&&(divisor!=null)&&(cocienteBien!=null)&&(restosBien!=null)&&(cocienteAlum!=null)&&(restosAlum!=null)&&(!cerosBien.equals(""))&&(!dividendo.equals(""))&&(!divisor.equals(""))&&(!cocienteBien.equals(""))&&(!restosBien.equals(""))&&(!cocienteAlum.equals(""))&&(!restosAlum.equals(""))){
+            if((cerosBien!=null)&&(dividendo!=null)&&(divisor!=null)&&(cocienteBien!=null)&&(restosBien!=null)&&(cocienteAlum!=null)&&(restosAlum!=null)&&(decimalesCociente!=null)&&(!cerosBien.equals(""))&&(!dividendo.equals(""))&&(!divisor.equals(""))&&(!cocienteBien.equals(""))&&(!restosBien.equals(""))&&(!cocienteAlum.equals(""))&&(!restosAlum.equals(""))&&(!decimalesCociente.equals(""))){
                 String valor = dividendo + ":" + divisor;
-                String solucion = cocienteBien + ":" + restosBien + ":" + cerosBien;
+                String solucion = cocienteBien + ":" + restosBien + ":" + cerosBien + ":" + decimalesCociente;
                 String solucionUsuario = cocienteAlum + ":" + restosAlum;
                 String usuario = "userExample";
                 

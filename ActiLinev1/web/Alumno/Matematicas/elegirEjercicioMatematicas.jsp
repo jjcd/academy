@@ -41,6 +41,10 @@
         <div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>consultaDivisionesSS"><center><img src="<%=constantesClass.urlRaiz%>images/division.png" height="200" alt="División" class="img-thumbnail"><br/>División natural</center></a></div>
         <div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>consultaDivisionesNumDec"><center><img src="<%=constantesClass.urlRaiz%>images/division.png" height="200" alt="División" class="img-thumbnail"><br/>División decimal dividendo</center></a></div>
     </div>
+    <div class="row">
+        <div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>consultaDivisionesDenDec"><center><img src="<%=constantesClass.urlRaiz%>images/division.png" height="200" alt="División" class="img-thumbnail"><br/>División decimal divisor</center></a></div>
+        <div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>"><center><img src="<%=constantesClass.urlRaiz%>images/division.png" height="200" alt="División" class="img-thumbnail"><br/>División decimal dividendo y divisor</center></a></div>
+    </div>
   </div>
 </div>
 <div class="panel panel-primary">

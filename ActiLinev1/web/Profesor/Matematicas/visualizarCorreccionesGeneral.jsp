@@ -42,7 +42,7 @@
 		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>consultaRevisionesDivisionesDN"><center><img src="<%=constantesClass.urlRaiz%>images/001_small.jpg" height="200" alt="División con decimales en dividendo" class="img-thumbnail"><br/>Visualizar División con decimales en dividendo</center></a></div>
 	</div>
 	<div class="row">
-		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>NoEncontrado.jsp"><center><img src="<%=constantesClass.urlRaiz%>images/001_small.jpg" height="200" alt="División con decimales en dividendo" class="img-thumbnail"><br/>Visualizar División con decimales en dividendo</center></a></div>
+		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>consultaRevisionesDivisionesDD"><center><img src="<%=constantesClass.urlRaiz%>images/001_small.jpg" height="200" alt="División con decimales en divisor" class="img-thumbnail"><br/>Visualizar División con decimales en divisor</center></a></div>
 		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>NoEncontrado.jsp"><center><img src="<%=constantesClass.urlRaiz%>images/001_small.jpg" height="200" alt="División con decimales en dividendo y divisor" class="img-thumbnail"><br/>Visualizar División con decimales en dividendo y divisor</center></a></div>
 	</div>
   </div>
