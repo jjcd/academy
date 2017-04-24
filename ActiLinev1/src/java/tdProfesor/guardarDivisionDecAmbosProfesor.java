@@ -5,9 +5,8 @@
  */
 package tdProfesor;
 
-import constantes.constantesClass;
-import classes.DivisionClass;
 import classes.EjercicioClass;
+import constantes.constantesClass;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -27,8 +26,8 @@ import td.guardarDivision;
  *
  * @author JUAN JOSE
  */
-@WebServlet(name = "guardarEjercicioDivisionSSProfesor", urlPatterns = {"/guardarEjercicioDivisionSSProfesor"})
-public class guardarEjercicioDivisionSSProfesor extends HttpServlet {
+@WebServlet(name = "guardarDivisionDecAmbosProfesor", urlPatterns = {"/guardarDivisionDecAmbosProfesor"})
+public class guardarDivisionDecAmbosProfesor extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,19 +44,35 @@ public class guardarEjercicioDivisionSSProfesor extends HttpServlet {
             //valor,url,tipoejercicio
             String dividendo = request.getParameter("dividendo");
             String divisor = request.getParameter("divisor");
+            String decimalesDividendo = request.getParameter("decimalesDividendo");
+            String decimalesDivisor = request.getParameter("decimalesDivisor");
             
-            if((dividendo!=null)&&(divisor!=null)&&(!dividendo.equals(""))&&(!divisor.equals(""))){
-                String valor = "División sin signo: " + dividendo + "/" + divisor;
-                String url = constantesClass.urlRaiz + "crearDivision?dividendo="+dividendo+"&divisor="+divisor;
-                String tipoejercicio = "DIVSS";
+            if((dividendo!=null)&&(divisor!=null)&&(!dividendo.equals(""))&&(!divisor.equals(""))&&(!decimalesDividendo.equals(""))&&(!decimalesDivisor.equals(""))){
+                //Comprobamos que tipo será (Tres tipos: igual número de decimales en ambos, mayor o menor.)
+                int decDivnInt = Integer.parseInt(decimalesDividendo);
+                int decDivs = Integer.parseInt(decimalesDivisor);
+                String valor = "";
+                String url = "";
+                
+                if(decDivnInt == decDivs){
+                    valor = "División con decimal en denominador: " + dividendo + "/" + divisor;
+                    url = constantesClass.urlRaiz + "crearDivisionAmbosIgual?dividendo="+dividendo+"&divisor="+divisor+"&decimalesDivd="+decimalesDividendo+"&decimalesDivs="+decimalesDivisor;
+                    
+                }
+                else if(decDivnInt > decDivs){
+                    valor = "División con decimal en denominador: " + dividendo + "/" + divisor;
+                    url = constantesClass.urlRaiz + "crearDivisionAmbosMayor?dividendo="+dividendo+"&divisor="+divisor+"&decimalesDivd="+decimalesDividendo+"&decimalesDivs="+decimalesDivisor;
+                }
+                else
+                {
+                    valor = "División con decimal en denominador: " + dividendo + "/" + divisor;
+                    url = constantesClass.urlRaiz + "crearDivisionAmbosMenos?dividendo="+dividendo+"&divisor="+divisor+"&decimales="+"&decimalesDivd="+decimalesDividendo+"&decimalesDivs="+decimalesDivisor;
+                }
+                
+                String tipoejercicio = "DIVAM";
                 
                 EjercicioClass ejercicioObject = new EjercicioClass(valor,url,tipoejercicio);
-                
-                
-                
-                //request.setAttribute("divisionObject", divisionObject);            
-                //request.getRequestDispatcher("CrearEjercicio/InsertDivisionSQL.jsp").forward(request, response);
-                
+
             try {
             
                 Class.forName("org.h2.Driver");
@@ -70,10 +85,10 @@ public class guardarEjercicioDivisionSSProfesor extends HttpServlet {
                 stmt.executeUpdate(sql);
             
                 conn.close();
-
+                
                 request.getRequestDispatcher("Profesor/confirmacionEjercicioGuardado.jsp").forward(request, response);
-                
-                
+
+            
             }   
             catch (ClassNotFoundException ex) {
                 Logger.getLogger(guardarDivision.class.getName()).log(Level.SEVERE, null, ex);

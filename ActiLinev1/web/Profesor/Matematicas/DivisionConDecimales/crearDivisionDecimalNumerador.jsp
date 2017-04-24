@@ -30,20 +30,26 @@
             $("#includedContent").load("<%=constantesClass.urlRaiz%>menuProfe.jsp"); 
         });
         
-        function calcularDecimales() {
+        //Para controlar que todo este bien
+        $(document).ready(function() {
+            
+            $("#formEnviar").submit(function(e){
+                
             var dividendoString = $("#dividendo").val();
             var dividendoArray = dividendoString.split(',');
             
             if(dividendoArray.length === 2){
-                $("#decimales").val(dividendoArray[1].length);
+                $("#decimales").val(dividendoArray[1].length);                                    
             }
             else
             {
-                alert('Por favor, introduzca un número válido con decimales (Ejemplo 23,241).');
-                
-                return false;
+                $('#myModal').modal('show');
+            
+                e.preventDefault(e);
             }
-        }
+                
+            });
+        });
     </script> 
 	
 
@@ -53,7 +59,7 @@
     <h3 class="panel-title"><center>Introduzca divisor y dividendo (dividendo con decimales, usar la coma "," ).</center></h3>
   </div>
   <div class="panel-body">
-<form  method="GET" action="<%=constantesClass.urlRaiz%>guardarEjercicioDivisionDNProfesor">
+<form id="formEnviar"  method="GET" action="<%=constantesClass.urlRaiz%>guardarEjercicioDivisionDNProfesor">
   <div class="form-group">
     <label for="number">Dividendo:</label>
     <input type="text" class="form-control" id="dividendo" name="dividendo" maxlength="9">
@@ -85,7 +91,25 @@
 
 
 	
+  <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" id="modal-title">Error en los valores introducidos.</h4>
+      </div>
+      <div class="modal-body" id="modal-body">
+          <p>Por favor, introduzca un número válido con decimales (Ejemplo 23,241).</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+  </div>
 	
 	
     <!-- Todos los plugins JavaScript de Bootstrap (también puedes

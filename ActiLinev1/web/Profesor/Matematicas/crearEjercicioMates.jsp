@@ -42,8 +42,8 @@
 		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>Profesor/Matematicas/DivisionConDecimales/crearDivisionDecimalNumerador.jsp"><center><img src="<%=constantesClass.urlRaiz%>images/001_small.jpg" height="200" alt="División con decimales en dividendo" class="img-thumbnail"><br/>División con decimales en dividendo</center></a></div>
 	</div>
 	<div class="row">
-		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>NoEncontrado.jsp"><center><img src="<%=constantesClass.urlRaiz%>images/001_small.jpg" height="200" alt="División con decimales en dividendo" class="img-thumbnail"><br/>División con decimales en dividendo</center></a></div>
-		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>NoEncontrado.jsp"><center><img src="<%=constantesClass.urlRaiz%>images/001_small.jpg" height="200" alt="División con decimales en dividendo y divisor" class="img-thumbnail"><br/>División con decimales en dividendo y divisor</center></a></div>
+		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>Profesor/Matematicas/DivisionConDecimales/crearDivisionDecimalDenominador.jsp"><center><img src="<%=constantesClass.urlRaiz%>images/001_small.jpg" height="200" alt="División con decimales en dividendo" class="img-thumbnail"><br/>División con decimales en dividendo</center></a></div>
+		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>Profesor/Matematicas/DivisionConDecimales/crearDivisionDecimalAmbos.jsp"><center><img src="<%=constantesClass.urlRaiz%>images/001_small.jpg" height="200" alt="División con decimales en dividendo y divisor" class="img-thumbnail"><br/>División con decimales en dividendo y divisor</center></a></div>
 	</div>
   </div>
 </div>
@@ -53,7 +53,7 @@
 		<div class="col-md-12">
 			<center><a href="#">Acerca de</a></center>
 			<center><a href="https://twitter.com/ActiWeb" class="twitter-follow-button" data-show-count="false">Follow @ActiWeb</a></center>
-			<div class="fb-follow" data-href="https://www.facebook.com/zuck" data-layout="button" data-show-faces="false"></div>
+                        <center><div class="fb-follow" data-href="https://www.facebook.com/zuck" data-layout="button" data-show-faces="false"></div></center>
 			</div>
 	</div>
   </div>

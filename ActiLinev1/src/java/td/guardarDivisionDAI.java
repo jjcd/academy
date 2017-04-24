@@ -3,11 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tdProfesor;
+package td;
 
-import constantes.constantesClass;
 import classes.DivisionClass;
-import classes.EjercicioClass;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -21,14 +19,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import td.guardarDivision;
 
 /**
  *
  * @author JUAN JOSE
  */
-@WebServlet(name = "guardarEjercicioDivisionSSProfesor", urlPatterns = {"/guardarEjercicioDivisionSSProfesor"})
-public class guardarEjercicioDivisionSSProfesor extends HttpServlet {
+@WebServlet(name = "guardarDivisionDAI", urlPatterns = {"/guardarDivisionDAI"})
+public class guardarDivisionDAI extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,21 +39,35 @@ public class guardarEjercicioDivisionSSProfesor extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-            //valor,url,tipoejercicio
-            String dividendo = request.getParameter("dividendo");
-            String divisor = request.getParameter("divisor");
+        
+            String dividendo = request.getParameter("dividendoAlum");
+            String divisor = request.getParameter("divisorAlum");
             
-            if((dividendo!=null)&&(divisor!=null)&&(!dividendo.equals(""))&&(!divisor.equals(""))){
-                String valor = "División sin signo: " + dividendo + "/" + divisor;
-                String url = constantesClass.urlRaiz + "crearDivision?dividendo="+dividendo+"&divisor="+divisor;
-                String tipoejercicio = "DIVSS";
+            String cocienteBien = request.getParameter("cocienteAlumBien");
+            
+            String restosBien = request.getParameter("restosAlumBien");
+            //Le quitamos el ultimo ";"    
+            restosBien = restosBien.substring(0,restosBien.length() - 1);
+            
+            String cerosBien = request.getParameter("cerosAlumBien");
+            //Le quitamos el ultimo ";"
+            cerosBien = cerosBien.substring(0, cerosBien.length()-1);
+            
+            String cocienteAlum = request.getParameter("cocienteAlum");
+            
+            String restosAlum = request.getParameter("restosAlum");
+            
+            String decimalesCociente = request.getParameter("decimalesAlumBien");
+            
+            restosAlum = restosAlum.substring(0,restosAlum.length()-1);
+            
+            if((cerosBien!=null)&&(dividendo!=null)&&(divisor!=null)&&(cocienteBien!=null)&&(restosBien!=null)&&(cocienteAlum!=null)&&(restosAlum!=null)&&(decimalesCociente!=null)&&(!cerosBien.equals(""))&&(!dividendo.equals(""))&&(!divisor.equals(""))&&(!cocienteBien.equals(""))&&(!restosBien.equals(""))&&(!cocienteAlum.equals(""))&&(!restosAlum.equals(""))&&(!decimalesCociente.equals(""))){
+                String valor = dividendo + ":" + divisor;
+                String solucion = cocienteBien + ":" + restosBien + ":" + cerosBien + ":" + decimalesCociente;
+                String solucionUsuario = cocienteAlum + ":" + restosAlum;
+                String usuario = "userExample";
                 
-                EjercicioClass ejercicioObject = new EjercicioClass(valor,url,tipoejercicio);
-                
-                
-                
-                //request.setAttribute("divisionObject", divisionObject);            
-                //request.getRequestDispatcher("CrearEjercicio/InsertDivisionSQL.jsp").forward(request, response);
+                DivisionClass divisionObject = new DivisionClass(valor, solucion, solucionUsuario, usuario);
                 
             try {
             
@@ -65,15 +76,14 @@ public class guardarEjercicioDivisionSSProfesor extends HttpServlet {
             
                 Statement stmt = conn.createStatement();
             
-                String sql = "insert into EJERCICIO values (null, '"+ejercicioObject.getValor()+"','"+ejercicioObject.getWeb()+"','"+ejercicioObject.getTipoEjercicio()+"')";
+                String sql = "insert into EJERCICIORESUELTO values (null, '"+divisionObject.getValor()+"','"+divisionObject.getSolucion()+"','"+divisionObject.getSolucionUsuario()+"','"+divisionObject.getUsuario()+"','DIVDAI')";
             
                 stmt.executeUpdate(sql);
             
                 conn.close();
-
-                request.getRequestDispatcher("Profesor/confirmacionEjercicioGuardado.jsp").forward(request, response);
                 
-                
+                request.getRequestDispatcher("Alumno/confirmacionEjercicioEnviado.jsp").forward(request, response);
+            
             }   
             catch (ClassNotFoundException ex) {
                 Logger.getLogger(guardarDivision.class.getName()).log(Level.SEVERE, null, ex);
@@ -83,7 +93,7 @@ public class guardarEjercicioDivisionSSProfesor extends HttpServlet {
             }
 
         }
-
+            
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

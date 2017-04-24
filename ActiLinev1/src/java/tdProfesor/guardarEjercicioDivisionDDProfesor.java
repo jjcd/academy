@@ -68,6 +68,8 @@ public class guardarEjercicioDivisionDDProfesor extends HttpServlet {
             
                 conn.close();
             
+                request.getRequestDispatcher("Profesor/confirmacionEjercicioGuardado.jsp").forward(request, response);
+
             }   
             catch (ClassNotFoundException ex) {
                 Logger.getLogger(guardarDivision.class.getName()).log(Level.SEVERE, null, ex);

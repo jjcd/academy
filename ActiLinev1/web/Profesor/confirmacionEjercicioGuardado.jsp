@@ -34,16 +34,11 @@
 <div class="container">
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title"><center>Seleccione el tipo de ejercicio deseado para visualizar soluciones.</center></h3>
+    <h3 class="panel-title"><center>Confirmación.</center></h3>
   </div>
   <div class="panel-body">
     <div class="row">
-		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>consultaRevisionesDivisionesSS"><center><img src="<%=constantesClass.urlRaiz%>images/001_small.jpg" height="200" alt="División Naturales" class="img-thumbnail"><br/>Visualizar División Naturales</center></a></div>
-		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>consultaRevisionesDivisionesDN"><center><img src="<%=constantesClass.urlRaiz%>images/001_small.jpg" height="200" alt="División con decimales en dividendo" class="img-thumbnail"><br/>Visualizar División con decimales en dividendo</center></a></div>
-	</div>
-	<div class="row">
-		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>consultaRevisionesDivisionesDD"><center><img src="<%=constantesClass.urlRaiz%>images/001_small.jpg" height="200" alt="División con decimales en divisor" class="img-thumbnail"><br/>Visualizar División con decimales en divisor</center></a></div>
-		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>consultaRevisionesDivisionDAI"><center><img src="<%=constantesClass.urlRaiz%>images/001_small.jpg" height="200" alt="División con decimales en dividendo y divisor" class="img-thumbnail"><br/>Visualizar División con decimales en dividendo y divisor</center></a></div>
+		<div class="col-md-12"><center><img src="<%=constantesClass.urlRaiz%>images/confirmation.png" height="200" alt="Ejercicio de matemáticas" class="img-thumbnail"><br/><br/>El ejercicio fue guardado correctamente, para realizar un nuevo ejercicio seleccione la opción en el menú superior.</center></div>
 	</div>
   </div>
 </div>
@@ -53,18 +48,13 @@
 		<div class="col-md-12">
 			<center><a href="#">Acerca de</a></center>
 			<center><a href="https://twitter.com/ActiWeb" class="twitter-follow-button" data-show-count="false">Follow @ActiWeb</a></center>
-			<div class="fb-follow" data-href="https://www.facebook.com/zuck" data-layout="button" data-show-faces="false"></div>
+                        <center><div class="fb-follow" data-href="https://www.facebook.com/zuck" data-layout="button" data-show-faces="false"></div></center>
 			</div>
 	</div>
   </div>
 </div>
 </div>
 
-
-	
-
-	
-	
     <!-- Todos los plugins JavaScript de Bootstrap (también puedes
          incluir archivos JavaScript individuales de los únicos
          plugins que utilices) -->

@@ -35,11 +35,14 @@
             
             $("#formEnviar").submit(function(e){
                 
+            var dividendoString = $("#dividendo").val();
             var divisorString = $("#divisor").val();
+            var dividendoArray = dividendoString.split(',');
             var divisorArray = divisorString.split(',');
             
-            if(divisorArray.length === 2){
-                $("#decimales").val(divisorArray[1].length);                                    
+            if((dividendoArray.length === 2)&&(divisorArray.length === 2)){
+                $("#decimalesDividendo").val(dividendoArray[1].length);
+                $("#decimalesDivisor").val(dividendoArray[1].length);                                    
             }
             else
             {
@@ -50,16 +53,18 @@
                 
             });
         });
+        
     </script> 
 	
 
 <div class="container">
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title"><center>Introduzca divisor y dividendo (dividendo con decimales, usar la coma "," ).</center></h3>
+    <h3 class="panel-title"><center>Introduzca divisor y dividendo (ambos con decimales, usar la coma "," ).</center></h3>
   </div>
   <div class="panel-body">
-<form id="formEnviar"  method="GET" action="<%=constantesClass.urlRaiz%>guardarEjercicioDivisionDDProfesor">
+  
+  <form id="formEnviar" onsubmit="" method="GET" action="<%=constantesClass.urlRaiz%>guardarDivisionDecAmbosProfesor">
   <div class="form-group">
     <label for="number">Dividendo:</label>
     <input type="text" class="form-control" id="dividendo" name="dividendo" maxlength="9">
@@ -70,9 +75,10 @@
     <input type="text" class="form-control" id="divisor" name="divisor" maxlength="5">
   </div>
 
-  <input type="hidden" class="form-control" id="decimales" name="decimales">
+  <input type="hidden" class="form-control" id="decimalesDividendo" name="decimalesDividendo">
+  <input type="hidden" class="form-control" id="decimalesDivisor" name="decimalesDivisor">
   
-  <center><button type="submit" class="btn btn-default">Calcular</button></center>
+  <center><button type="submit" class="btn btn-default" id="btnCalcular">Calcular</button></center>
 </form>
   </div>
 </div>
@@ -89,6 +95,16 @@
 </div>
 </div>
 
+
+	
+
+	
+	
+    <!-- Todos los plugins JavaScript de Bootstrap (también puedes
+         incluir archivos JavaScript individuales de los únicos
+         plugins que utilices) -->
+    <script src="<%=constantesClass.urlRaiz%>bootstrap/js/bootstrap.min.js"></script>
+    
   <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -99,7 +115,7 @@
         <h4 class="modal-title" id="modal-title">Error en los valores introducidos.</h4>
       </div>
       <div class="modal-body" id="modal-body">
-          <p>Por favor, introduzca un número válido con decimales (Ejemplo 23,241).</p>
+          <p>Por favor, introduzca ambos números válidos con decimales (Ejemplo 23,241).</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -108,13 +124,6 @@
 
   </div>
   </div>
-	
-
-	
-	
-    <!-- Todos los plugins JavaScript de Bootstrap (también puedes
-         incluir archivos JavaScript individuales de los únicos
-         plugins que utilices) -->
-    <script src="<%=constantesClass.urlRaiz%>bootstrap/js/bootstrap.min.js"></script>
+    
   </body>
 </html>
