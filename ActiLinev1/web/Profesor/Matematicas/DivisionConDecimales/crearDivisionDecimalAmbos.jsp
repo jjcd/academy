@@ -42,7 +42,7 @@
             
             if((dividendoArray.length === 2)&&(divisorArray.length === 2)){
                 $("#decimalesDividendo").val(dividendoArray[1].length);
-                $("#decimalesDivisor").val(dividendoArray[1].length);                                    
+                $("#decimalesDivisor").val(divisorArray[1].length);                                    
             }
             else
             {
