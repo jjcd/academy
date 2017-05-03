@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tdProfesor;
+package td;
 
-import classes.EjercicioClass;
-import constantes.constantesClass;
+import classes.DivisionClass;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -20,14 +19,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import td.guardarDivision;
 
 /**
  *
  * @author JUAN JOSE
  */
-@WebServlet(name = "guardarDivisionDecAmbosProfesor", urlPatterns = {"/guardarDivisionDecAmbosProfesor"})
-public class guardarDivisionDecAmbosProfesor extends HttpServlet {
+@WebServlet(name = "guardarDivisionDAMN", urlPatterns = {"/guardarDivisionDAMN"})
+public class guardarDivisionDAMN extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,38 +39,40 @@ public class guardarDivisionDecAmbosProfesor extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-            //valor,url,tipoejercicio
-            String dividendo = request.getParameter("dividendo");
-            String divisor = request.getParameter("divisor");
-            String decimalesDividendo = request.getParameter("decimalesDividendo");
-            String decimalesDivisor = request.getParameter("decimalesDivisor");
+        
+            String dividendo = request.getParameter("dividendoAlum");
+            String divisor = request.getParameter("divisorAlum");
             
-            if((dividendo!=null)&&(divisor!=null)&&(!dividendo.equals(""))&&(!divisor.equals(""))&&(!decimalesDividendo.equals(""))&&(!decimalesDivisor.equals(""))){
-                //Comprobamos que tipo será (Tres tipos: igual número de decimales en ambos, mayor o menor.)
-                int decDivnInt = Integer.parseInt(decimalesDividendo);
-                int decDivs = Integer.parseInt(decimalesDivisor);
-                String valor = "";
-                String url = "";
+            String cocienteBien = request.getParameter("cocienteAlumBien");
+            
+            String restosBien = request.getParameter("restosAlumBien");
+            //Le quitamos el ultimo ";"    
+            restosBien = restosBien.substring(0,restosBien.length() - 1);
+            
+            String cerosBien = request.getParameter("cerosAlumBien");
+            //Le quitamos el ultimo ";"
+            cerosBien = cerosBien.substring(0, cerosBien.length()-1);
+            
+            String cocienteAlum = request.getParameter("cocienteAlum");
+            
+            String restosAlum = request.getParameter("restosAlum");
+            
+            //String decimalesCociente = request.getParameter("decimalesAlumBien");
+            
+            String decimalesDividendo = request.getParameter("decimalesAlumBienDivd");
+            
+            String decimalesDivisor = request.getParameter("decimalesAlumBienDivs");
+            
+            restosAlum = restosAlum.substring(0,restosAlum.length()-1);
+            
+            if((decimalesDividendo!=null)&&(decimalesDivisor!=null)&&(cerosBien!=null)&&(dividendo!=null)&&(divisor!=null)&&(cocienteBien!=null)&&(restosBien!=null)&&(cocienteAlum!=null)&&(restosAlum!=null)&&/*(decimalesCociente!=null)&&*/(!cerosBien.equals(""))&&(!dividendo.equals(""))&&(!divisor.equals(""))&&(!cocienteBien.equals(""))&&(!restosBien.equals(""))&&(!cocienteAlum.equals(""))&&(!restosAlum.equals(""))/*&&(!decimalesCociente.equals(""))*/&&(!decimalesDividendo.equals(""))&&(!decimalesDivisor.equals(""))){
+                String valor = dividendo + ":" + divisor;
+                String solucion = cocienteBien + ":" + restosBien + ":" + cerosBien + ":" + /*decimalesCociente + ":" +*/ decimalesDividendo + ":" + decimalesDivisor;
+                String solucionUsuario = cocienteAlum + ":" + restosAlum;
+                String usuario = "userExample";
                 
-                if(decDivnInt == decDivs){
-                    valor = "División con decimal en numerador y denominador: " + dividendo + "/" + divisor;
-                    url = constantesClass.urlRaiz + "crearDivisionAmbosIgual?dividendo="+dividendo+"&divisor="+divisor+"&decimalesDivd="+decimalesDividendo+"&decimalesDivs="+decimalesDivisor;
-                    
-                }
-                else if(decDivnInt > decDivs){
-                    valor = "División con decimal en numerador y denominador: " + dividendo + "/" + divisor;
-                    url = constantesClass.urlRaiz + "crearDivisionAmbosMayor?dividendo="+dividendo+"&divisor="+divisor+"&decimalesDivd="+decimalesDividendo+"&decimalesDivs="+decimalesDivisor;
-                }
-                else
-                {
-                    valor = "División con decimal en numerador y denominador: " + dividendo + "/" + divisor;
-                    url = constantesClass.urlRaiz + "crearDivisionAmbosMenos?dividendo="+dividendo+"&divisor="+divisor+"&decimalesDivd="+decimalesDividendo+"&decimalesDivs="+decimalesDivisor;
-                }
+                DivisionClass divisionObject = new DivisionClass(valor, solucion, solucionUsuario, usuario);
                 
-                String tipoejercicio = "DIVAM";
-                
-                EjercicioClass ejercicioObject = new EjercicioClass(valor,url,tipoejercicio);
-
             try {
             
                 Class.forName("org.h2.Driver");
@@ -80,31 +80,24 @@ public class guardarDivisionDecAmbosProfesor extends HttpServlet {
             
                 Statement stmt = conn.createStatement();
             
-                String sql = "insert into EJERCICIO values (null, '"+ejercicioObject.getValor()+"','"+ejercicioObject.getWeb()+"','"+ejercicioObject.getTipoEjercicio()+"')";
+                String sql = "insert into EJERCICIORESUELTO values (null, '"+divisionObject.getValor()+"','"+divisionObject.getSolucion()+"','"+divisionObject.getSolucionUsuario()+"','"+divisionObject.getUsuario()+"','DIVDAMN')";
             
                 stmt.executeUpdate(sql);
             
                 conn.close();
                 
-                request.getRequestDispatcher("Profesor/confirmacionEjercicioGuardado.jsp").forward(request, response);
-
+                request.getRequestDispatcher("Alumno/confirmacionEjercicioEnviado.jsp").forward(request, response);
             
             }   
             catch (ClassNotFoundException ex) {
                 Logger.getLogger(guardarDivision.class.getName()).log(Level.SEVERE, null, ex);
-                
-                request.getRequestDispatcher("Profesor/errorEjercicioGuardado.jsp").forward(request, response);
-
             }       
             catch (SQLException ex) {
                 Logger.getLogger(guardarDivision.class.getName()).log(Level.SEVERE, null, ex);
-                
-                request.getRequestDispatcher("Profesor/errorEjercicioGuardado.jsp").forward(request, response);
-
             }
 
         }
-
+            
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

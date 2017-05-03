@@ -34,16 +34,11 @@
 <div class="container">
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title"><center>Seleccione el tipo de ejercicio deseado.</center></h3>
+    <h3 class="panel-title"><center>Confirmación.</center></h3>
   </div>
   <div class="panel-body">
     <div class="row">
-		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>Profesor/Matematicas/crearEjercicioMates.jsp"><center><img src="<%=constantesClass.urlRaiz%>images/001_small.jpg" height="200" alt="Ejercicio de matemáticas" class="img-thumbnail"><br/>Matemáticas</center></a></div>
-		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>NoEncontrado.jsp"><center><img src="<%=constantesClass.urlRaiz%>images/grama.jpg" height="200" alt="Ejercicio de gramatica" class="img-thumbnail"><br/>Gramática</center></a></div>
-	</div>
-	<div class="row">
-		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>NoEncontrado.jsp"><center><img src="<%=constantesClass.urlRaiz%>images/logi.jpg" height="200" alt="Ejercicio de logica" class="img-thumbnail"><br/>Lógica</center></a></div>
-		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>NoEncontrado.jsp"><center><img src="<%=constantesClass.urlRaiz%>images/figu.jpg" height="200" alt="Ejercicio de figuras" class="img-thumbnail"><br/>Figuras</center></a></div>
+		<div class="col-md-12"><center><img src="<%=constantesClass.urlRaiz%>images/error.png" height="200" alt="Ejercicio de matemáticas" class="img-thumbnail"><br/><br/>Hubo un error durante el guardado del ejercicio, inténtelo de nuevo o contacte al administrador.</center></div>
 	</div>
   </div>
 </div>
@@ -53,18 +48,13 @@
 		<div class="col-md-12">
 			<center><a href="#">Acerca de</a></center>
 			<center><a href="https://twitter.com/ActiWeb" class="twitter-follow-button" data-show-count="false">Follow @ActiWeb</a></center>
-			<center><div class="fb-follow" data-href="https://www.facebook.com/zuck" data-layout="button" data-show-faces="false"></div></center>
+                        <center><div class="fb-follow" data-href="https://www.facebook.com/zuck" data-layout="button" data-show-faces="false"></div></center>
 			</div>
 	</div>
   </div>
 </div>
 </div>
 
-
-	
-
-	
-	
     <!-- Todos los plugins JavaScript de Bootstrap (también puedes
          incluir archivos JavaScript individuales de los únicos
          plugins que utilices) -->

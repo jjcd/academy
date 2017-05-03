@@ -11,10 +11,12 @@
      <%
          List<DivisionClass> listaEjs = new ArrayList<DivisionClass>();
          List<DivisionClass> listaEjs2 = new ArrayList<DivisionClass>();
+         List<DivisionClass> listaEjs3 = new ArrayList<DivisionClass>();
          
          if((request.getAttribute("listaEjerciciosResueltos")!=null)&&(request.getAttribute("listaEjerciciosResueltos2")!=null)){
              listaEjs = (List<DivisionClass>)request.getAttribute("listaEjerciciosResueltos");
              listaEjs2 = (List<DivisionClass>)request.getAttribute("listaEjerciciosResueltos2");
+             listaEjs3 = (List<DivisionClass>)request.getAttribute("listaEjerciciosResueltos3");
          }
      
      %>
@@ -115,6 +117,38 @@
 
     </div>
   </div>        
+
+  <div class="panel-body">
+    <div class="list-group">
+        
+        <%-- Aqui la enumeracion recogida de bd --%>
+       <%for(DivisionClass dc : listaEjs3){
+           String valor = dc.getValor();
+           String sol = dc.getSolucion();
+           
+           String decimalesDivd = sol.split(":")[sol.split(":").length-2];
+           String decimalesDivs = sol.split(":")[sol.split(":").length-1];
+           
+           //vamos a comprobar cuantos decimales tenemos y a partir de ahí
+           //cortamos el dividemos y ponemos los decimales al divisor
+           int decimalesDivdInt = Integer.parseInt(decimalesDivd);
+           int decimalesDivsInt = Integer.parseInt(decimalesDivs);
+           
+           //guardamos dividendo y divisor
+           String dividendo = valor.split(":")[0];
+           String divisor = valor.split(":")[1];
+           
+           //dividendo = dividendo.substring(0, dividendo.length() - decimalesInt);
+           dividendo = dividendo.substring(0, dividendo.length() - decimalesDivdInt) + "," + dividendo.substring(dividendo.length() - decimalesDivdInt, dividendo.length());
+           divisor = divisor.substring(0, divisor.length() - decimalesDivsInt) + "," + divisor.substring(divisor.length() - decimalesDivsInt, divisor.length());
+       %>
+            <a href="<%=constantesClass.urlRaiz%>generarRevisionDivisionDAMN?valor=<%=dc.getValor()%>&solucion=<%=dc.getSolucion()%>&solucionusuario=<%=dc.getSolucionUsuario()%>"><button type="button" class="list-group-item list-group-item-action"><%=dividendo%> / <%=divisor%> usuario <%=dc.getUsuario()%></button></a>
+        <%}%>
+        
+      
+
+    </div>
+  </div> 
         
 </div>
 <div class="panel panel-primary">

@@ -53,7 +53,7 @@
 		<div class="col-md-12">
 			<center><a href="#">Acerca de</a></center>
 			<center><a href="https://twitter.com/ActiWeb" class="twitter-follow-button" data-show-count="false">Follow @ActiWeb</a></center>
-			<div class="fb-follow" data-href="https://www.facebook.com/zuck" data-layout="button" data-show-faces="false"></div>
+                        <center><div class="fb-follow" data-href="https://www.facebook.com/zuck" data-layout="button" data-show-faces="false"></div></center>
 			</div>
 	</div>
   </div>
