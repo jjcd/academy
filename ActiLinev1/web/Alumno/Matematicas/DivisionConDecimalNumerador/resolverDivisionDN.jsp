@@ -39,9 +39,13 @@
             
             String posicionDecimal = "";
             
+            String idDivision = "";
+            
             //List<Integer> ceros = (ArrayList<Integer>) request.getAttribute("ceros");
             
-            if((request.getAttribute("dividendo")!=null)&&(request.getAttribute("divisor")!=null)&&(request.getAttribute("ceros")!=null)&&(request.getAttribute("decimales")!=null)){        
+            if((request.getAttribute("dividendo")!=null)&&(request.getAttribute("divisor")!=null)&&(request.getAttribute("ceros")!=null)&&(request.getAttribute("decimales")!=null)&&(request.getParameter("idDivision")!=null)){        
+                idDivision = request.getParameter("idDivision").toString();
+                
                 dividendo = request.getAttribute("dividendo").toString();
                 decimales = request.getAttribute("decimales").toString();
                 
@@ -400,6 +404,7 @@
     <input type="hidden" class="form-control" id="cocienteAlumBien" name="cocienteAlumBien" value="<%=cocienteString%>">
     <input type="hidden" class="form-control" id="restosAlumBien" name="restosAlumBien" value="<%=strSolucionComas%>">
     <input type="hidden" class="form-control" id="cerosAlumBien" name="cerosAlumBien" value="<%=cerosEnDivision%>">
+    <input type="hidden" class="form-control" id="idDivision" name="idDivision" value="<%=idDivision%>">
     
     <center><button type="submit" class="btn btn-default" id="enviarresultado">Enviar resultado</button></center>
     </form>

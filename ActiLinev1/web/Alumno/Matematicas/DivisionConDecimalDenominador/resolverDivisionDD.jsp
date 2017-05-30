@@ -38,8 +38,11 @@
             //Para guardar los ceros en formato cadena
             String cerosEnDivision="";
             String decimales="";
+            String idDivision = "";
             
-            if((request.getAttribute("dividendo")!=null)&&(request.getAttribute("divisor")!=null)&&(request.getAttribute("ceros")!=null)&&(request.getAttribute("decimales")!=null)){        
+            if((request.getAttribute("dividendo")!=null)&&(request.getAttribute("divisor")!=null)&&(request.getAttribute("ceros")!=null)&&(request.getAttribute("decimales")!=null)&&(request.getParameter("idDivision")!=null)){        
+                //Recogemos el id que corresponde a la division
+                idDivision = request.getParameter("idDivision").toString();
                 
                 dividendo = request.getAttribute("dividendo").toString();
                 decimales = request.getAttribute("decimales").toString();          
@@ -477,6 +480,7 @@
     <input type="hidden" class="form-control" id="restosAlumBien" name="restosAlumBien" value="<%=strSolucionComas%>">
     <input type="hidden" class="form-control" id="cerosAlumBien" name="cerosAlumBien" value="<%=cerosEnDivision%>">
     <input type="hidden" class="form-control" id="decimalesAlumBien" name="decimalesAlumBien" value="<%=decimales%>">
+    <input type="hidden" class="form-control" id="idDivision" name="idDivision" value="<%=idDivision%>">
     
     <center><button type="submit" class="btn btn-default" id="enviarresultado">Enviar resultado</button></center>
     </form>

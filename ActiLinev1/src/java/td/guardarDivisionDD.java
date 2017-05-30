@@ -61,7 +61,10 @@ public class guardarDivisionDD extends HttpServlet {
             
             restosAlum = restosAlum.substring(0,restosAlum.length()-1);
             
-            if((cerosBien!=null)&&(dividendo!=null)&&(divisor!=null)&&(cocienteBien!=null)&&(restosBien!=null)&&(cocienteAlum!=null)&&(restosAlum!=null)&&(decimalesCociente!=null)&&(!cerosBien.equals(""))&&(!dividendo.equals(""))&&(!divisor.equals(""))&&(!cocienteBien.equals(""))&&(!restosBien.equals(""))&&(!cocienteAlum.equals(""))&&(!restosAlum.equals(""))&&(!decimalesCociente.equals(""))){
+            //Recogemos el id de la division
+            String idDivision = request.getParameter("idDivision");            
+            
+            if((idDivision!=null)&&(cerosBien!=null)&&(dividendo!=null)&&(divisor!=null)&&(cocienteBien!=null)&&(restosBien!=null)&&(cocienteAlum!=null)&&(restosAlum!=null)&&(decimalesCociente!=null)&&(!cerosBien.equals(""))&&(!dividendo.equals(""))&&(!divisor.equals(""))&&(!cocienteBien.equals(""))&&(!restosBien.equals(""))&&(!cocienteAlum.equals(""))&&(!restosAlum.equals(""))&&(!decimalesCociente.equals(""))&&(!idDivision.equals(""))){
                 String valor = dividendo + ":" + divisor;
                 String solucion = cocienteBien + ":" + restosBien + ":" + cerosBien + ":" + decimalesCociente;
                 String solucionUsuario = cocienteAlum + ":" + restosAlum;
@@ -79,7 +82,7 @@ public class guardarDivisionDD extends HttpServlet {
             
                 Statement stmt = conn.createStatement();
             
-                String sql = "insert into EJERCICIORESUELTO values (null, '"+divisionObject.getValor()+"','"+divisionObject.getSolucion()+"','"+divisionObject.getSolucionUsuario()+"','"+divisionObject.getUsuario()+"','DIVDD')";
+                String sql = "insert into EJERCICIORESUELTO values (null, '"+divisionObject.getValor()+"','"+divisionObject.getSolucion()+"','"+divisionObject.getSolucionUsuario()+"','"+divisionObject.getUsuario()+"','DIVDD',"+ idDivision +")";
             
                 stmt.executeUpdate(sql);
             

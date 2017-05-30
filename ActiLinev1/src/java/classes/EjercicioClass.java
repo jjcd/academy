@@ -11,6 +11,7 @@ package classes;
  */
 public class EjercicioClass {
 
+    private String id;
     private String valor;
     private String web;
     private String tipoEjercicio;
@@ -21,6 +22,13 @@ public class EjercicioClass {
     }
     
     public EjercicioClass(String valor, String web, String tipoEjercicio) {
+        this.valor = valor;
+        this.web = web;
+        this.tipoEjercicio = tipoEjercicio;
+    }
+    
+    public EjercicioClass(String id, String valor, String web, String tipoEjercicio) {
+        this.id = id;
         this.valor = valor;
         this.web = web;
         this.tipoEjercicio = tipoEjercicio;
@@ -37,9 +45,9 @@ public class EjercicioClass {
     public String getTipoEjercicio(){
         return tipoEjercicio;
     }
-    
-    public EjercicioClass() {
+
+    public String getId() {
+        return id;
     }
-    
     
 }

@@ -56,7 +56,7 @@ public class consultaDivisionesDenDec extends HttpServlet {
                     ResultSet rst = stmt.executeQuery(sql);
                     
                     while (rst.next()) {
-                        EjercicioClass ej = new EjercicioClass(rst.getString("VALOR"),rst.getString("WEB"));
+                        EjercicioClass ej = new EjercicioClass(rst.getString("ID"),rst.getString("VALOR"),rst.getString("WEB"),rst.getString("TIPOEJERCICIO"));
                         listaEjercicios.add(ej); 
                     }
                     

@@ -35,10 +35,14 @@
             
             //Para guardar los ceros en formato cadena
             String cerosEnDivision="";
+            String idDivision = "";
             
             //List<Integer> ceros = (ArrayList<Integer>) request.getAttribute("ceros");
             
-            if((request.getParameter("dividendo")!=null)&&(request.getParameter("divisor")!=null)&&(request.getAttribute("ceros")!=null)){        
+            if((request.getParameter("dividendo")!=null)&&(request.getParameter("divisor")!=null)&&(request.getAttribute("ceros")!=null)&&(request.getParameter("idDivision")!=null)){        
+                //Recogemos el id que corresponde a la division
+                idDivision = request.getParameter("idDivision").toString();
+                
                 dividendo = request.getParameter("dividendo").toString();
                 
                 /*Partir el dividendo en diferentes caracteres*/
@@ -47,6 +51,7 @@
                 /*Fin partir dividendo en distintos*/
                 divisor = request.getParameter("divisor").toString();
                 
+                /*Calculamos el cociente solucion y transformamos en string*/
                 int cociInt = Integer.parseInt(dividendo) / Integer.parseInt(divisor);
                 
                 cocienteString = cociInt + "";
@@ -383,6 +388,7 @@
     <input type="hidden" class="form-control" id="cocienteAlumBien" name="cocienteAlumBien" value="<%=cocienteString%>">
     <input type="hidden" class="form-control" id="restosAlumBien" name="restosAlumBien" value="<%=strSolucionComas%>">
     <input type="hidden" class="form-control" id="cerosAlumBien" name="cerosAlumBien" value="<%=cerosEnDivision%>">
+    <input type="hidden" class="form-control" id="idDivision" name="idDivision" value="<%=idDivision%>">
     
     <center><button type="submit" class="btn btn-default" id="enviarresultado">Enviar resultado</button></center>
     </form>

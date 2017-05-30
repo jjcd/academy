@@ -38,22 +38,6 @@ public class guardarDivision extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
         
         
             String dividendo = request.getParameter("dividendoAlum");
@@ -74,16 +58,16 @@ public class guardarDivision extends HttpServlet {
             String restosAlum = request.getParameter("restosAlum");
             restosAlum = restosAlum.substring(0,restosAlum.length()-1);
             
-            if((cerosBien!=null)&&(dividendo!=null)&&(divisor!=null)&&(cocienteBien!=null)&&(restosBien!=null)&&(cocienteAlum!=null)&&(restosAlum!=null)&&(!cerosBien.equals(""))&&(!dividendo.equals(""))&&(!divisor.equals(""))&&(!cocienteBien.equals(""))&&(!restosBien.equals(""))&&(!cocienteAlum.equals(""))&&(!restosAlum.equals(""))){
+            //Recogemos el id de la division
+            String idDivision = request.getParameter("idDivision");
+            
+            if((idDivision!=null)&&(cerosBien!=null)&&(dividendo!=null)&&(divisor!=null)&&(cocienteBien!=null)&&(restosBien!=null)&&(cocienteAlum!=null)&&(restosAlum!=null)&&(!cerosBien.equals(""))&&(!dividendo.equals(""))&&(!divisor.equals(""))&&(!cocienteBien.equals(""))&&(!restosBien.equals(""))&&(!cocienteAlum.equals(""))&&(!restosAlum.equals(""))&&(!idDivision.equals(""))){
                 String valor = dividendo + ":" + divisor;
                 String solucion = cocienteBien + ":" + restosBien + ":" + cerosBien;
                 String solucionUsuario = cocienteAlum + ":" + restosAlum;
                 String usuario = "userExample";
                 
-                DivisionClass divisionObject = new DivisionClass(valor, solucion, solucionUsuario, usuario);
-                
-                //request.setAttribute("divisionObject", divisionObject);            
-                //request.getRequestDispatcher("CrearEjercicio/InsertDivisionSQL.jsp").forward(request, response);
+                DivisionClass divisionObject = new DivisionClass(valor, solucion, solucionUsuario, usuario);               
                 
             try {
             
@@ -92,7 +76,7 @@ public class guardarDivision extends HttpServlet {
             
                 Statement stmt = conn.createStatement();
             
-                String sql = "insert into EJERCICIORESUELTO values (null, '"+divisionObject.getValor()+"','"+divisionObject.getSolucion()+"','"+divisionObject.getSolucionUsuario()+"','"+divisionObject.getUsuario()+"','DIVSS')";
+                String sql = "insert into EJERCICIORESUELTO values (null, '"+divisionObject.getValor()+"','"+divisionObject.getSolucion()+"','"+divisionObject.getSolucionUsuario()+"','"+divisionObject.getUsuario()+"','DIVSS',"+ idDivision +")";
             
                 stmt.executeUpdate(sql);
             
@@ -110,6 +94,21 @@ public class guardarDivision extends HttpServlet {
 
         }
             
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     /**

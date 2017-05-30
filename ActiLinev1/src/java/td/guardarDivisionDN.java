@@ -58,11 +58,15 @@ public class guardarDivisionDN extends HttpServlet {
             String restosAlum = request.getParameter("restosAlum");
             restosAlum = restosAlum.substring(0,restosAlum.length()-1);
             
-            if((cerosBien!=null)&&(dividendo!=null)&&(divisor!=null)&&(cocienteBien!=null)&&(restosBien!=null)&&(cocienteAlum!=null)&&(restosAlum!=null)&&(!cerosBien.equals(""))&&(!dividendo.equals(""))&&(!divisor.equals(""))&&(!cocienteBien.equals(""))&&(!restosBien.equals(""))&&(!cocienteAlum.equals(""))&&(!restosAlum.equals(""))){
+            //Recogemos el id de la division
+            String idDivision = request.getParameter("idDivision");
+            
+            if((idDivision!=null)&&(cerosBien!=null)&&(dividendo!=null)&&(divisor!=null)&&(cocienteBien!=null)&&(restosBien!=null)&&(cocienteAlum!=null)&&(restosAlum!=null)&&(!cerosBien.equals(""))&&(!dividendo.equals(""))&&(!divisor.equals(""))&&(!cocienteBien.equals(""))&&(!restosBien.equals(""))&&(!cocienteAlum.equals(""))&&(!restosAlum.equals(""))&&(!idDivision.equals(""))){
                 String valor = dividendo + ":" + divisor;
                 String solucion = cocienteBien + ":" + restosBien + ":" + cerosBien;
                 String solucionUsuario = cocienteAlum + ":" + restosAlum;
                 String usuario = "userExample";
+                
                 
                 DivisionClass divisionObject = new DivisionClass(valor, solucion, solucionUsuario, usuario);
                 
@@ -76,7 +80,7 @@ public class guardarDivisionDN extends HttpServlet {
             
                 Statement stmt = conn.createStatement();
             
-                String sql = "insert into EJERCICIORESUELTO values (null, '"+divisionObject.getValor()+"','"+divisionObject.getSolucion()+"','"+divisionObject.getSolucionUsuario()+"','"+divisionObject.getUsuario()+"','DIVDN')";
+                String sql = "insert into EJERCICIORESUELTO values (null, '"+divisionObject.getValor()+"','"+divisionObject.getSolucion()+"','"+divisionObject.getSolucionUsuario()+"','"+divisionObject.getUsuario()+"','DIVDN',"+ idDivision +")";
             
                 stmt.executeUpdate(sql);
             

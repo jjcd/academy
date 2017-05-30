@@ -58,7 +58,7 @@
         
         <%-- Aqui la enumeracion recogida de bd --%>
        <%for(EjercicioClass ec : listaEjs){%>
-       <a href="<%=ec.getWeb()%>"><button type="button" class="list-group-item list-group-item-action"><%=ec.getValor()%></button></a>
+       <a href="<%=ec.getWeb()%>&idDivision=<%=ec.getId()%>"><button type="button" class="list-group-item list-group-item-action"><%=ec.getValor()%></button></a>
         <%}%>
         
       

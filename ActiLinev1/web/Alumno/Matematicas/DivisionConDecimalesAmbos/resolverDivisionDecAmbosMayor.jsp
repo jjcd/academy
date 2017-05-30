@@ -41,7 +41,11 @@
             String decimalesDivs="";
             String decimalesSol="";
             
-            if((request.getAttribute("dividendo")!=null)&&(request.getAttribute("divisor")!=null)&&(request.getAttribute("ceros")!=null)&&(request.getAttribute("decimalesDivd")!=null)&&(request.getAttribute("decimalesDivs")!=null)){        
+            String idDivision = "";
+            
+            if((request.getAttribute("dividendo")!=null)&&(request.getAttribute("divisor")!=null)&&(request.getAttribute("ceros")!=null)&&(request.getAttribute("decimalesDivd")!=null)&&(request.getAttribute("decimalesDivs")!=null)&&(request.getParameter("idDivision")!=null)){        
+                //Recogemos el id que corresponde a la division
+                idDivision = request.getParameter("idDivision").toString();
                 
                 dividendo = request.getAttribute("dividendo").toString();
                 decimalesDivd = request.getAttribute("decimalesDivd").toString();
@@ -500,6 +504,8 @@
     
     <input type="hidden" class="form-control" id="decimalesAlumBienDivd" name="decimalesAlumBienDivd" value="<%=decimalesDivd%>">
     <input type="hidden" class="form-control" id="decimalesAlumBienDivs" name="decimalesAlumBienDivs" value="<%=decimalesDivs%>">
+    
+    <input type="hidden" class="form-control" id="idDivision" name="idDivision" value="<%=idDivision%>">    
     
     <center><button type="submit" class="btn btn-default" id="enviarresultado">Enviar resultado</button></center>
     </form>

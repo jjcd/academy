@@ -14,6 +14,11 @@ public class DivisionClass {
     private String solucion;
     private String solucionUsuario;
     private String usuario;
+    private String idDivison;
+
+    public String getIdDivison() {
+        return idDivison;
+    }
     
     public DivisionClass(){
         
