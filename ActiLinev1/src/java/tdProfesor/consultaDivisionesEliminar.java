@@ -5,7 +5,7 @@
  */
 package tdProfesor;
 
-import classes.DivisionClass;
+import classes.EjercicioClass;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -28,8 +28,8 @@ import td.guardarDivision;
  *
  * @author JUAN JOSE
  */
-@WebServlet(name = "consultaRevisionesDivisionDAMN", urlPatterns = {"/consultaRevisionesDivisionDAMN"})
-public class consultaRevisionesDivisionDAMN extends HttpServlet {
+@WebServlet(name = "consultaDivisionesEliminar", urlPatterns = {"/consultaDivisionesEliminar"})
+public class consultaDivisionesEliminar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,31 +42,64 @@ public class consultaRevisionesDivisionDAMN extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         
                 try {
             
-                    List<DivisionClass> listaCorreccionesDIVSS = new ArrayList<DivisionClass>();
+                    List<EjercicioClass> listaEjerciciosSS = new ArrayList<EjercicioClass>();
+                    List<EjercicioClass> listaEjerciciosDN = new ArrayList<EjercicioClass>();
+                    List<EjercicioClass> listaEjerciciosDD = new ArrayList<EjercicioClass>();
+                    List<EjercicioClass> listaEjerciciosDAM = new ArrayList<EjercicioClass>();
                     
                     Class.forName("org.h2.Driver");
                     Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
 
                     Statement stmt = conn.createStatement();
 
-                 
-                    String sql = "SELECT * FROM EJERCICIORESUELTO WHERE TIPOEJERCICIO='DIVDAMN'";
+                    String sql = "SELECT * FROM EJERCICIO WHERE TIPOEJERCICIO='DIVSS'";
 
                     ResultSet rst = stmt.executeQuery(sql);
                     
                     while (rst.next()) {
-                        DivisionClass ej = new DivisionClass(rst.getString("VALOR"),rst.getString("SOLUCION"),rst.getString("SOLUCIONUSUARIO"),rst.getString("USUARIO"));
-                        listaCorreccionesDIVSS.add(ej); 
+                        EjercicioClass ej = new EjercicioClass(rst.getString("ID"),rst.getString("VALOR"),rst.getString("WEB"),rst.getString("TIPOEJERCICIO"));
+                        listaEjerciciosSS.add(ej); 
                     }
+                    
+                    sql = "SELECT * FROM EJERCICIO WHERE TIPOEJERCICIO='DIVDN'";
+
+                    rst = stmt.executeQuery(sql);
+                    
+                    while (rst.next()) {
+                        EjercicioClass ej = new EjercicioClass(rst.getString("ID"),rst.getString("VALOR"),rst.getString("WEB"),rst.getString("TIPOEJERCICIO"));
+                        listaEjerciciosDN.add(ej); 
+                    }
+                    
+                    sql = "SELECT * FROM EJERCICIO WHERE TIPOEJERCICIO='DIVDD'";
+
+                    rst = stmt.executeQuery(sql);
+                    
+                    while (rst.next()) {
+                        EjercicioClass ej = new EjercicioClass(rst.getString("ID"),rst.getString("VALOR"),rst.getString("WEB"),rst.getString("TIPOEJERCICIO"));
+                        listaEjerciciosDD.add(ej); 
+                    }                    
+                    
+                    sql = "SELECT * FROM EJERCICIO WHERE TIPOEJERCICIO='DIVAM'";
+
+                    rst = stmt.executeQuery(sql);
+                    
+                    while (rst.next()) {
+                        EjercicioClass ej = new EjercicioClass(rst.getString("ID"),rst.getString("VALOR"),rst.getString("WEB"),rst.getString("TIPOEJERCICIO"));
+                        listaEjerciciosDAM.add(ej); 
+                    }
+                    
                     
                     conn.close();
             
-                    request.setAttribute("listaEjerciciosResueltos", listaCorreccionesDIVSS);            
-                    request.getRequestDispatcher("Profesor/Matematicas/DivisionConDecimales/correccionDivisionesDAMY.jsp").forward(request, response);
+                    request.setAttribute("listaEjerciciosSS", listaEjerciciosSS);
+                    request.setAttribute("listaEjerciciosDN", listaEjerciciosDN); 
+                    request.setAttribute("listaEjerciciosDD", listaEjerciciosDD); 
+                    request.setAttribute("listaEjerciciosDAM", listaEjerciciosDAM); 
+                    
+                    request.getRequestDispatcher("Profesor/Matematicas/DivisionEliminar/eliminarDivisiones.jsp").forward(request, response);
                     
                 }   
                 catch (ClassNotFoundException ex) {
@@ -76,7 +109,6 @@ public class consultaRevisionesDivisionDAMN extends HttpServlet {
                     Logger.getLogger(guardarDivision.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
-    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

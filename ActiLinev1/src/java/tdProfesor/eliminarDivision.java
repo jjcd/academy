@@ -5,31 +5,20 @@
  */
 package tdProfesor;
 
-import classes.DivisionClass;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import td.guardarDivision;
 
 /**
  *
  * @author JUAN JOSE
  */
-@WebServlet(name = "consultaRevisionesDivisionDAMY", urlPatterns = {"/consultaRevisionesDivisionDAMY"})
-public class consultaRevisionesDivisionDAMY extends HttpServlet {
+@WebServlet(name = "eliminarDivision", urlPatterns = {"/eliminarDivision"})
+public class eliminarDivision extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,40 +32,13 @@ public class consultaRevisionesDivisionDAMY extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        if((request.getParameter("idDivision")!=null))
+        {
+            String idDivision = request.getParameter("idDivision");
+            
+            
+        }
         
-                try {
-            
-                    List<DivisionClass> listaCorreccionesDIVSS = new ArrayList<DivisionClass>();
-                    
-                    Class.forName("org.h2.Driver");
-                    Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
-
-                    Statement stmt = conn.createStatement();
-
-                 
-                    String sql = "SELECT * FROM EJERCICIORESUELTO WHERE TIPOEJERCICIO='DIVDAMY'";
-
-                    ResultSet rst = stmt.executeQuery(sql);
-                    
-                    while (rst.next()) {
-                        DivisionClass ej = new DivisionClass(rst.getString("VALOR"),rst.getString("SOLUCION"),rst.getString("SOLUCIONUSUARIO"),rst.getString("USUARIO"));
-                        listaCorreccionesDIVSS.add(ej); 
-                    }
-                    
-                    conn.close();
-            
-                    request.setAttribute("listaEjerciciosResueltos", listaCorreccionesDIVSS);            
-                    request.getRequestDispatcher("Profesor/Matematicas/DivisionConDecimales/correccionDivisionesDAMY.jsp").forward(request, response);
-                    
-                }   
-                catch (ClassNotFoundException ex) {
-                    Logger.getLogger(guardarDivision.class.getName()).log(Level.SEVERE, null, ex);
-                }       
-                catch (SQLException ex) {
-                    Logger.getLogger(guardarDivision.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

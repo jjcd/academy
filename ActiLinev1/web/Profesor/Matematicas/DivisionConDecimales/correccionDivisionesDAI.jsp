@@ -57,6 +57,7 @@
     <h3 class="panel-title"><center>Seleccione el ejercicio de matemáticas deseado.</center></h3>
   </div>
   <div class="panel-body">
+    <div>Divisiones con número de decimales igual en dividendo que en divisor:</div>
     <div class="list-group">
         
         <%-- Aqui la enumeracion recogida de bd --%>
@@ -78,7 +79,7 @@
            dividendo = dividendo.substring(0, dividendo.length() - decimalesInt) + "," + dividendo.substring(dividendo.length() - decimalesInt, dividendo.length());
            divisor = divisor.substring(0, divisor.length() - decimalesInt) + "," + divisor.substring(divisor.length() - decimalesInt, divisor.length());
        %>
-            <a href="<%=constantesClass.urlRaiz%>generarRevisionDivisionDAI?valor=<%=dc.getValor()%>&solucion=<%=dc.getSolucion()%>&solucionusuario=<%=dc.getSolucionUsuario()%>"><button type="button" class="list-group-item list-group-item-action"><%=dividendo%> / <%=divisor%> usuario <%=dc.getUsuario()%></button></a>
+            <a href="<%=constantesClass.urlRaiz%>generarRevisionDivisionDAI?valor=<%=dc.getValor()%>&solucion=<%=dc.getSolucion()%>&solucionusuario=<%=dc.getSolucionUsuario()%>"><button type="button" class="list-group-item list-group-item-action"><%=dividendo%> / <%=divisor%> | usuario: <%=dc.getUsuario()%></button></a>
         <%}%>
         
       
@@ -87,6 +88,7 @@
   </div>
         
   <div class="panel-body">
+    <div>Divisiones con número de decimales mayor en dividendo que en divisor:</div>
     <div class="list-group">
         
         <%-- Aqui la enumeracion recogida de bd --%>
@@ -110,7 +112,7 @@
            dividendo = dividendo.substring(0, dividendo.length() - decimalesDivdInt) + "," + dividendo.substring(dividendo.length() - decimalesDivdInt, dividendo.length());
            divisor = divisor.substring(0, divisor.length() - decimalesDivsInt) + "," + divisor.substring(divisor.length() - decimalesDivsInt, divisor.length());
        %>
-            <a href="<%=constantesClass.urlRaiz%>generarRevisionDivisionDAMY?valor=<%=dc.getValor()%>&solucion=<%=dc.getSolucion()%>&solucionusuario=<%=dc.getSolucionUsuario()%>"><button type="button" class="list-group-item list-group-item-action"><%=dividendo%> / <%=divisor%> usuario <%=dc.getUsuario()%></button></a>
+            <a href="<%=constantesClass.urlRaiz%>generarRevisionDivisionDAMY?valor=<%=dc.getValor()%>&solucion=<%=dc.getSolucion()%>&solucionusuario=<%=dc.getSolucionUsuario()%>"><button type="button" class="list-group-item list-group-item-action"><%=dividendo%> / <%=divisor%> | usuario: <%=dc.getUsuario()%></button></a>
         <%}%>
         
       
@@ -119,6 +121,8 @@
   </div>        
 
   <div class="panel-body">
+      
+    <div>Divisiones con número de decimales menor en dividendo que en divisor:</div>
     <div class="list-group">
         
         <%-- Aqui la enumeracion recogida de bd --%>
@@ -142,7 +146,7 @@
            dividendo = dividendo.substring(0, dividendo.length() - decimalesDivdInt) + "," + dividendo.substring(dividendo.length() - decimalesDivdInt, dividendo.length());
            divisor = divisor.substring(0, divisor.length() - decimalesDivsInt) + "," + divisor.substring(divisor.length() - decimalesDivsInt, divisor.length());
        %>
-            <a href="<%=constantesClass.urlRaiz%>generarRevisionDivisionDAMN?valor=<%=dc.getValor()%>&solucion=<%=dc.getSolucion()%>&solucionusuario=<%=dc.getSolucionUsuario()%>"><button type="button" class="list-group-item list-group-item-action"><%=dividendo%> / <%=divisor%> usuario <%=dc.getUsuario()%></button></a>
+            <a href="<%=constantesClass.urlRaiz%>generarRevisionDivisionDAMN?valor=<%=dc.getValor()%>&solucion=<%=dc.getSolucion()%>&solucionusuario=<%=dc.getSolucionUsuario()%>"><button type="button" class="list-group-item list-group-item-action"><%=dividendo%> / <%=divisor%> | usuario: <%=dc.getUsuario()%></button></a>
         <%}%>
         
       
