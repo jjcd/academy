@@ -89,7 +89,7 @@
        <%for(EjercicioClass ec : listaEjs){%>
         <form action="<%=constantesClass.urlRaiz%>eliminarDivision" id="form<%=ec.getId()%>">
             <input type="hidden" value="<%=ec.getId()%>" name="idDivision" id="idDivision"/>            
-            <li class="list-group-item"><input type="button" name="btn" value="<%=ec.getValor()%>" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-default" onclick="clickEliminar('form<%=ec.getId()%>')"/> <span class="badge">12</span></li>
+            <li class="list-group-item"><input type="button" name="btn" value="<%=ec.getValor()%>" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-default" onclick="clickEliminar('form<%=ec.getId()%>')"/> <span><img src="<%=constantesClass.urlRaiz%>bootstrap/paperbin.png"/></span></li>
 
         </form>
         <%}%>
@@ -104,7 +104,7 @@
        <%for(EjercicioClass ec : listaEjs2){%>
         <form action="<%=constantesClass.urlRaiz%>eliminarDivision" id="form<%=ec.getId()%>">
             <input type="hidden" value="<%=ec.getId()%>" name="idDivision" id="idDivision"/>            
-            <li class="list-group-item"><input type="button" name="btn" value="<%=ec.getValor()%>" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-default" onclick="clickEliminar('form<%=ec.getId()%>')"/> <span class="badge">12</span></li>
+            <li class="list-group-item"><input type="button" name="btn" value="<%=ec.getValor()%>" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-default" onclick="clickEliminar('form<%=ec.getId()%>')"/> <span><img src="<%=constantesClass.urlRaiz%>bootstrap/paperbin.png"/></span></li>
 
         </form>
         <%}%>
@@ -119,7 +119,7 @@
        <%for(EjercicioClass ec : listaEjs3){%>
         <form action="<%=constantesClass.urlRaiz%>eliminarDivision" id="form<%=ec.getId()%>">
             <input type="hidden" value="<%=ec.getId()%>" name="idDivision" id="idDivision"/>            
-            <li class="list-group-item"><input type="button" name="btn" value="<%=ec.getValor()%>" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-default" onclick="clickEliminar('form<%=ec.getId()%>')"/> <span class="badge">12</span></li>
+            <li class="list-group-item"><input type="button" name="btn" value="<%=ec.getValor()%>" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-default" onclick="clickEliminar('form<%=ec.getId()%>')"/> <span><img src="<%=constantesClass.urlRaiz%>bootstrap/paperbin.png"/></span></li>
 
         </form>
         <%}%>
@@ -143,7 +143,7 @@
        
         <form action="<%=constantesClass.urlRaiz%>eliminarDivision" id="form<%=ec.getId()%>">
             <input type="hidden" value="<%=ec.getId()%>" name="idDivision" id="idDivision"/>            
-            <li class="list-group-item"><input type="button" name="btn" value="<%=ec.getValor()%>" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-default" onclick="clickEliminar('form<%=ec.getId()%>')"/> <span class="badge">12</span></li>
+            <li class="list-group-item"><input type="button" name="btn" value="<%=ec.getValor()%>" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-default" onclick="clickEliminar('form<%=ec.getId()%>')"/> <span><img src="<%=constantesClass.urlRaiz%>bootstrap/paperbin.png"/></span></li>
 
         </form>
             

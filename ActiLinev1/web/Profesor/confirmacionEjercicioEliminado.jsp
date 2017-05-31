@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%@ page import="constantes.constantesClass" %>
+    <%@ page import="constantes.constantesClass"%>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ActiWeb - Portal de ejercicios</title>
+    <title>ActiWeb - portal de ejercicios</title>
  
     <!-- CSS de Bootstrap -->
     <link href="<%=constantesClass.urlRaiz%>bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -24,48 +24,40 @@
 	
 	</script>
 	
+	<script> 
+    $(function(){
+      $("#includedContent").load("<%=constantesClass.urlRaiz%>menuProfe.jsp"); 
+    });
+    </script> 
 	
-	<div class="container">
-	<div class="panel panel-primary">
+
+<div class="container">
+<div class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title"><center>ActiWeb</center></h3>
+    <h3 class="panel-title"><center>Confirmación.</center></h3>
   </div>
   <div class="panel-body">
-      <center>Sección no disponible en estos momentos, haga click en el siguiente enlace para volver al menú principal: <a href="<%=constantesClass.urlRaiz%>index.jsp"></br></br>Click aquí</a></center>
+    <div class="row">
+		<div class="col-md-12"><center><img src="<%=constantesClass.urlRaiz%>images/confirmation.png" height="200" alt="Ejercicio de matemáticas" class="img-thumbnail"><br/><br/>El ejercicio fue eliminado correctamente, para eliminar otro ejercicio existente seleccione la opción en el menú superior.</center></div>
+	</div>
   </div>
 </div>
-
 <div class="panel panel-primary">
   <div class="panel-body">
     <div class="row">
 		<div class="col-md-12">
 			<center><a href="#">Acerca de</a></center>
 			<center><a href="https://twitter.com/ActiWeb" class="twitter-follow-button" data-show-count="false">Follow @ActiWeb</a></center>
-			<center><div class="fb-follow" data-href="https://www.facebook.com/zuck" data-layout="button" data-show-faces="false"></div></center>
+                        <center><div class="fb-follow" data-href="https://www.facebook.com/zuck" data-layout="button" data-show-faces="false"></div></center>
 			</div>
 	</div>
   </div>
 </div>
 </div>
-	
 
-	
-	
     <!-- Todos los plugins JavaScript de Bootstrap (también puedes
          incluir archivos JavaScript individuales de los únicos
          plugins que utilices) -->
-    <script src="<%=constantesClass.urlRaiz%>bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
   </body>
-  
-     <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.6&appId=729544183797639";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
-
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-
 </html>
