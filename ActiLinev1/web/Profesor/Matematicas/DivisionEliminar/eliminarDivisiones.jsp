@@ -83,70 +83,81 @@
     <h3 class="panel-title"><center>Seleccione el ejercicio de matemáticas deseado.</center></h3>
   </div>
   <div class="panel-body">
-    <div class="list-group">
+    <ul class="list-group">
         
         <%-- Aqui la enumeracion recogida de bd --%>
        <%for(EjercicioClass ec : listaEjs){%>
-       <a href="<%=ec.getWeb()%>&idDivision=<%=ec.getId()%>"><button type="button" class="list-group-item list-group-item-action"><%=ec.getValor()%></button></a>
+        <form action="<%=constantesClass.urlRaiz%>eliminarDivision" id="form<%=ec.getId()%>">
+            <input type="hidden" value="<%=ec.getId()%>" name="idDivision" id="idDivision"/>            
+            <li class="list-group-item"><input type="button" name="btn" value="<%=ec.getValor()%>" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-default" onclick="clickEliminar('form<%=ec.getId()%>')"/> <span class="badge">12</span></li>
+
+        </form>
         <%}%>
         
-      
-
-    </div>
+    </ul> 
   </div>
         
   <div class="panel-body">
-    <div class="list-group">
+    <ul class="list-group">
         
         <%-- Aqui la enumeracion recogida de bd --%>
        <%for(EjercicioClass ec : listaEjs2){%>
-       <a href="<%=ec.getWeb()%>&idDivision=<%=ec.getId()%>"><button type="button" class="list-group-item list-group-item-action"><%=ec.getValor()%></button></a>
+        <form action="<%=constantesClass.urlRaiz%>eliminarDivision" id="form<%=ec.getId()%>">
+            <input type="hidden" value="<%=ec.getId()%>" name="idDivision" id="idDivision"/>            
+            <li class="list-group-item"><input type="button" name="btn" value="<%=ec.getValor()%>" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-default" onclick="clickEliminar('form<%=ec.getId()%>')"/> <span class="badge">12</span></li>
+
+        </form>
         <%}%>
         
-      
-
-    </div>
+    </ul> 
   </div>
         
   <div class="panel-body">
-    <div class="list-group">
+    <ul class="list-group">
         
         <%-- Aqui la enumeracion recogida de bd --%>
        <%for(EjercicioClass ec : listaEjs3){%>
-       <a href="<%=ec.getWeb()%>&idDivision=<%=ec.getId()%>"><button type="button" class="list-group-item list-group-item-action"><%=ec.getValor()%></button></a>
+        <form action="<%=constantesClass.urlRaiz%>eliminarDivision" id="form<%=ec.getId()%>">
+            <input type="hidden" value="<%=ec.getId()%>" name="idDivision" id="idDivision"/>            
+            <li class="list-group-item"><input type="button" name="btn" value="<%=ec.getValor()%>" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-default" onclick="clickEliminar('form<%=ec.getId()%>')"/> <span class="badge">12</span></li>
+
+        </form>
         <%}%>
         
-      
+    </ul> 
 
-    </div>
+
   </div>
         
   <div class="panel-body">
-    <div class="list-group">
+      
+       <ul class="list-group">
+            
+
+ 
+      
+
         
         <%-- Aqui la enumeracion recogida de bd --%>
        <%for(EjercicioClass ec : listaEjs4){%>
        
-       <form action="<%=constantesClass.urlRaiz%>eliminarDivision" id="form<%=ec.getId()%>">
-           <input type="hidden" value="<%=ec.getId()%>" name="idDivision" id="idDivision"/>            
-           <input type="button" name="btn" value="<%=ec.getValor()%>" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-default" onclick="clickEliminar('form<%=ec.getId()%>')"/>
-        
-       </form>
+        <form action="<%=constantesClass.urlRaiz%>eliminarDivision" id="form<%=ec.getId()%>">
+            <input type="hidden" value="<%=ec.getId()%>" name="idDivision" id="idDivision"/>            
+            <li class="list-group-item"><input type="button" name="btn" value="<%=ec.getValor()%>" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-default" onclick="clickEliminar('form<%=ec.getId()%>')"/> <span class="badge">12</span></li>
+
+        </form>
             
         <%}%>
         
       
 
-    </div>
+        </ul>
   </div>      
  
         
         
 </div>
    
-
-            <input type="button" name="btn" value="Submit" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-default" onclick="clickEliminar('hola')"/>
-
         
 <div class="panel panel-primary">
   <div class="panel-body">
