@@ -41,7 +41,7 @@
             var divisorString = $("#divisor").val();
             var divisorArray = divisorString.split(',');
             
-            if((dividendoString==="")||(divisorString==="")||(dividendoArray.length !== 1)||(divisorArray.length !== 1)||(!comprobarArrayNumeros(dividendoArray))||(!comprobarArrayNumeros(divisorArray))){
+            if((dividendoString==="")||(divisorString==="")||(dividendoArray.length !== 1)||(divisorArray.length !== 1)||(!comprobarArrayNumeros(dividendoArray))||(!comprobarArrayNumeros(divisorArray))||( parseInt(dividendoString) < parseInt(divisorString)) ){
                 $('#myModal').modal('show');
             
                 e.preventDefault(e);                                   
@@ -111,7 +111,7 @@
         <h4 class="modal-title" id="modal-title">Error en los valores introducidos.</h4>
       </div>
       <div class="modal-body" id="modal-body">
-          <p>Por favor, introduzca un número natural válido.</p>
+          <p>Por favor, introduzca un número natural válido.<br/></br>El valor del dividendo debe ser mayor que el del divisor.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

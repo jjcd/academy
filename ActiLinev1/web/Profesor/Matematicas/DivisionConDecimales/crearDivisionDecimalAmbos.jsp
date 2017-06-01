@@ -40,7 +40,7 @@
             var dividendoArray = dividendoString.split(',');
             var divisorArray = divisorString.split(',');
             
-            if((dividendoString!="")&&(divisorString!="")&&(dividendoArray.length === 2)&&(divisorArray.length === 2)&&(comprobarArrayNumeros(dividendoArray))&&(comprobarArrayNumeros(divisorArray))){
+            if((dividendoString!="")&&(divisorString!="")&&(dividendoArray.length === 2)&&(divisorArray.length === 2)&&(comprobarArrayNumeros(dividendoArray))&&(comprobarArrayNumeros(divisorArray))&&( (parseFloat(dividendoString.replace(",", "."))) >= (parseFloat(divisorString.replace(",", ".")))  )){
                 $("#decimalesDividendo").val(dividendoArray[1].length);
                 $("#decimalesDivisor").val(divisorArray[1].length);                                    
             }
@@ -128,7 +128,7 @@
         <h4 class="modal-title" id="modal-title">Error en los valores introducidos.</h4>
       </div>
       <div class="modal-body" id="modal-body">
-          <p>Por favor, introduzca ambos números válidos con decimales (Ejemplo 23,241).</p>
+          <p>Por favor, introduzca ambos números válidos con decimales (Ejemplo 23,241).<br/></br>El valor del dividendo debe ser mayor que el del divisor.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
