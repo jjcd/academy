@@ -38,7 +38,10 @@
             var dividendoString = $("#dividendo").val();
             var dividendoArray = dividendoString.split(',');
             
-            if(dividendoArray.length === 2){
+            var divisorString = $("#divisor").val();
+            var divisorArray = divisorString.split(',');
+            
+            if((dividendoString!="")&&(divisorString!="")&&(dividendoArray.length === 2)&&(divisorArray.length === 1)&&(comprobarArrayNumeros(dividendoArray))&&(comprobarArrayNumeros(divisorArray))){
                 $("#decimales").val(dividendoArray[1].length);                                    
             }
             else
@@ -49,6 +52,19 @@
             }
                 
             });
+            
+            function comprobarArrayNumeros(array)
+            {
+                var sonNumeros = true;
+
+                for(var i=0;i<array.length;i++){
+                    if(isNaN(array[i])){
+                        sonNumeros = false;
+                    }
+                }
+
+                return sonNumeros;
+            }
         });
     </script> 
 	

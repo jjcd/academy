@@ -47,12 +47,12 @@
 	
 	</script>
 	
-	<script> 
-    $(function(){
-      $("#includedContent").load("<%=constantesClass.urlRaiz%>menualumno.jsp"); 
-      
-      
-    });
+    <script> 
+        $(function(){
+          $("#includedContent").load("<%=constantesClass.urlRaiz%>menualumno.jsp"); 
+
+
+        });
     </script>
     
     <script type = "text/javascript">

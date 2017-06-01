@@ -38,7 +38,10 @@
             var divisorString = $("#divisor").val();
             var divisorArray = divisorString.split(',');
             
-            if(divisorArray.length === 2){
+            var dividendoString = $("#dividendo").val();
+            var dividendoArray = dividendoString.split(',');
+            
+            if((dividendoString!="")&&(divisorString!="")&&(divisorArray.length === 2)&&(dividendoArray.length === 1)&&(comprobarArrayNumeros(dividendoArray))&&(comprobarArrayNumeros(divisorArray))){
                 $("#decimales").val(divisorArray[1].length);                                    
             }
             else
@@ -49,6 +52,19 @@
             }
                 
             });
+            
+            function comprobarArrayNumeros(array)
+            {
+                var sonNumeros = true;
+
+                for(var i=0;i<array.length;i++){
+                    if(isNaN(array[i])){
+                        sonNumeros = false;
+                    }
+                }
+
+                return sonNumeros;
+            }
         });
     </script> 
 	
@@ -56,7 +72,7 @@
 <div class="container">
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title"><center>Introduzca divisor y dividendo (dividendo con decimales, usar la coma "," ).</center></h3>
+    <h3 class="panel-title"><center>Introduzca divisor y dividendo (divisor con decimales, usar la coma "," ).</center></h3>
   </div>
   <div class="panel-body">
 <form id="formEnviar"  method="GET" action="<%=constantesClass.urlRaiz%>guardarEjercicioDivisionDDProfesor">

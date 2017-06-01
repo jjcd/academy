@@ -26,9 +26,43 @@
 	</script>
 	
 	<script> 
-    $(function(){
-      $("#includedContent").load("<%=constantesClass.urlRaiz%>menuProfe.jsp"); 
-    });
+        $(function(){
+          $("#includedContent").load("<%=constantesClass.urlRaiz%>menuProfe.jsp"); 
+        });
+    
+        //Para controlar que todo este bien
+        $(document).ready(function() {
+            
+            $("#formEnviar").submit(function(e){
+                
+            var dividendoString = $("#dividendo").val();
+            var dividendoArray = dividendoString.split(',');
+            
+            var divisorString = $("#divisor").val();
+            var divisorArray = divisorString.split(',');
+            
+            if((dividendoString==="")||(divisorString==="")||(dividendoArray.length !== 1)||(divisorArray.length !== 1)||(!comprobarArrayNumeros(dividendoArray))||(!comprobarArrayNumeros(divisorArray))){
+                $('#myModal').modal('show');
+            
+                e.preventDefault(e);                                   
+            }
+                
+            });
+            
+            function comprobarArrayNumeros(array)
+            {
+                var sonNumeros = true;
+
+                for(var i=0;i<array.length;i++){
+                    if(isNaN(array[i])){
+                        sonNumeros = false;
+                    }
+                }
+
+                return sonNumeros;
+            }
+        });
+    
     </script> 
 	
 
@@ -38,7 +72,7 @@
     <h3 class="panel-title"><center>Introduzca dividendo y divisor.</center></h3>
   </div>
   <div class="panel-body">
-<form  method="GET" action="<%=constantesClass.urlRaiz%>guardarEjercicioDivisionSSProfesor">
+<form id="formEnviar"  method="GET" action="<%=constantesClass.urlRaiz%>guardarEjercicioDivisionSSProfesor">
   <div class="form-group">
     <label for="number">Dividendo:</label>
     <input type="text" class="form-control" id="dividendo" name="dividendo" maxlength="7">
@@ -67,7 +101,25 @@
 
 
 	
+  <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" id="modal-title">Error en los valores introducidos.</h4>
+      </div>
+      <div class="modal-body" id="modal-body">
+          <p>Por favor, introduzca un número natural válido.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+  </div>
 	
 	
     <!-- Todos los plugins JavaScript de Bootstrap (también puedes
