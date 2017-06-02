@@ -57,8 +57,25 @@
     <div class="list-group">
         
         <%-- Aqui la enumeracion recogida de bd --%>
-       <%for(DivisionClass dc : listaEjs){%>
-            <a href="<%=constantesClass.urlRaiz%>generarRevisionDivisionDN?valor=<%=dc.getValor()%>&solucion=<%=dc.getSolucion()%>&solucionusuario=<%=dc.getSolucionUsuario()%>"><button type="button" class="list-group-item list-group-item-action"><%=dc.getValor()%> usuario <%=dc.getUsuario()%></button></a>
+       <%for(DivisionClass dc : listaEjs){
+           String valor = dc.getValor();
+           String sol = dc.getSolucion();
+           
+           String decimales = (sol.split(":")[0]).split(",")[1];
+           
+           //vamos a comprobar cuantos decimales tenemos y a partir de ahí
+           //cortamos el dividemos y ponemos los decimales al divisor
+           int decimalesInt = decimales.length();
+           
+           //guardamos dividendo y divisor
+           String dividendo = valor.split(":")[0];
+           String divisor = valor.split(":")[1];
+           
+           //divisor = divisor.substring(0, divisor.length() - decimalesInt);
+            dividendo = dividendo.substring(0, dividendo.length() - decimalesInt) + "," + dividendo.substring(dividendo.length() - decimalesInt, dividendo.length());
+        %>
+            <a href="<%=constantesClass.urlRaiz%>generarRevisionDivisionDN?valor=<%=dc.getValor()%>&solucion=<%=dc.getSolucion()%>&solucionusuario=<%=dc.getSolucionUsuario()%>"><button type="button" class="list-group-item list-group-item-action"><%=dividendo%> : <%=divisor%> | usuario <%=dc.getUsuario()%></button></a>
+            
         <%}%>
         
       

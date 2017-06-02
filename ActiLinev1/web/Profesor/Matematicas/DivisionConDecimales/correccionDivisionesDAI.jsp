@@ -79,7 +79,7 @@
            dividendo = dividendo.substring(0, dividendo.length() - decimalesInt) + "," + dividendo.substring(dividendo.length() - decimalesInt, dividendo.length());
            divisor = divisor.substring(0, divisor.length() - decimalesInt) + "," + divisor.substring(divisor.length() - decimalesInt, divisor.length());
        %>
-            <a href="<%=constantesClass.urlRaiz%>generarRevisionDivisionDAI?valor=<%=dc.getValor()%>&solucion=<%=dc.getSolucion()%>&solucionusuario=<%=dc.getSolucionUsuario()%>"><button type="button" class="list-group-item list-group-item-action"><%=dividendo%> / <%=divisor%> | usuario: <%=dc.getUsuario()%></button></a>
+            <a href="<%=constantesClass.urlRaiz%>generarRevisionDivisionDAI?valor=<%=dc.getValor()%>&solucion=<%=dc.getSolucion()%>&solucionusuario=<%=dc.getSolucionUsuario()%>"><button type="button" class="list-group-item list-group-item-action"><%=dividendo%> : <%=divisor%> | usuario: <%=dc.getUsuario()%></button></a>
         <%}%>
         
       
@@ -112,7 +112,7 @@
            dividendo = dividendo.substring(0, dividendo.length() - decimalesDivdInt) + "," + dividendo.substring(dividendo.length() - decimalesDivdInt, dividendo.length());
            divisor = divisor.substring(0, divisor.length() - decimalesDivsInt) + "," + divisor.substring(divisor.length() - decimalesDivsInt, divisor.length());
        %>
-            <a href="<%=constantesClass.urlRaiz%>generarRevisionDivisionDAMY?valor=<%=dc.getValor()%>&solucion=<%=dc.getSolucion()%>&solucionusuario=<%=dc.getSolucionUsuario()%>"><button type="button" class="list-group-item list-group-item-action"><%=dividendo%> / <%=divisor%> | usuario: <%=dc.getUsuario()%></button></a>
+            <a href="<%=constantesClass.urlRaiz%>generarRevisionDivisionDAMY?valor=<%=dc.getValor()%>&solucion=<%=dc.getSolucion()%>&solucionusuario=<%=dc.getSolucionUsuario()%>"><button type="button" class="list-group-item list-group-item-action"><%=dividendo%> : <%=divisor%> | usuario: <%=dc.getUsuario()%></button></a>
         <%}%>
         
       
@@ -146,7 +146,7 @@
            dividendo = dividendo.substring(0, dividendo.length() - decimalesDivdInt) + "," + dividendo.substring(dividendo.length() - decimalesDivdInt, dividendo.length());
            divisor = divisor.substring(0, divisor.length() - decimalesDivsInt) + "," + divisor.substring(divisor.length() - decimalesDivsInt, divisor.length());
        %>
-            <a href="<%=constantesClass.urlRaiz%>generarRevisionDivisionDAMN?valor=<%=dc.getValor()%>&solucion=<%=dc.getSolucion()%>&solucionusuario=<%=dc.getSolucionUsuario()%>"><button type="button" class="list-group-item list-group-item-action"><%=dividendo%> / <%=divisor%> | usuario: <%=dc.getUsuario()%></button></a>
+            <a href="<%=constantesClass.urlRaiz%>generarRevisionDivisionDAMN?valor=<%=dc.getValor()%>&solucion=<%=dc.getSolucion()%>&solucionusuario=<%=dc.getSolucionUsuario()%>"><button type="button" class="list-group-item list-group-item-action"><%=dividendo%> : <%=divisor%> | usuario: <%=dc.getUsuario()%></button></a>
         <%}%>
         
       

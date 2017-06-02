@@ -181,7 +181,7 @@
         
         //var contadorPasos = 0;
         $(function(){
-            $("#includedContent").load("<%=constantesClass.urlRaiz%>menualumno.jsp"); 
+            $("#includedContent").load("<%=constantesClass.urlRaiz%>menuProfe.jsp"); 
             
             $("#enviarresultado").prop( "disabled", true );
             

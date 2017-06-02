@@ -74,7 +74,7 @@
            dividendo = dividendo.substring(0, dividendo.length() - decimalesInt);
            divisor = divisor.substring(0, divisor.length() - decimalesInt) + "," + divisor.substring(divisor.length() - decimalesInt, divisor.length());
        %>
-            <a href="<%=constantesClass.urlRaiz%>generarRevisionDivisionDD?valor=<%=dc.getValor()%>&solucion=<%=dc.getSolucion()%>&solucionusuario=<%=dc.getSolucionUsuario()%>"><button type="button" class="list-group-item list-group-item-action"><%=dividendo%> / <%=divisor%> usuario <%=dc.getUsuario()%></button></a>
+            <a href="<%=constantesClass.urlRaiz%>generarRevisionDivisionDD?valor=<%=dc.getValor()%>&solucion=<%=dc.getSolucion()%>&solucionusuario=<%=dc.getSolucionUsuario()%>"><button type="button" class="list-group-item list-group-item-action"><%=dividendo%> : <%=divisor%> | usuario <%=dc.getUsuario()%></button></a>
         <%}%>
         
       
