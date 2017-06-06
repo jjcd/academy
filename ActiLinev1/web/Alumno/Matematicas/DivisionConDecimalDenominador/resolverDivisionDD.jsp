@@ -176,7 +176,7 @@
 
                 strPrimero = "";
                 if(i===0){
-                    strPrimero = "<input type='text' class='form-control' id='cocienteInput' name='cocienteInput'>";
+                    strPrimero = "<input type='text' class='form-control' id='cocienteInput' name='cocienteInput' onkeypress='return isNumberKeyCociente(event)'  maxlength='7'>";
                 }
 
                 //Anterior para pintar los input en el cociente
@@ -202,7 +202,7 @@
                         if((contAuxTab<contadorTabulado)||(contAuxPintar>=solucionActual.length))
                         {
                             
-                            inputs += "<input type='text' required class='form-control' size='1' style='visibility:hidden;'>";
+                            inputs += "<input type='text' class='form-control' size='1' style='visibility:hidden;' onkeypress='return isNumberKey(event)' maxlength='1'>";
                             if(x<nInputs-1){
                                inputs += "<span class='input-group-addon' style='visibility:hidden;'></span>";
                             }
@@ -211,7 +211,7 @@
                         }
                         else
                         {
-                            inputs += "<input type='text' required class='form-control' size='1' id='paso"+x+ i +"i'>";
+                            inputs += "<input type='text' class='form-control' size='1' id='paso"+x+ i +"i' onkeypress='return isNumberKey(event)' maxlength='1'>";
                             if(x<nInputs-1)
                             {
                                inputs += "<span class='input-group-addon' id='paso"+x+ i + "s'></span>";
@@ -334,11 +334,8 @@
        
        //Aplicar los decimales
         
-       
-       
        $('#cocienteAlum').val(valorCociente);
-       
-       //alert($('#cocienteAlum').val());
+
        $("#enviarresultado").prop( "disabled", false );
     }
     
@@ -389,6 +386,26 @@
             
             
         }
+    }
+    
+    //Funcion para controlar que el usuario solo introduzca un número en las soluciones
+    function isNumberKey(evt)
+    {
+       var charCode = (evt.which) ? evt.which : evt.keyCode;
+       if (charCode < 48 || charCode > 57)
+          return false;
+
+       return true;
+    }
+    
+    //Funcion para controlar que el usuario solo introduzca un número en el cociente
+    function isNumberKeyCociente(evt)
+    {
+       var charCode = (evt.which) ? evt.which : evt.keyCode;
+       if (charCode < 48 || charCode > 57)
+          return false;
+
+       return true;
     }
     </script>
 	
@@ -492,7 +509,7 @@
 		<div class="col-md-12">
 			<center><a href="#">.Acerca de</a></center>
 			<center><a href="https://twitter.com/ActiWeb" class="twitter-follow-button" data-show-count="false">Follow @ActiWeb</a></center>
-			<div class="fb-follow" data-href="https://www.facebook.com/zuck" data-layout="button" data-show-faces="false"></div>
+			<center><div class="fb-follow" data-href="https://www.facebook.com/zuck" data-layout="button" data-show-faces="false"></div></center>
 			</div>
 	</div>
   </div>
