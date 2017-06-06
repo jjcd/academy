@@ -212,7 +212,7 @@
                         if((contAuxTab<contadorTabulado)||(contAuxPintar>=solucionActual.length))
                         {
                             
-                            inputs += "<input type='text' required class='form-control' size='1' style='visibility:hidden;' onkeypress='return isNumberKeyCociente(event)'  maxlength='7'>";
+                            inputs += "<input type='text' class='form-control' size='1' style='visibility:hidden;' onkeypress='return isNumberKeyCociente(event)'  maxlength='7'>";
                             if(x<nInputs-1){
                                inputs += "<span class='input-group-addon' style='visibility:hidden;'></span>";
                             }
@@ -221,7 +221,7 @@
                         }
                         else
                         {
-                            inputs += "<input type='text' required class='form-control' size='1' id='paso"+x+ i +"i' onkeypress='return isNumberKeyCociente(event)'  maxlength='7'>";
+                            inputs += "<input type='text' class='form-control' size='1' id='paso"+x+ i +"i' onkeypress='return isNumberKeyCociente(event)'  maxlength='7'>";
                             if(x<nInputs-1)
                             {
                                inputs += "<span class='input-group-addon' id='paso"+x+ i + "s'></span>";
@@ -405,8 +405,8 @@
             $("#moverDecimal").attr("style","color:grey;font-style: italic;");            
             
             //poner aqui el onclick de testear resultado o deshabilitar.
-            $("#addpaso").attr("onclick","onClick()");
-            $("#addpaso").attr("style","color:white;font-style: italic;");
+            $("#correccion").attr("onclick","onClick()");
+            $("#correccion").attr("style","color:white;font-style: italic;");
             
             
         }
@@ -503,7 +503,7 @@
   <div class="panel-body">
     <div class="row">
 		<div class="col-md-12">
-                    <center><a href="#" id="addpaso" onclick="return false" style="color:grey;font-style: italic;"><b>Click para corregir</b></a></center>
+                    <center><a href="#" id="correccion" onclick="return false" style="color:grey;font-style: italic;"><b>Click para corregir</b></a></center>
 			</div>
 	</div>
   </div>
@@ -573,6 +573,26 @@
 
   </div>
 </div>
+    
+    <div id="myModalEmpty" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" id="modal-title">División con decimales en dividendo y divisor.</h4>
+      </div>
+      <div class="modal-body" id="modal-body">
+          <p>Debes rellenar todos todos los valores para poder enviar a corrección la división. </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>    
     
   </body>
 </html>

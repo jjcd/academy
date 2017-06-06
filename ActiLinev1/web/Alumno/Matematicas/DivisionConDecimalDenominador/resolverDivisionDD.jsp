@@ -381,8 +381,8 @@
             $("#moverDecimal").attr("style","color:grey;font-style: italic;");            
             
             //poner aqui el onclick de testear resultado o deshabilitar.
-            $("#addpaso").attr("onclick","onClick()");
-            $("#addpaso").attr("style","color:white;font-style: italic;");
+            $("#correccion").attr("onclick","onClick()");
+            $("#correccion").attr("style","color:white;font-style: italic;");
             
             
         }
@@ -479,7 +479,7 @@
   <div class="panel-body">
     <div class="row">
 		<div class="col-md-12">
-                    <center><a href="#" id="addpaso" onclick="return false" style="color:grey;font-style: italic;"><b>Click para corregir</b></a></center>
+                    <center><a href="#" id="correccion" onclick="return false" style="color:grey;font-style: italic;"><b>Click para corregir</b></a></center>
 			</div>
 	</div>
   </div>

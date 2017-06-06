@@ -407,7 +407,7 @@
   <div class="panel-body">
     <div class="row">
 		<div class="col-md-12">
-                    <center><a href="#" id="addpaso" onclick="onClick()" style="color:white;font-style: italic;"><b>Click para corregir</b></a></center>
+                    <center><a href="#" id="correccion" onclick="onClick()" style="color:white;font-style: italic;"><b>Click para corregir</b></a></center>
 			</div>
 	</div>
   </div>
