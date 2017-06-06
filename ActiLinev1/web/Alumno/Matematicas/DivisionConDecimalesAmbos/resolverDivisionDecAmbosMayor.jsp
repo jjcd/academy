@@ -438,6 +438,10 @@
                     e.preventDefault(e);
                     $('#myModalEmpty').modal('show');
                 }
+                else
+                {
+                    $('#cocienteAlum').val($('#cocienteInput').val());
+                }
             });
         });
         
@@ -452,7 +456,11 @@
                     NoExisteUnEmpty = false;
                 }
             });
-
+            
+            if(($('#cocienteInput').val()) === ''){
+                NoExisteUnEmpty = false;
+            } 
+            
             return NoExisteUnEmpty;
         }
     

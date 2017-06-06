@@ -254,6 +254,10 @@
                 }
             });
 
+            if(($('#cocienteInput').val()) === ''){
+                NoExisteUnEmpty = false;
+            } 
+
             return NoExisteUnEmpty;
         }
     
