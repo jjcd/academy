@@ -76,6 +76,8 @@ public class eliminarDivision extends HttpServlet {
                     conn.close();
                 }
                 
+                request.getRequestDispatcher("Profesor/confirmacionEjercicioEliminado.jsp").forward(request, response);                
+                
             } catch (SQLException e) {
               if (conn != null) {
                   try

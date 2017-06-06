@@ -210,7 +210,7 @@
 
                 strPrimero = "";
                 if(i===0){
-                    strPrimero = "<input type='text' class='form-control' id='cocienteInput' name='cocienteInput' data-toggle='tooltip' title='Solución : <%=cocienteString%>'>";
+                    strPrimero = "<input type='text' class='form-control' id='cocienteInput' name='cocienteInput' data-toggle='tooltip' title='Solución : <%=cocienteString%>' data-placement='right'>";
                 }
 
                 //Anterior para pintar los input en el cociente
@@ -275,7 +275,6 @@
             
             //Se procede a inicializar los inputs:
             $("#cocienteInput").val(<%=cocienteSolUsuario%>);
-            $("#cocienteInput").prop("disabled", true);
             
             //recoger parametros de la url
             var soluser = findGetParameter('solucionusuario');
@@ -301,7 +300,8 @@
                 var solRestosUserArrayChars = solRestosUserArray[i];
                 // data-toggle='tooltip' title='Solución :
                 $('#comprobacion'+i).attr("data-toggle", "tooltip");
-                
+                 $('#comprobacion'+i).attr("data-placement", "left");
+                 
                 //Formar los ceros de delante
                 var ceros = "";
                 
@@ -416,7 +416,12 @@
     }
     </script>
 	
-
+    <script type="text/javascript">    
+        //Para controlar que todo este bien
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
 <div class="container">
 <div class="panel panel-primary">
   <div class="panel-heading">
