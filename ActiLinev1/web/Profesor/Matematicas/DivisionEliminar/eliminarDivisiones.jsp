@@ -49,7 +49,7 @@
 	
     <script> 
         $(function(){
-          $("#includedContent").load("<%=constantesClass.urlRaiz%>menualumno.jsp"); 
+          $("#includedContent").load("<%=constantesClass.urlRaiz%>menuProfe.jsp"); 
 
 
         });

@@ -178,7 +178,6 @@
             var solCerosSplit = "<%=solucionConCeros%>";
             var listaSoluciones = solCerosSplit.split("-");
 
-            //alert(listaSoluciones[0] + listaSoluciones[1] + listaSoluciones[2]);
             var contadorTabulado = 0;
         
             for(var i=0;i<j;i++){
@@ -199,8 +198,6 @@
 
                 var nInputs = <%=dividendoChars.length%>;
 
-                //alert(solucionActual.length + " " + solucionActual.charAt(0) + " " + solucionActual + " " + contadorTabulado);
-
                 var contAuxPintar = 0;
                 var contAuxTab = 0;
 
@@ -212,7 +209,7 @@
                         if((contAuxTab<contadorTabulado)||(contAuxPintar>=solucionActual.length))
                         {
                             
-                            inputs += "<input type='text' class='form-control' size='1' style='visibility:hidden;' onkeypress='return isNumberKeyCociente(event)'  maxlength='7'>";
+                            inputs += "<input type='text' class='form-control' size='1' style='visibility:hidden;' onkeypress='return isNumberKeyCociente(event)'  maxlength='7' id='paso"+x+ i +"i'>";
                             if(x<nInputs-1){
                                inputs += "<span class='input-group-addon' style='visibility:hidden;'></span>";
                             }
@@ -334,8 +331,7 @@
            $(cociInput).removeClass();
            $(cociInput).addClass("danger");
        }
-       
-       //alert(solucionesUsuario);
+
        //Campos para luego ser guardados en la base de datos
        $('#restosAlum').val(solucionesUsuario);
        
@@ -348,7 +344,6 @@
        
        $('#cocienteAlum').val(valorCociente);
        
-       //alert($('#cocienteAlum').val());
        $("#enviarresultado").prop( "disabled", false );
     }
     
@@ -432,7 +427,36 @@
        return true;
     }
     </script>
-	
+    <script type="text/javascript">    
+        //Para controlar que todo este bien
+        $(document).ready(function() {
+            $("#formEnviar").submit(function(e){
+                
+                //Comprobamos que todos los valores han sido introducidos, si no es así
+                //avisamos al usuario
+                if(comprobarTodosRellenosNoOcultos() === false){                   
+                    e.preventDefault(e);
+                    $('#myModalEmpty').modal('show');
+                }
+            });
+        });
+        
+        function comprobarTodosRellenosNoOcultos()
+        {
+            var NoExisteUnEmpty = true;
+            
+            $('*[id*=paso]').each(function() {
+                if( ($(this).css('visibility') !== 'hidden') && ($(this).val()=== '') && (!$(this).is('span')))
+                {
+                    
+                    NoExisteUnEmpty = false;
+                }
+            });
+
+            return NoExisteUnEmpty;
+        }
+    
+    </script>	
 
 <div class="container">
 <div class="panel panel-primary">
@@ -510,7 +534,7 @@
 </div>    
 
  <div class="panel panel-primary" style="background-color:#337ab7;">
-    <form  method="GET" action="/ActiLinev1/guardarDivisionDAMY">
+    <form id="formEnviar"  method="GET" action="/ActiLinev1/guardarDivisionDAMY">
 
     <input type="hidden" class="form-control" id="dividendoAlum" name="dividendoAlum" value="<%=dividendo%>">
     <input type="hidden" class="form-control" id="divisorAlum" name="divisorAlum" value="<%=divisor%>">

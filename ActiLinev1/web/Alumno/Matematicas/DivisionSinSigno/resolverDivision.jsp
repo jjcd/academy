@@ -235,7 +235,6 @@
                 //Comprobamos que todos los valores han sido introducidos, si no es así
                 //avisamos al usuario
                 if(comprobarTodosRellenosNoOcultos() === false){
-                    alert(!comprobarTodosRellenosNoOcultos());
                     
                     e.preventDefault(e);
                     $('#myModalEmpty').modal('show');
