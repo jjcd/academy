@@ -63,7 +63,7 @@ nav.navbar {
     <ul class="nav navbar-nav">
       <!--class="active"-->
       <li><a href="<%=constantesClass.urlRaiz%>Alumno/indexalumno.jsp" id="opcion1" class="opcionHome">Inicio</a></li>
-      <li><a href="<%=constantesClass.urlRaiz%>Alumno/elegirejercicio.jsp" id="opcion2" class="opcionInsert">Realizar ejercicio</a></li>
+      <li><a href="<%=constantesClass.urlRaiz%>Alumno/elegirejercicio.jsp" id="opcion2" class="opcionInsert">Realizar tarea</a></li>
 
     </ul>
 
