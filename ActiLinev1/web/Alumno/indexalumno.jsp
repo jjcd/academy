@@ -18,7 +18,7 @@
   </head>
   <body>
   <div id="includedContent"></div>
- 
+  
     <!-- Librería jQuery requerida por los plugins de JavaScript -->
     <script src="http://code.jquery.com/jquery.js">
 	
@@ -26,7 +26,7 @@
 	
 	<script> 
     $(function(){
-      $("#includedContent").load("<%=constantesClass.urlRaiz%>menualumno.jsp"); 
+      $("#includedContent").load("<%=constantesClass.urlRaiz%>menualumno.jsp");
     });
     </script> 
 	

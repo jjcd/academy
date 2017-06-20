@@ -40,7 +40,14 @@ nav.navbar {
 }
  </style>
  
-
+ <%
+    Object usuarioSesion = session.getAttribute("USUARIO");
+    String UsuarioString = "";
+    
+    if(usuarioSesion!=null){
+        UsuarioString = usuarioSesion.toString();
+    }
+ %>
  
  
  <nav class="navbar navbar-default" role="navigation">
@@ -69,6 +76,15 @@ nav.navbar {
 
     </ul>
 
+               <div class="pull-right">
+                <ul class="nav pull-right">
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><font color="white">Bienvenido, <%=UsuarioString%></font> <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/auth/logout"><i class="icon-off"></i> Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+              </div>
 
   </div>
 </nav>

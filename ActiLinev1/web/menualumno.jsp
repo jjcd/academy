@@ -40,7 +40,14 @@ nav.navbar {
 }
  </style>
  
-
+ <%
+    Object usuarioSesion = session.getAttribute("USUARIO");
+    String UsuarioString = "";
+    
+    if(usuarioSesion!=null){
+        UsuarioString = usuarioSesion.toString();
+    }
+ %>
 
  
  <nav class="navbar navbar-default" role="navigation">
@@ -66,6 +73,15 @@ nav.navbar {
       <li><a href="<%=constantesClass.urlRaiz%>Alumno/elegirejercicio.jsp" id="opcion2" class="opcionInsert">Realizar tarea</a></li>
 
     </ul>
+              <div class="pull-right">
+                <ul class="nav pull-right">
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><font color="white">Bienvenido, <%=UsuarioString%></font> <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/auth/logout"><i class="icon-off"></i> Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+              </div>
 
 
   </div>
