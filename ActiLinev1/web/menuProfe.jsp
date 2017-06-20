@@ -80,7 +80,7 @@ nav.navbar {
                 <ul class="nav pull-right">
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><font color="white">Bienvenido, <%=UsuarioString%></font> <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/auth/logout"><i class="icon-off"></i> Logout</a></li>
+                            <li><a href="/ActiLinev1/sessionDestroy"><i class="icon-off"></i> Logout</a></li>
                         </ul>
                     </li>
                 </ul>
