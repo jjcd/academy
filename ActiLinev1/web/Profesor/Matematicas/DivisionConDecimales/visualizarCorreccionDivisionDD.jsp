@@ -68,10 +68,6 @@
                 //Obtenemos dividendo y divisor originales
                 dividendoOriginal = dividendo.substring(0, dividendo.length() - decimalesInt);
                 divisorOriginal = divisor.substring(0, divisor.length() - decimalesInt) + "," + divisor.substring(divisor.length() - decimalesInt, divisor.length());
-                /*
-                    dividendo = dividendo.substring(0, dividendo.length() - decimalesInt);
-                    divisor = divisor.substring(0, divisor.length() - decimalesInt) + "," + divisor.substring(divisor.length() - decimalesInt, divisor.length());
-                */
                 
                 
                 //Partir
@@ -207,12 +203,6 @@
                     strPrimero = "<input type='text' class='form-control' id='cocienteInput' name='cocienteInput' data-toggle='tooltip' title='Solución : <%=cocienteString%>' data-placement='right'>";
                 }
 
-                //Anterior para pintar los input en el cociente
-                /*$( "#cuerpoDivision" ).append("<tr><td class='warning' id='comprobacion"+i+
-                        "' name='comprobacion"+i+"'><div><input size='1' type='text' class='form-control' id='paso"+i+
-                        "' name='paso"+i+"'></div></td><td id='cociente"+i+"' name='cociente"+i+"'>"
-                        +strPrimero+"</td></tr>");*/
-
                 var inputs = "";
 
                 var nInputs = <%=dividendoChars.length%>;
@@ -287,12 +277,10 @@
             
             var solRestosUserArray = solRestosUser.split(';');
             
-            //alert(solRestosUserArray[0]);
-            
             for(var i=0;i<solRestosUserArray.length;i++){
                 //cada solucion la spliteamos en caracteres
                 var solRestosUserArrayChars = solRestosUserArray[i];
-                // data-toggle='tooltip' title='Solución :
+
                 $('#comprobacion'+i).attr("data-toggle", "tooltip");
                 $('#comprobacion'+i).attr("data-placement", "left");
                 
@@ -306,22 +294,12 @@
                 $('#comprobacion'+i).attr("title", "Solución : " + ceros + solRestosCorrectaArray[i]);
                 
                 for(var j=0;j<solRestosUserArrayChars.length;j++){
-                    //alert(solRestosUserArrayChars[j]);
-                    
-                    //alert($('solucioncolumna'+i+j).val());
+
                     $('#solucioncolumna'+i+j).val(solRestosUserArrayChars[j]);
                     
-                    //$('#solucioncolumna'+i+j).attr("data-toggle", "tooltip");
-                    //$('#solucioncolumna'+i+j).attr("title", "Solución 2: ");
                 }
             }
-            //var listaRestosUsuario = restosUsuarioString.split('/');;
-            
-            //for(var x=0;x<listaRestosUsuario.length();x++){
-                //var restox = listaRestosUsuario[i];
-                
-            //}
-            //$("#logger").val("hola");
+
             onClick();
     });
     </script> 
@@ -344,13 +322,15 @@
             {               
                var pasoInput = "#paso" + h;
                var comprobaciontd = "#comprobacion" + h;
-               
-               //Recuperar y concatenar todos los inputs
-               
+                              
                //Recuperar y concatenar todos los inputs
                var result = '';
                
                $('#comprobacion'+h+' :input').each(function() {
+                   if($(this).val()===''){
+                       $(this).css('visibility', 'hidden');
+                   }                   
+                   
                     result += $(this).val();
                });
                
@@ -453,12 +433,7 @@
                      </tr>
                    </thead>
                    <tbody id="cuerpoDivision">
-                     <!-- Aplicadas en las celdas (<td> o <th>) 
-                     <tr>
-                       <td class="warning">...</td>
-                       <td class="warning">...</td>
-                     </tr>
-                     -->
+
                      <!-- Zona para resultados -->
                    </tbody>
                    </table>                 

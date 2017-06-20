@@ -199,7 +199,7 @@
                         if((contAuxTab<contadorTabulado)||(contAuxPintar>=solucionActual.length))
                         {
                             
-                            inputs += "<input type='text' class='form-control' size='1' style='visibility:hidden;' onkeypress='return isNumberKey(event)' maxlength='1' id='paso"+x+ i +"i'>";
+                            inputs += "<input type='text' class='form-control' size='1' style='visibility:hidden;' onkeypress='return isNumberKey(event)' maxlength='1' id='oculto"+x+ i +"i'>";
                             if(x<nInputs-1){
                                inputs += "<span class='input-group-addon' style='visibility:hidden;'></span>";
                             }
@@ -255,7 +255,6 @@
     <script type="text/javascript">
     function onClick() {
         
-        var strsolucion = "";
         var strsolucion = "<%=strSolucionComas%>";
         var res = strsolucion.split(";");
         

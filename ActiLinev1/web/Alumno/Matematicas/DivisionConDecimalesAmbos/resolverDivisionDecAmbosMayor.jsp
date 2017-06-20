@@ -209,7 +209,7 @@
                         if((contAuxTab<contadorTabulado)||(contAuxPintar>=solucionActual.length))
                         {
                             
-                            inputs += "<input type='text' class='form-control' size='1' style='visibility:hidden;' onkeypress='return isNumberKeyCociente(event)'  maxlength='7' id='paso"+x+ i +"i'>";
+                            inputs += "<input type='text' class='form-control' size='1' style='visibility:hidden;' onkeypress='return isNumberKeyCociente(event)'  maxlength='1' id='paso"+x+ i +"i'>";
                             if(x<nInputs-1){
                                inputs += "<span class='input-group-addon' style='visibility:hidden;'></span>";
                             }
@@ -218,7 +218,7 @@
                         }
                         else
                         {
-                            inputs += "<input type='text' class='form-control' size='1' id='paso"+x+ i +"i' onkeypress='return isNumberKeyCociente(event)'  maxlength='7'>";
+                            inputs += "<input type='text' class='form-control' size='1' id='paso"+x+ i +"i' onkeypress='return isNumberKeyCociente(event)'  maxlength='1'>";
                             if(x<nInputs-1)
                             {
                                inputs += "<span class='input-group-addon' id='paso"+x+ i + "s'></span>";
