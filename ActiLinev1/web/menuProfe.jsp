@@ -65,7 +65,7 @@ nav.navbar {
 	  <li><a href="<%=constantesClass.urlRaiz%>Profesor/indexprofesor.jsp" id="opcion1" class="opcionHome">Inicio</a></li>
           <li><a href="<%=constantesClass.urlRaiz%>Profesor/crearejercicio.jsp" id="opcion2" class="opcionInsert">Insertar tarea</a></li>
 	  <li><a href="<%=constantesClass.urlRaiz%>Profesor/Matematicas/visualizarCorreccionesGeneral.jsp" id="opcion3" class="opcionEdit">Visualizar Soluciones Tareas</a></li>
-	  <li><a href="<%=constantesClass.urlRaiz%>consultaDivisionesEliminar" id="opcion4" class="opcionRemove">Eliminar Tarea</a></li>
+	  <li><a href="<%=constantesClass.urlRaiz%>consultaDivisionesEliminar" id="opcion4" class="opcionRemove">Visualizar/Eliminar Tareas</a></li>
 
     </ul>
 
