@@ -39,13 +39,22 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+  <style>
+    .botonBorrar{
+        background:url(<%=constantesClass.urlRaiz%>bootstrap/paperbin.png) no-repeat;
+        cursor:pointer;
+        width: 30px;
+        height: 30px;
+        border: none;
+    }
+      
+  </style>
   <body>
   <div id="includedContent"></div>
  
+  
     <!-- Librería jQuery requerida por los plugins de JavaScript -->
-    <script src="http://code.jquery.com/jquery.js">
-	
-	</script>
+    <script src="http://code.jquery.com/jquery.js"></script>
 	
     <script> 
         $(function(){
@@ -67,7 +76,11 @@
 
     });
     
-    function clickEliminar(form){
+    function clickEliminar(form, info){
+        
+        
+        document.getElementById("ldividendo").innerHTML = info.split(':')[1].split('/')[0];
+        document.getElementById("ldivisor").innerHTML = info.split(':')[1].split('/')[1];
         formEnviar = form;
     }
 
@@ -89,7 +102,7 @@
        <%for(EjercicioClass ec : listaEjs){%>
         <form action="<%=constantesClass.urlRaiz%>eliminarDivision" id="form<%=ec.getId()%>">
             <input type="hidden" value="<%=ec.getId()%>" name="idDivision" id="idDivision"/>            
-            <li class="list-group-item"><input type="button" name="btn" value="<%=ec.getValor()%>" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-default" onclick="clickEliminar('form<%=ec.getId()%>')"/> <span><img src="<%=constantesClass.urlRaiz%>bootstrap/paperbin.png"/></span></li>
+            <li class="list-group-item"><input class="botonBorrar" type="button" name="btn" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" onclick="clickEliminar('form<%=ec.getId()%>','<%=ec.getValor()%>')"/> <%=ec.getValor()%></li>
 
         </form>
         <%}%>
@@ -104,7 +117,7 @@
        <%for(EjercicioClass ec : listaEjs2){%>
         <form action="<%=constantesClass.urlRaiz%>eliminarDivision" id="form<%=ec.getId()%>">
             <input type="hidden" value="<%=ec.getId()%>" name="idDivision" id="idDivision"/>            
-            <li class="list-group-item"><input type="button" name="btn" value="<%=ec.getValor()%>" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-default" onclick="clickEliminar('form<%=ec.getId()%>')"/> <span><img src="<%=constantesClass.urlRaiz%>bootstrap/paperbin.png"/></span></li>
+            <li class="list-group-item"><input class="botonBorrar" type="button" name="btn" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" onclick="clickEliminar('form<%=ec.getId()%>','<%=ec.getValor()%>')"/> <%=ec.getValor()%></li>
 
         </form>
         <%}%>
@@ -119,7 +132,7 @@
        <%for(EjercicioClass ec : listaEjs3){%>
         <form action="<%=constantesClass.urlRaiz%>eliminarDivision" id="form<%=ec.getId()%>">
             <input type="hidden" value="<%=ec.getId()%>" name="idDivision" id="idDivision"/>            
-            <li class="list-group-item"><input type="button" name="btn" value="<%=ec.getValor()%>" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-default" onclick="clickEliminar('form<%=ec.getId()%>')"/> <span><img src="<%=constantesClass.urlRaiz%>bootstrap/paperbin.png"/></span></li>
+            <li class="list-group-item"><input class="botonBorrar" type="button" name="btn" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" onclick="clickEliminar('form<%=ec.getId()%>','<%=ec.getValor()%>')"/> <%=ec.getValor()%></li>
 
         </form>
         <%}%>
@@ -143,7 +156,7 @@
        
         <form action="<%=constantesClass.urlRaiz%>eliminarDivision" id="form<%=ec.getId()%>">
             <input type="hidden" value="<%=ec.getId()%>" name="idDivision" id="idDivision"/>            
-            <li class="list-group-item"><input type="button" name="btn" value="<%=ec.getValor()%>" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-default" onclick="clickEliminar('form<%=ec.getId()%>')"/> <span><img src="<%=constantesClass.urlRaiz%>bootstrap/paperbin.png"/></span></li>
+            <li class="list-group-item"><input class="botonBorrar" type="button" name="btn" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" onclick="clickEliminar('form<%=ec.getId()%>','<%=ec.getValor()%>')"/> <%=ec.getValor()%></li>
 
         </form>
             
