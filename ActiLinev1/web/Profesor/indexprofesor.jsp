@@ -36,16 +36,22 @@
         }
     %>
     
-	<div class="container">
-	<div class="panel panel-primary">
-  <div class="panel-heading">
-    <h3 class="panel-title"><center>ActiWeb</center></h3>
-  </div>
-  <div class="panel-body">
-    <center>Bienvenido a ActiWeb, en modo profesor, esta sección le permitirá crear ejercicios, así como editar sus componentes y ver los resultados del alumno, para realizar cualquier actividad pulse en el menú.</center>
-  </div>
-</div>
-
+    <div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title"><center>ActiWeb</center></h3>
+        </div>
+        <div class="panel-body">
+            <center>Bienvenido a ActiWeb, en modo profesor, esta sección le permitirá crear ejercicios, así como editar sus componentes y ver los resultados del alumno, para realizar cualquier actividad pulse en el menú.</center>
+        </div>
+    </div>
+            
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h4 class="panel-title"><center><a href="<%=constantesClass.urlRaiz%>Alumno/indexalumno.jsp"><font color="white">Acceder al modo alumno</font></a></center></h3>
+        </div>
+    </div>
+            
 <div class="panel panel-primary">
   <div class="panel-body">
     <div class="row">
