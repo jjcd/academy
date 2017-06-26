@@ -55,39 +55,39 @@ public class consultaDivisionesEliminar extends HttpServlet {
 
                     Statement stmt = conn.createStatement();
 
-                    String sql = "SELECT * FROM EJERCICIO WHERE TIPOEJERCICIO='DIVSS'";
+                    String sql = "SELECT E.ID ID,E.VALOR VALOR,E.WEB WEB,E.TIPOEJERCICIO TIPOEJERCICIO,COUNT(E.ID) NUMSOL FROM EJERCICIO E LEFT JOIN EJERCICIORESUELTO ER ON E.ID = ER.IDEJERCICIO WHERE E.TIPOEJERCICIO = 'DIVSS' GROUP BY E.ID";
 
                     ResultSet rst = stmt.executeQuery(sql);
                     
                     while (rst.next()) {
-                        EjercicioClass ej = new EjercicioClass(rst.getString("ID"),rst.getString("VALOR"),rst.getString("WEB"),rst.getString("TIPOEJERCICIO"));
+                        EjercicioClass ej = new EjercicioClass(rst.getString("ID"),rst.getString("VALOR"),rst.getString("WEB"),rst.getString("TIPOEJERCICIO"),rst.getString("NUMSOL"));
                         listaEjerciciosSS.add(ej); 
                     }
                     
-                    sql = "SELECT * FROM EJERCICIO WHERE TIPOEJERCICIO='DIVDN'";
+                    sql = "SELECT E.ID ID,E.VALOR VALOR,E.WEB WEB,E.TIPOEJERCICIO TIPOEJERCICIO,COUNT(E.ID) NUMSOL FROM EJERCICIO E LEFT JOIN EJERCICIORESUELTO ER ON E.ID = ER.IDEJERCICIO WHERE E.TIPOEJERCICIO = 'DIVDN' GROUP BY E.ID";
 
                     rst = stmt.executeQuery(sql);
                     
                     while (rst.next()) {
-                        EjercicioClass ej = new EjercicioClass(rst.getString("ID"),rst.getString("VALOR"),rst.getString("WEB"),rst.getString("TIPOEJERCICIO"));
+                        EjercicioClass ej = new EjercicioClass(rst.getString("ID"),rst.getString("VALOR"),rst.getString("WEB"),rst.getString("TIPOEJERCICIO"),rst.getString("NUMSOL"));
                         listaEjerciciosDN.add(ej); 
                     }
                     
-                    sql = "SELECT * FROM EJERCICIO WHERE TIPOEJERCICIO='DIVDD'";
+                    sql = "SELECT E.ID ID,E.VALOR VALOR,E.WEB WEB,E.TIPOEJERCICIO TIPOEJERCICIO,COUNT(E.ID) NUMSOL FROM EJERCICIO E LEFT JOIN EJERCICIORESUELTO ER ON E.ID = ER.IDEJERCICIO WHERE E.TIPOEJERCICIO = 'DIVDD' GROUP BY E.ID";
 
                     rst = stmt.executeQuery(sql);
                     
                     while (rst.next()) {
-                        EjercicioClass ej = new EjercicioClass(rst.getString("ID"),rst.getString("VALOR"),rst.getString("WEB"),rst.getString("TIPOEJERCICIO"));
+                        EjercicioClass ej = new EjercicioClass(rst.getString("ID"),rst.getString("VALOR"),rst.getString("WEB"),rst.getString("TIPOEJERCICIO"),rst.getString("NUMSOL"));
                         listaEjerciciosDD.add(ej); 
                     }                    
                     
-                    sql = "SELECT * FROM EJERCICIO WHERE TIPOEJERCICIO='DIVAM'";
+                    sql = "SELECT E.ID ID,E.VALOR VALOR,E.WEB WEB,E.TIPOEJERCICIO TIPOEJERCICIO,COUNT(E.ID) NUMSOL FROM EJERCICIO E LEFT JOIN EJERCICIORESUELTO ER ON E.ID = ER.IDEJERCICIO WHERE E.TIPOEJERCICIO = 'DIVAM' GROUP BY E.ID";
 
                     rst = stmt.executeQuery(sql);
                     
                     while (rst.next()) {
-                        EjercicioClass ej = new EjercicioClass(rst.getString("ID"),rst.getString("VALOR"),rst.getString("WEB"),rst.getString("TIPOEJERCICIO"));
+                        EjercicioClass ej = new EjercicioClass(rst.getString("ID"),rst.getString("VALOR"),rst.getString("WEB"),rst.getString("TIPOEJERCICIO"),rst.getString("NUMSOL"));
                         listaEjerciciosDAM.add(ej); 
                     }
                     

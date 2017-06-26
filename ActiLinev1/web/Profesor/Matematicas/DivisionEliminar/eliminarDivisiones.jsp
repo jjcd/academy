@@ -106,7 +106,7 @@
        <%for(EjercicioClass ec : listaEjs){%>
         <form action="<%=constantesClass.urlRaiz%>eliminarDivision" id="form<%=ec.getId()%>">
             <input type="hidden" value="<%=ec.getId()%>" name="idDivision" id="idDivision"/>            
-            <li class="list-group-item"><input class="botonBorrar" type="button" name="btn" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" onclick="clickEliminar('form<%=ec.getId()%>','<%=ec.getValor()%>')"/> <%=ec.getValor()%></li>
+            <li class="list-group-item"><input class="botonBorrar" type="button" name="btn" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" onclick="clickEliminar('form<%=ec.getId()%>','<%=ec.getValor()%>')"/> <%=ec.getValor()%> <span class='text-warning' style='font-size: 80%'>(<%=ec.getNumSol()%> Soluciones)</span> </li>
 
         </form>
         <%}%>
@@ -121,7 +121,7 @@
        <%for(EjercicioClass ec : listaEjs2){%>
         <form action="<%=constantesClass.urlRaiz%>eliminarDivision" id="form<%=ec.getId()%>">
             <input type="hidden" value="<%=ec.getId()%>" name="idDivision" id="idDivision"/>            
-            <li class="list-group-item"><input class="botonBorrar" type="button" name="btn" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" onclick="clickEliminar('form<%=ec.getId()%>','<%=ec.getValor()%>')"/> <%=ec.getValor()%></li>
+            <li class="list-group-item"><input class="botonBorrar" type="button" name="btn" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" onclick="clickEliminar('form<%=ec.getId()%>','<%=ec.getValor()%>')"/> <%=ec.getValor()%> <span class='text-warning' style='font-size: 80%'>(<%=ec.getNumSol()%> Soluciones)</span> </li>
 
         </form>
         <%}%>
@@ -136,7 +136,7 @@
        <%for(EjercicioClass ec : listaEjs3){%>
         <form action="<%=constantesClass.urlRaiz%>eliminarDivision" id="form<%=ec.getId()%>">
             <input type="hidden" value="<%=ec.getId()%>" name="idDivision" id="idDivision"/>            
-            <li class="list-group-item"><input class="botonBorrar" type="button" name="btn" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" onclick="clickEliminar('form<%=ec.getId()%>','<%=ec.getValor()%>')"/> <%=ec.getValor()%></li>
+            <li class="list-group-item"><input class="botonBorrar" type="button" name="btn" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" onclick="clickEliminar('form<%=ec.getId()%>','<%=ec.getValor()%>')"/> <%=ec.getValor()%> <span class='text-warning' style='font-size: 80%'>(<%=ec.getNumSol()%> Soluciones)</span> </li>
 
         </form>
         <%}%>
@@ -160,7 +160,7 @@
        
         <form action="<%=constantesClass.urlRaiz%>eliminarDivision" id="form<%=ec.getId()%>">
             <input type="hidden" value="<%=ec.getId()%>" name="idDivision" id="idDivision"/>            
-            <li class="list-group-item"><input class="botonBorrar" type="button" name="btn" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" onclick="clickEliminar('form<%=ec.getId()%>','<%=ec.getValor()%>')"/> <%=ec.getValor()%></li>
+            <li class="list-group-item"><input class="botonBorrar" type="button" name="btn" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" onclick="clickEliminar('form<%=ec.getId()%>','<%=ec.getValor()%>')"/> <%=ec.getValor()%> <span class='text-warning' style='font-size: 80%'>(<%=ec.getNumSol()%> Soluciones)</span> </li>
 
         </form>
             

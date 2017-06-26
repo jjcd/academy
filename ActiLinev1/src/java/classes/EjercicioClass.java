@@ -15,6 +15,7 @@ public class EjercicioClass {
     private String valor;
     private String web;
     private String tipoEjercicio;
+    private String numSol;
 
     public EjercicioClass(String valor, String web) {
         this.valor = valor;
@@ -34,6 +35,14 @@ public class EjercicioClass {
         this.tipoEjercicio = tipoEjercicio;
     }
 
+    public EjercicioClass(String id, String valor, String web, String tipoEjercicio, String numSol) {
+        this.id = id;
+        this.valor = valor;
+        this.web = web;
+        this.tipoEjercicio = tipoEjercicio;
+        this.numSol = numSol;
+    }    
+    
     public String getValor() {
         return valor;
     }
@@ -49,5 +58,8 @@ public class EjercicioClass {
     public String getId() {
         return id;
     }
-    
+
+    public String getNumSol() {
+        return numSol;
+    }    
 }
