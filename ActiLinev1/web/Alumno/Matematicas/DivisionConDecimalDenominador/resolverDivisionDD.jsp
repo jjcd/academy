@@ -21,7 +21,12 @@
         }
       </style>
       
-      
+    <%
+        if(session.getAttribute("TIPOUSUARIO")==null){
+            response.sendRedirect("/ActiLinev1");
+        }
+    %>
+    
       <%
             //@SuppressWarnings("unchecked")
             String dividendo = "";

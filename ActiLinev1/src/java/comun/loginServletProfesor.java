@@ -18,8 +18,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author JUAN JOSE
  */
-@WebServlet(name = "loginServlet", urlPatterns = {"/loginServlet"})
-public class loginServlet extends HttpServlet {
+@WebServlet(name = "loginServletProfesor", urlPatterns = {"/loginServletProfesor"})
+public class loginServletProfesor extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,17 +32,14 @@ public class loginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-
         
         HttpSession session = request.getSession();
-  
-        session.setAttribute("TIPOUSUARIO", "ALUMNO");
-        session.setAttribute("USUARIO", "UserAlumnoEjemplo");
+        
+        session.setAttribute("TIPOUSUARIO", "PROFESOR");
+        session.setAttribute("USUARIO", "UserProfesorEjemplo");
 
-        request.getRequestDispatcher("/Alumno/indexalumno.jsp").forward(request, response);
-                
-                     
+        request.getRequestDispatcher("/Profesor/indexprofesor.jsp").forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

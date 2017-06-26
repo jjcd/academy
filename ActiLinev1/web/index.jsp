@@ -33,8 +33,8 @@
   </div>
   <div class="panel-body">
     <div class="row">
-		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>loginServlet?TIPOUSUARIO=ALUMNO"><center><img src="images/alumnoimage.png" height="200" alt="Modo alumno" class="img-thumbnail"><br/>Modo Alumno</center></a></div>
-		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>loginServlet?TIPOUSUARIO=PROFESOR"><center><img src="images/profeimage.png" height="200" alt="Modo profesor" class="img-thumbnail"><br/>Modo Profesor</center></a></div>
+		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>loginServlet"><center><img src="images/alumnoimage.png" height="200" alt="Modo alumno" class="img-thumbnail"><br/>Modo Alumno</center></a></div>
+		<div class="col-md-6"><a href="<%=constantesClass.urlRaiz%>loginServletProfesor"><center><img src="images/profeimage.png" height="200" alt="Modo profesor" class="img-thumbnail"><br/>Modo Profesor</center></a></div>
 	</div>
 
   </div>
