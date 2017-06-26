@@ -28,8 +28,13 @@
     $(function(){
       $("#includedContent").load("<%=constantesClass.urlRaiz%>menuProfe.jsp"); 
     });
-    </script> 
-	
+    </script>
+    
+    <%
+        if((session.getAttribute("TIPOUSUARIO")==null)||(!session.getAttribute("TIPOUSUARIO").toString().equals("PROFESOR"))){
+            response.sendRedirect("/ActiLinev1");
+        }
+    %>	
 
 <div class="container">
 <div class="panel panel-primary">

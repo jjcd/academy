@@ -24,7 +24,11 @@
     <script src="http://code.jquery.com/jquery.js">
 	
 	</script>
-	
+    <%
+        if((session.getAttribute("TIPOUSUARIO")==null)||(!session.getAttribute("TIPOUSUARIO").toString().equals("PROFESOR"))){
+            response.sendRedirect("/ActiLinev1");
+        }
+    %>	
     <script> 
         $(function(){
             $("#includedContent").load("<%=constantesClass.urlRaiz%>menuProfe.jsp"); 

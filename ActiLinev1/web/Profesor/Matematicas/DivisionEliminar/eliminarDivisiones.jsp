@@ -7,7 +7,11 @@
   <head>
      <%@ page import="constantes.constantesClass" %>
      <%-- Recogida de los ejercicios --%>
-
+    <%
+        if((session.getAttribute("TIPOUSUARIO")==null)||(!session.getAttribute("TIPOUSUARIO").toString().equals("PROFESOR"))){
+            response.sendRedirect("/ActiLinev1");
+        }
+    %>
      <%
          List<EjercicioClass> listaEjs = new ArrayList<EjercicioClass>();
          List<EjercicioClass> listaEjs2 = new ArrayList<EjercicioClass>();

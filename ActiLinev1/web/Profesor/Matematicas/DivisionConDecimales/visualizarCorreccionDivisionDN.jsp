@@ -20,7 +20,11 @@
             font-weight: 700;
         }
       </style>
-      
+    <%
+        if((session.getAttribute("TIPOUSUARIO")==null)||(!session.getAttribute("TIPOUSUARIO").toString().equals("PROFESOR"))){
+            response.sendRedirect("/ActiLinev1");
+        }
+    %>      
       
       <%
             //@SuppressWarnings("unchecked")

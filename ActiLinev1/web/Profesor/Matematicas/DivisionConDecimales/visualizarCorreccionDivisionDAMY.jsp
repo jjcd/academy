@@ -21,7 +21,11 @@
         }
       </style>
       
-      
+    <%
+        if((session.getAttribute("TIPOUSUARIO")==null)||(!session.getAttribute("TIPOUSUARIO").toString().equals("PROFESOR"))){
+            response.sendRedirect("/ActiLinev1");
+        }
+    %>      
       <%
             //@SuppressWarnings("unchecked")
             String listaRestosUser = "";
