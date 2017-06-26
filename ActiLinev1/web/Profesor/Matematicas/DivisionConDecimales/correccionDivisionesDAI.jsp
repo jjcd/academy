@@ -147,7 +147,7 @@
            String divisor = valor.split(":")[1];
            
            //dividendo = dividendo.substring(0, dividendo.length() - decimalesInt);
-           dividendo = dividendo.substring(0, dividendo.length() - decimalesDivdInt) + "," + dividendo.substring(dividendo.length() - decimalesDivdInt, dividendo.length());
+           dividendo = dividendo.substring(0, dividendo.length() - decimalesDivdInt) + "," + dividendo.substring(dividendo.length() - (decimalesDivdInt+1), dividendo.length()-1);
            divisor = divisor.substring(0, divisor.length() - decimalesDivsInt) + "," + divisor.substring(divisor.length() - decimalesDivsInt, divisor.length());
        %>
             <a href="<%=constantesClass.urlRaiz%>generarRevisionDivisionDAMN?valor=<%=dc.getValor()%>&solucion=<%=dc.getSolucion()%>&solucionusuario=<%=dc.getSolucionUsuario()%>"><button type="button" class="list-group-item list-group-item-action"><%=dividendo%> : <%=divisor%> | usuario: <%=dc.getUsuario()%></button></a>
